@@ -34,36 +34,88 @@ button{cursor:pointer;border:none;background:none;font-family:var(--fb);}
 .rev.in{opacity:1;transform:none;}
 .rev-1{transition-delay:.1s;}.rev-2{transition-delay:.2s;}.rev-3{transition-delay:.3s;}
 
+/* PARTICLES */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+.particle{position:absolute;border-radius:50%;animation:drift linear infinite;}
+@keyframes drift{
+  0%{transform:translateY(105vh) scale(0);opacity:0;}
+  8%{opacity:1;}
+  92%{opacity:.5;}
+  100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
+}
+nav,section,div.stats-band,div.ticker-sec,div.query-ticker,footer{position:relative;z-index:1;}
+
 /* NAV */
 nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);background:rgba(8,12,24,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
 .nav-i{display:flex;align-items:center;height:62px;max-width:var(--max);margin:0 auto;padding:0 24px;gap:32px;}
-.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.logo img{height:32px;width:auto;}
 .nav-links{display:flex;gap:26px;margin-left:auto;}
 .nav-links a{font-size:.86rem;color:var(--muted);transition:color .15s;}
 .nav-links a:hover{color:var(--white);}
-.nav-btn{background:var(--gold);color:#08080a;font-weight:700;font-size:.84rem;padding:9px 20px;border-radius:6px;transition:background .15s;white-space:nowrap;}
-.nav-btn:hover{background:var(--gold-lt);}
+.nav-btn{background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold-lt));color:#08080a;font-weight:700;font-size:.84rem;padding:9px 22px;border-radius:100px;transition:opacity .18s,transform .15s;white-space:nowrap;position:relative;overflow:hidden;}
+.nav-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .4s ease;}
+.nav-btn:hover::after{left:140%;}
+.nav-btn:hover{opacity:.92;transform:translateY(-1px);}
 
 /* HERO */
-.hero{padding:80px 0 64px;position:relative;overflow:hidden;min-height:580px;display:flex;align-items:center;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 60% 20%,rgba(201,168,76,.06),transparent 70%);pointer-events:none;}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%;}
-.hero-eyebrow{display:block;margin-bottom:20px;}
-.hero-h{font-family:var(--fd);font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:20px;}
-.hero-h em{font-style:italic;color:var(--gold);}
-.hero-sub{font-size:.96rem;line-height:1.75;color:var(--muted);margin-bottom:32px;max-width:440px;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
-.btn-gold{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:#08080a;font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:6px;transition:background .15s,transform .13s,box-shadow .15s;}
-.btn-gold:hover{background:var(--gold-lt);transform:translateY(-1px);box-shadow:0 6px 24px rgba(201,168,76,.25);}
-.btn-out{display:inline-flex;align-items:center;gap:7px;color:var(--white);font-weight:600;font-size:.88rem;padding:12px 22px;border-radius:6px;border:1px solid var(--border2);transition:border-color .15s;}
-.btn-out:hover{border-color:rgba(255,255,255,.28);}
-.hero-note{font-size:.75rem;color:var(--muted2);}
-.hero-note b{color:var(--muted);}
+.hero{padding:52px 0 48px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.hero-glow-1{position:absolute;top:-100px;right:-60px;width:560px;height:560px;background:radial-gradient(ellipse,rgba(201,168,76,.07),transparent 65%);pointer-events:none;}
+.hero-glow-2{position:absolute;bottom:-80px;left:-100px;width:440px;height:440px;background:radial-gradient(ellipse,rgba(100,130,240,.05),transparent 65%);pointer-events:none;}
+#grid-canvas{position:absolute;inset:0;pointer-events:none;opacity:.35;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;width:100%;}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold-lt);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(201,168,76,.4);}50%{opacity:.4;box-shadow:0 0 0 6px rgba(201,168,76,0);}}
+.hero-h{font-family:var(--fd);font-size:clamp(2.1rem,3.8vw,3.1rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;}
+.hero-h em{font-style:italic;background:linear-gradient(135deg,var(--gold-lt),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:.93rem;line-height:1.75;color:var(--muted);margin-bottom:26px;max-width:440px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.btn-gold{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold-lt));color:#08080a;font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:100px;transition:transform .14s,box-shadow .14s;position:relative;overflow:hidden;}
+.btn-gold::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .45s ease;}
+.btn-gold:hover::after{left:140%;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.3);}
+.btn-out{display:inline-flex;align-items:center;gap:7px;color:var(--white);font-weight:600;font-size:.88rem;padding:12px 22px;border-radius:100px;border:1px solid var(--border2);transition:border-color .15s,background .15s;}
+.btn-out:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04);}
+.hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:.76rem;color:var(--muted2);}
+.trust-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
 
-/* RADAR */
-.radar-wrap{position:relative;display:flex;align-items:center;justify-content:center;height:420px;}
-#radar-svg{width:100%;height:100%;max-width:420px;}
+/* PHONE */
+.phone-scene{display:flex;justify-content:center;align-items:center;position:relative;padding:10px 0;}
+.phone{width:252px;background:#0C0F1A;border:2px solid rgba(201,168,76,.22);border-radius:40px;padding:14px;box-shadow:0 48px 120px rgba(0,0,0,.75),0 0 0 1px rgba(201,168,76,.06),inset 0 1px 0 rgba(255,255,255,.05);position:relative;animation:phoneFloat 6s ease-in-out infinite;}
+@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(0.3deg);}50%{transform:translateY(-10px) rotate(-0.3deg);}}
+.phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:72px;height:20px;background:#0C0F1A;border-radius:0 0 12px 12px;z-index:10;}
+.phone-screen{background:#07090F;border-radius:28px;overflow:hidden;min-height:400px;display:flex;flex-direction:column;}
+.phone-status{display:flex;align-items:center;justify-content:space-between;padding:24px 16px 4px;font-size:.58rem;color:var(--muted2);}
+.phone-url{background:rgba(255,255,255,.05);border-radius:100px;padding:5px 12px;margin:0 10px 8px;font-size:.6rem;color:var(--muted2);display:flex;align-items:center;gap:5px;border:1px solid rgba(255,255,255,.06);}
+.phone-url-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.phone-chat{flex:1;padding:8px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden;}
+.cmsg{display:flex;gap:5px;align-items:flex-end;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;}
+.cmsg.vis{opacity:1;transform:none;}
+.cmsg.right{flex-direction:row-reverse;}
+.cav{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:.5rem;font-weight:700;}
+.cav.ai{background:linear-gradient(135deg,#10a37f,#0d8a6a);}
+.cav.user{background:linear-gradient(135deg,var(--gold-dk),var(--gold));}
+.cbub{border-radius:12px 12px 12px 3px;padding:7px 10px;font-size:.64rem;line-height:1.5;max-width:160px;}
+.cbub.ai-b{background:rgba(255,255,255,.07);color:var(--muted);}
+.cbub.user-b{background:linear-gradient(135deg,rgba(201,168,76,.22),rgba(201,168,76,.12));color:var(--white);border-radius:12px 12px 3px 12px;}
+.cbub .hl{color:var(--white);font-weight:700;}
+.cbub .miss{color:#FF7B8A;font-size:.6rem;display:block;margin-top:3px;}
+.ctyping{display:flex;gap:3px;align-items:center;padding:8px 10px;background:rgba(255,255,255,.06);border-radius:12px;width:fit-content;}
+.ctyping span{width:4px;height:4px;border-radius:50%;background:var(--muted2);animation:typ .8s ease-in-out infinite;}
+.ctyping span:nth-child(2){animation-delay:.15s;}
+.ctyping span:nth-child(3){animation-delay:.3s;}
+@keyframes typ{0%,80%,100%{transform:scale(1);opacity:.4;}40%{transform:scale(1.4);opacity:1;}}
+.phone-glow-ring{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:260px;height:260px;background:radial-gradient(ellipse,rgba(201,168,76,.12),transparent 65%);pointer-events:none;border-radius:50%;animation:glowPulse 4s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:.7;}50%{opacity:1;}}
+.phone-float-pills{position:absolute;right:-116px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;}
+.fpill{background:rgba(8,12,24,.95);border:1px solid var(--border2);border-radius:8px;padding:7px 13px;font-size:.65rem;font-weight:600;color:var(--muted2);white-space:nowrap;animation:floatpill 4s ease-in-out infinite;box-shadow:0 4px 18px rgba(0,0,0,.5);}
+.fpill.lit{border-color:rgba(201,168,76,.4);color:var(--gold-lt);background:rgba(201,168,76,.07);}
+.fpill:nth-child(2){animation-delay:.9s;}
+.fpill:nth-child(3){animation-delay:1.8s;}
+.fpill:nth-child(4){animation-delay:2.7s;}
+.fpill-label{font-size:.55rem;color:var(--muted2);letter-spacing:.08em;margin-bottom:4px;text-transform:uppercase;}
+@keyframes floatpill{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
 /* TICKER */
 .ticker-sec{padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden;}
@@ -73,12 +125,22 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .t-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
 @keyframes tick{to{transform:translateX(-50%);}}
 
+/* QUERY TICKER */
+.query-ticker{padding:12px 0;background:rgba(201,168,76,.025);border-bottom:1px solid var(--border);overflow:hidden;}
+.qt-track{display:flex;width:max-content;animation:tick 44s linear infinite reverse;}
+.qt-item{display:flex;align-items:center;gap:8px;padding:0 24px;font-size:.72rem;color:var(--muted2);white-space:nowrap;}
+.qt-prefix{color:var(--gold);font-weight:600;font-size:.68rem;}
+
 /* STATS */
-.stats-band{padding:52px 0;background:var(--bg2);border-bottom:1px solid var(--border);}
+.stats-band{padding:52px 0;background:var(--bg2);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.stats-band::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(201,168,76,.03),transparent);pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
-.stat-cell{background:var(--bg2);padding:36px 32px;text-align:center;}
+.stat-cell{background:var(--bg2);padding:36px 32px;text-align:center;position:relative;overflow:hidden;}
+.stat-cell::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 .stat-num{font-family:var(--fd);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;}
 .stat-lbl{font-size:.85rem;color:var(--muted);line-height:1.5;}
+.stat-cell.fired .stat-num{animation:statGlow .8s ease forwards;}
+@keyframes statGlow{0%{filter:none;}50%{filter:drop-shadow(0 0 14px rgba(201,168,76,.6));}100%{filter:drop-shadow(0 0 6px rgba(201,168,76,.2));}}
 
 /* WHAT IS GEO */
 .geo-sec{padding:88px 0;}
@@ -86,7 +148,7 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .geo-txt .eyebrow{display:block;margin-bottom:14px;}
 .geo-txt h2{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.4rem);margin-bottom:16px;line-height:1.15;}
 .geo-txt p{font-size:.9rem;line-height:1.75;color:var(--muted);margin-bottom:16px;}
-.geo-compare{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;}
+.geo-compare{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);}
 .geo-compare-head{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
 .geo-col-h{padding:14px 20px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
 .geo-col-h.seo{color:var(--muted2);border-right:1px solid var(--border);}
@@ -95,7 +157,8 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .geo-row:last-child{border-bottom:none;}
 .geo-cell{padding:12px 20px;font-size:.82rem;line-height:1.5;}
 .geo-cell.seo-c{color:var(--muted2);border-right:1px solid var(--border);}
-.geo-cell.geo-c{color:var(--white);}
+.geo-cell.geo-c{color:var(--white);position:relative;padding-left:24px;}
+.geo-cell.geo-c::before{content:'▶';position:absolute;left:8px;top:12px;font-size:.55rem;color:var(--gold);opacity:.6;}
 
 /* HOW */
 .how-sec{padding:0 0 88px;}
@@ -103,48 +166,92 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .sec-head h2{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.4rem);margin-top:12px;margin-bottom:12px;}
 .sec-head p{font-size:.9rem;color:var(--muted);max-width:440px;margin:0 auto;line-height:1.65;}
 .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.how-step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
-.how-step:hover{border-color:var(--border2);transform:translateY(-3px);}
-.how-step::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .2s;}
-.how-step:hover::after{opacity:1;}
-.step-icon{width:48px;height:48px;border-radius:10px;margin-bottom:20px;display:grid;place-items:center;}
-.step-icon svg{width:24px;height:24px;}
-.how-step h3{font-family:var(--fd);font-size:1.1rem;margin-bottom:10px;}
-.how-step p{font-size:.855rem;line-height:1.65;color:var(--muted);}
-.step-n{position:absolute;bottom:16px;right:20px;font-family:var(--fd);font-size:3.5rem;color:rgba(255,255,255,.03);pointer-events:none;font-style:italic;}
+.how-step{border-radius:18px;padding:34px 28px;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;}
+.how-step:nth-child(1){background:linear-gradient(145deg,rgba(201,168,76,.08),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.18);}
+.how-step:nth-child(2){background:linear-gradient(145deg,rgba(100,130,240,.07),rgba(100,130,240,.02));border:1px solid rgba(100,130,240,.15);}
+.how-step:nth-child(3){background:linear-gradient(145deg,rgba(34,197,94,.06),rgba(34,197,94,.01));border:1px solid rgba(34,197,94,.15);}
+.how-step:hover{transform:translateY(-5px);}
+.how-step:nth-child(1):hover{box-shadow:0 20px 50px rgba(201,168,76,.1);}
+.how-step:nth-child(2):hover{box-shadow:0 20px 50px rgba(100,130,240,.1);}
+.how-step:nth-child(3):hover{box-shadow:0 20px 50px rgba(34,197,94,.08);}
+.step-icon-wrap{width:52px;height:52px;border-radius:12px;margin-bottom:20px;display:grid;place-items:center;animation:iconFloat 4s ease-in-out infinite;}
+.how-step:nth-child(1) .step-icon-wrap{background:rgba(201,168,76,.1);animation-delay:0s;}
+.how-step:nth-child(2) .step-icon-wrap{background:rgba(100,130,240,.1);animation-delay:1.3s;}
+.how-step:nth-child(3) .step-icon-wrap{background:rgba(34,197,94,.1);animation-delay:2.6s;}
+@keyframes iconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.how-step h3{font-family:var(--fd);font-size:1.15rem;margin-bottom:10px;}
+.how-step p{font-size:.86rem;line-height:1.7;color:var(--muted);}
+.step-n{position:absolute;bottom:12px;right:18px;font-family:var(--fd);font-size:4rem;opacity:.05;pointer-events:none;font-style:italic;}
+
+/* MOMENT SECTION */
+.moment-sec{padding:88px 0;position:relative;overflow:hidden;}
+.moment-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 30% 50%,rgba(201,168,76,.04),transparent 70%);pointer-events:none;}
+.moment-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.moment-img-side{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+.moment-img-side img{width:100%;height:420px;object-fit:cover;display:block;transform:scale(1);transition:transform 8s ease;}
+.moment-img-side:hover img{transform:scale(1.04);}
+.moment-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,12,24,.4),rgba(8,12,24,.1));pointer-events:none;}
+.moment-img-border{position:absolute;inset:0;border:1px solid rgba(201,168,76,.15);border-radius:20px;pointer-events:none;}
+.moment-eyebrow{display:block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.moment-h{font-family:var(--fd);font-size:clamp(1.9rem,3.2vw,2.6rem);margin-bottom:18px;line-height:1.12;}
+.moment-p{font-size:.91rem;line-height:1.78;color:var(--muted);margin-bottom:28px;}
+.moment-chat-float{background:rgba(13,18,32,.95);border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:18px 20px;backdrop-filter:blur(16px);box-shadow:0 16px 48px rgba(0,0,0,.4);}
+.mcf-head{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;}
+.mcf-ai-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0;}
+.mcf-q{font-size:.8rem;color:var(--muted2);margin-bottom:10px;font-style:italic;}
+.mcf-a{font-size:.84rem;line-height:1.68;color:var(--muted);}
+.clinic-hl{color:var(--white);font-weight:700;}
+.mcf-miss{display:block;margin-top:8px;font-size:.75rem;color:#FF7B8A;font-weight:600;}
+
+/* LIFESTYLE GRID */
+.lifestyle-sec{padding:0 0 88px;}
+.lifestyle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.lcard{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.lcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 6s ease;}
+.lcard:hover img{transform:scale(1.06);}
+.lcard-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,24,.15) 0%,rgba(8,12,24,.75) 65%,rgba(8,12,24,.92) 100%);}
+.lcard-border{position:absolute;inset:0;border:1px solid rgba(255,255,255,.08);border-radius:18px;pointer-events:none;}
+.lcard-tag{position:absolute;top:16px;left:16px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);color:var(--gold-lt);padding:4px 12px;border-radius:100px;}
+.lcard-txt{position:absolute;bottom:0;left:0;right:0;padding:24px 22px;}
+.lcard-txt h4{font-family:var(--fd);font-size:1.15rem;margin-bottom:6px;line-height:1.2;}
+.lcard-txt p{font-size:.8rem;color:var(--muted);line-height:1.5;}
 
 /* NICHES */
 .niches-sec{padding:0 0 88px;}
 .niche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
-.niche-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column;}
-.niche-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px);}
+.niche-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s;display:flex;flex-direction:column;}
 .niche-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .niche-card.pi::before{background:linear-gradient(90deg,transparent,#C9A84C,transparent);}
 .niche-card.ms::before{background:linear-gradient(90deg,transparent,#8B6FD4,transparent);}
+.niche-card.dt::before{background:linear-gradient(90deg,transparent,#22A8D4,transparent);}
+.niche-card.pi:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(201,168,76,.1);}
+.niche-card.ms:hover{border-color:rgba(139,111,212,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(139,111,212,.1);}
+.niche-card.dt:hover{border-color:rgba(34,168,212,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(34,168,212,.08);}
 .niche-icon{width:52px;height:52px;border-radius:12px;margin-bottom:20px;display:grid;place-items:center;font-size:1.5rem;}
 .niche-card.pi .niche-icon{background:rgba(201,168,76,.1);}
 .niche-card.ms .niche-icon{background:rgba(139,111,212,.1);}
+.niche-card.dt .niche-icon{background:rgba(34,168,212,.1);}
 .niche-pill{display:inline-flex;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:14px;}
 .niche-card.pi .niche-pill{background:rgba(201,168,76,.1);color:var(--gold);}
 .niche-card.ms .niche-pill{background:rgba(139,111,212,.1);color:#A090E0;}
+.niche-card.dt .niche-pill{background:rgba(34,168,212,.1);color:#5AC8E8;}
 .niche-card h3{font-family:var(--fd);font-size:1.4rem;margin-bottom:10px;}
 .niche-card p{font-size:.875rem;line-height:1.7;color:var(--muted);margin-bottom:24px;flex:1;}
 .niche-stats{display:flex;gap:24px;margin-bottom:28px;}
 .ns-num{font-family:var(--fd);font-size:1.5rem;color:var(--gold);}
 .ns-lbl{font-size:.74rem;color:var(--muted2);margin-top:3px;line-height:1.4;}
-.niche-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:6px;font-weight:700;font-size:.875rem;transition:all .15s;align-self:flex-start;}
+.niche-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:100px;font-weight:700;font-size:.875rem;transition:all .15s;align-self:flex-start;}
 .niche-card.pi .niche-btn{background:var(--gold);color:#08080a;}
-.niche-card.pi .niche-btn:hover{background:var(--gold-lt);}
+.niche-card.pi .niche-btn:hover{background:var(--gold-lt);transform:translateY(-1px);}
 .niche-card.ms .niche-btn{background:rgba(139,111,212,.15);color:#A090E0;border:1px solid rgba(139,111,212,.3);}
 .niche-card.ms .niche-btn:hover{background:rgba(139,111,212,.25);}
-.niche-card.dt::before{background:linear-gradient(90deg,transparent,#22A8D4,transparent);}
-.niche-card.dt:hover{border-color:rgba(34,168,212,.3);}
-.more-niches b{color:var(--muted);}
+.niche-card.dt .niche-btn{background:rgba(34,168,212,.12);color:#5AC8E8;border:1px solid rgba(34,168,212,.3);}
+.niche-card.dt .niche-btn:hover{background:rgba(34,168,212,.22);}
 
 /* SECONDARY NICHE GRID */
 .niche-sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:0;}
-.niche-sub-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s;}
-.niche-sub-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.niche-sub-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s,box-shadow .2s;}
+.niche-sub-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.3);}
 .niche-sub-card.nsub-custom{border-color:rgba(201,168,76,.2);background:rgba(201,168,76,.03);}
 .nsub-top{display:flex;align-items:center;gap:9px;}
 .nsub-icon{font-size:1.2rem;flex-shrink:0;}
@@ -156,12 +263,10 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .nsub-btn:hover{color:var(--white);}
 .nsub-btn-gold{color:var(--gold);}
 .nsub-btn-gold:hover{color:var(--gold-lt);}
-@media(max-width:860px){.niche-sub-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:560px){.niche-sub-grid{grid-template-columns:1fr;}}
 
 /* SERVICES */
 .services-sec{padding:0 0 88px;}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.svc-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin:52px auto 0;}
 .svc-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;}
 .svc-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.2);}
 .svc-card.featured{background:linear-gradient(145deg,#111828,#0D1522);border-color:rgba(201,168,76,.3);position:relative;}
@@ -175,17 +280,17 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .svc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:26px;}
 .svc-li{display:flex;gap:8px;font-size:.82rem;color:var(--muted);line-height:1.45;}
 .svc-li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
-.svc-btn{display:block;text-align:center;padding:12px;border-radius:6px;font-weight:700;font-size:.875rem;transition:all .15s;margin-top:auto;}
+.svc-btn{display:block;text-align:center;padding:12px;border-radius:100px;font-weight:700;font-size:.875rem;transition:all .15s;margin-top:auto;}
 .svc-btn-out{border:1px solid var(--border2);color:var(--muted);}
 .svc-btn-out:hover{border-color:var(--gold);color:var(--gold);}
-.svc-btn-gold{background:var(--gold);color:#08080a;}
-.svc-btn-gold:hover{background:var(--gold-lt);}
+.svc-btn-gold{background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold-lt));color:#08080a;}
+.svc-btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,168,76,.25);}
 
 /* TESTIMONIALS */
 .testi-sec{padding:0 0 88px;}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:border-color .2s;}
-.tcard:hover{border-color:var(--border2);}
+.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:border-color .2s,transform .2s;}
+.tcard:hover{border-color:var(--border2);transform:translateY(-2px);}
 .tcard-quote{font-family:var(--fd);font-size:2.8rem;line-height:1;color:var(--gold);opacity:.25;margin-bottom:2px;}
 .tcard-text{font-size:.875rem;line-height:1.7;color:var(--muted);margin-bottom:18px;}
 .tcard-text b{color:var(--white);}
@@ -223,116 +328,59 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .cf input:focus,.cf select:focus{border-color:rgba(201,168,76,.5);}
 .cf select option{background:var(--bg3);}
 .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.cta-submit{background:var(--gold);color:#08080a;font-weight:700;font-size:.95rem;padding:14px;border-radius:7px;width:100%;transition:background .15s,transform .13s;margin-top:4px;}
-.cta-submit:hover{background:var(--gold-lt);transform:translateY(-1px);}
+.cta-submit{background:linear-gradient(135deg,var(--gold-dk),var(--gold),var(--gold-lt));color:#08080a;font-weight:700;font-size:.95rem;padding:14px;border-radius:100px;width:100%;transition:transform .14s,box-shadow .14s;margin-top:4px;}
+.cta-submit:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(201,168,76,.3);}
 .cta-note{font-size:.73rem;color:var(--muted2);margin-top:9px;}
+
+/* SCROLL PROGRESS */
+#scroll-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold-dk),var(--gold),var(--gold-lt));z-index:9999;box-shadow:0 0 10px rgba(201,168,76,.5);}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:32px 0;}
 .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
-.foot-logo{display:flex;align-items:center;gap:8px;}
-.foot-logo img{height:26px;width:auto;}
 .foot-links{display:flex;gap:24px;}
 .foot-links a{font-size:.8rem;color:var(--muted2);transition:color .15s;}
 .foot-links a:hover{color:var(--muted);}
 .foot-copy{font-size:.76rem;color:var(--muted2);}
 
+/* FREE OFFER BLOCK */
+.offer-block{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.18);border-radius:20px;padding:44px 52px;margin:52px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;overflow:hidden;}
+.offer-block::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(ellipse,rgba(201,168,76,.08),transparent 65%);pointer-events:none;}
+.offer-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:100px;padding:5px 14px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.offer-h{font-family:var(--fd);font-size:clamp(1.6rem,2.8vw,2.1rem);margin-bottom:14px;line-height:1.18;}
+.offer-h em{font-style:italic;color:var(--gold);}
+.offer-p{font-size:.9rem;line-height:1.75;color:var(--muted);margin-bottom:24px;}
+.offer-step{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;transition:border-color .2s;}
+.offer-step:hover{border-color:rgba(201,168,76,.2);}
+.offer-step-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:.95rem;}
+.offer-step-h{font-size:.85rem;font-weight:700;margin-bottom:3px;}
+.offer-step-p{font-size:.8rem;color:var(--muted);line-height:1.5;}
+.offer-steps{display:flex;flex-direction:column;gap:12px;}
+
 /* RESPONSIVE */
 @media(max-width:860px){
-  .hero-grid,.geo-grid,.faq-cols{grid-template-columns:1fr;}
-  .how-steps,.svc-grid,.tgrid,.niche-grid{grid-template-columns:1fr;}
+  .hero-grid,.geo-grid,.moment-inner,.faq-cols{grid-template-columns:1fr;}
+  .how-steps,.tgrid,.niche-grid{grid-template-columns:1fr;}
+  .niche-sub-grid{grid-template-columns:1fr 1fr;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .cf-row{grid-template-columns:1fr;}
   .phone-float-pills{display:none;}
+  .lifestyle-grid{grid-template-columns:1fr 1fr;}
+  .offer-block{grid-template-columns:1fr;padding:32px;}
+  .svc-grid-2{grid-template-columns:1fr;}
 }
 @media(max-width:560px){
   nav .nav-links{display:none;}
   .stats-grid{grid-template-columns:1fr;}
+  .lifestyle-grid{grid-template-columns:1fr;}
+  .niche-sub-grid{grid-template-columns:1fr;}
 }
-
-/* ── SCROLL PROGRESS ── */
-#scroll-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold-dk),var(--gold),var(--gold-lt));z-index:9999;box-shadow:0 0 10px rgba(201,168,76,.5);}
-
-/* ── TECHY GRID CANVAS (hero bg) ── */
-#grid-canvas{position:absolute;inset:0;pointer-events:none;opacity:.35;}
-
-/* ── HERO OVERRIDES ── */
-.hero{padding:48px 0 44px;min-height:unset;}
-.hero-h{font-size:clamp(2rem,3.8vw,3rem);margin-bottom:14px;}
-.hero-sub{margin-bottom:22px;font-size:.92rem;}
-.hero-btns{margin-bottom:14px;}
-.hero-note{font-size:.74rem;}
-
-/* ── PHONE MOCKUP (reused from medspa) ── */
-.phone-scene{display:flex;justify-content:center;align-items:center;position:relative;padding:10px 0;}
-.phone{width:248px;background:#0C0F1A;border:2px solid rgba(201,168,76,.25);border-radius:38px;padding:14px;box-shadow:0 48px 120px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,76,.07),inset 0 1px 0 rgba(255,255,255,.05);position:relative;}
-.phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:72px;height:20px;background:#0C0F1A;border-radius:0 0 12px 12px;z-index:10;}
-.phone-screen{background:#07090F;border-radius:26px;overflow:hidden;min-height:400px;display:flex;flex-direction:column;}
-.phone-status{display:flex;align-items:center;justify-content:space-between;padding:24px 16px 4px;font-size:.58rem;color:var(--muted2);}
-.phone-url{background:rgba(255,255,255,.05);border-radius:100px;padding:5px 12px;margin:0 10px 8px;font-size:.6rem;color:var(--muted2);display:flex;align-items:center;gap:5px;border:1px solid rgba(255,255,255,.06);}
-.phone-url-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
-.phone-chat{flex:1;padding:8px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden;}
-.cmsg{display:flex;gap:5px;align-items:flex-end;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;}
-.cmsg.vis{opacity:1;transform:none;}
-.cmsg.right{flex-direction:row-reverse;}
-.cav{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:.5rem;font-weight:700;}
-.cav.ai{background:linear-gradient(135deg,#10a37f,#0d8a6a);}
-.cav.user{background:linear-gradient(135deg,var(--gold-dk),var(--gold));}
-.cbub{border-radius:12px 12px 12px 3px;padding:7px 10px;font-size:.64rem;line-height:1.5;max-width:158px;}
-.cbub.ai-b{background:rgba(255,255,255,.07);color:var(--muted);}
-.cbub.user-b{background:linear-gradient(135deg,rgba(201,168,76,.22),rgba(201,168,76,.12));color:var(--white);border-radius:12px 12px 3px 12px;}
-.cbub .hl{color:var(--white);font-weight:700;}
-.cbub .miss{color:var(--gold);font-size:.6rem;}
-.ctyping{display:flex;gap:3px;align-items:center;padding:8px 10px;background:rgba(255,255,255,.06);border-radius:12px;width:fit-content;}
-.ctyping span{width:4px;height:4px;border-radius:50%;background:var(--muted2);animation:typ .8s ease-in-out infinite;}
-.ctyping span:nth-child(2){animation-delay:.15s;}
-.ctyping span:nth-child(3){animation-delay:.3s;}
-@keyframes typ{0%,80%,100%{transform:scale(1);opacity:.4;}40%{transform:scale(1.4);opacity:1;}}
-.phone-glow-ring{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:240px;height:240px;background:radial-gradient(ellipse,rgba(201,168,76,.1),transparent 65%);pointer-events:none;border-radius:50%;}
-.phone-float-pills{position:absolute;right:-108px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;}
-.fpill{background:rgba(12,15,26,.92);border:1px solid var(--border2);border-radius:6px;padding:6px 12px;font-size:.65rem;font-weight:600;color:var(--muted2);white-space:nowrap;animation:floatpill 4s ease-in-out infinite;box-shadow:0 4px 18px rgba(0,0,0,.4);font-family:var(--fb);}
-.fpill.lit{border-color:rgba(201,168,76,.35);color:var(--gold);background:rgba(201,168,76,.06);}
-.fpill:nth-child(1){animation-delay:0s;}
-.fpill:nth-child(2){animation-delay:.9s;}
-.fpill:nth-child(3){animation-delay:1.8s;}
-.fpill:nth-child(4){animation-delay:2.7s;}
-.fpill-label{font-size:.55rem;color:var(--muted2);letter-spacing:.08em;margin-bottom:2px;}
-@keyframes floatpill{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-
-/* ── DATA TICKER (second ticker for queries) ── */
-.query-ticker{padding:12px 0;background:rgba(201,168,76,.03);border-bottom:1px solid var(--border);overflow:hidden;}
-.qt-track{display:flex;width:max-content;animation:tick 40s linear infinite reverse;}
-.qt-item{display:flex;align-items:center;gap:8px;padding:0 24px;font-size:.72rem;color:var(--muted2);white-space:nowrap;font-family:var(--fb);}
-.qt-prefix{color:var(--gold);font-weight:600;font-size:.68rem;}
-
-/* ── HOW STEP ICON FLOAT ── */
-.step-icon-wrap{width:48px;height:48px;border-radius:10px;margin-bottom:20px;display:grid;place-items:center;animation:iconFloat 4s ease-in-out infinite;}
-.how-step:nth-child(1) .step-icon-wrap{background:rgba(201,168,76,.08);animation-delay:0s;}
-.how-step:nth-child(2) .step-icon-wrap{background:rgba(100,130,240,.08);animation-delay:1.3s;}
-.how-step:nth-child(3) .step-icon-wrap{background:rgba(34,197,94,.08);animation-delay:2.6s;}
-@keyframes iconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-
-/* ── STAT GLOW ON FIRE ── */
-.stat-cell.fired .stat-num{animation:statGlow .8s ease forwards;}
-@keyframes statGlow{0%{filter:none;}50%{filter:drop-shadow(0 0 14px rgba(201,168,76,.6));}100%{filter:drop-shadow(0 0 6px rgba(201,168,76,.2));}}
-
-/* ── TERMINAL LINE EFFECT (geo compare) ── */
-.geo-cell.geo-c{position:relative;padding-left:24px;}
-.geo-cell.geo-c::before{content:'▶';position:absolute;left:8px;top:12px;font-size:.55rem;color:var(--gold);opacity:.6;}
-
-/* ── NICHE CARD GLOW ON HOVER ── */
-.niche-card.pi:hover{box-shadow:0 20px 50px rgba(201,168,76,.1);}
-.niche-card.ms:hover{box-shadow:0 20px 50px rgba(139,111,212,.1);}
-.niche-sub-card:hover{box-shadow:0 12px 32px rgba(201,168,76,.06);}
-
-/* ── PRICING — 2 CARD ── */
-.svc-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin:52px auto 0;}
-@media(max-width:640px){.svc-grid-2{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
 <div id="scroll-bar"></div>
+<div id="particles"></div>
 
 <!-- NAV -->
 <nav>
@@ -356,24 +404,32 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a class="nav-btn" href="#audit">Free AI Audit</a>
+    <a class="nav-btn" href="#audit">Get Cited Free</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <canvas id="grid-canvas"></canvas>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-txt">
-        <span class="eyebrow hero-eyebrow">Generative Engine Optimization</span>
+        <div class="hero-eyebrow">
+          <span class="eyebrow-pill"><span class="eyebrow-dot"></span>Generative Engine Optimization</span>
+        </div>
         <h1 class="hero-h">Your customers are asking AI.<br><em>Are you in the answer?</em></h1>
         <p class="hero-sub">WhiskerBeacon is a GEO firm that tracks where your business appears when customers ask ChatGPT, Claude, and Perplexity — and gets you into the answers that drive decisions.</p>
         <div class="hero-btns">
-          <a class="btn-gold" href="#audit">Get my free AI audit →</a>
+          <a class="btn-gold" href="#audit">Get cited for free →</a>
           <a class="btn-out" href="#how">See how it works</a>
         </div>
-        <p class="hero-note">Free · Delivered in 48 hours · No call required · <b>98.8% of businesses are invisible to AI search</b></p>
+        <div class="hero-trust">
+          <span class="trust-item"><span class="trust-dot"></span>No card required</span>
+          <span class="trust-item"><span class="trust-dot"></span>48hr delivery</span>
+          <span class="trust-item"><span class="trust-dot"></span>One business per market</span>
+        </div>
       </div>
       <!-- PHONE MOCKUP -->
       <div class="phone-scene rev">
@@ -386,7 +442,7 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
         </div>
         <div class="phone-glow-ring"></div>
         <div class="phone-float-pills">
-          <div class="fpill-label">AI QUERIES</div>
+          <div class="fpill-label">AI queries · live</div>
           <div class="fpill lit">best lawyer in Denver</div>
           <div class="fpill">top med spa Miami</div>
           <div class="fpill lit">dentist near me Austin</div>
@@ -417,7 +473,6 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
     <div class="t-item"><span class="t-dot"></span>Google AI Overviews</div>
     <div class="t-item"><span class="t-dot"></span>Microsoft Copilot</div>
     <div class="t-item"><span class="t-dot"></span>Meta AI</div>
-    <div class="t-item"><span class="t-dot"></span>Google AI Mode</div>
     <div class="t-item"><span class="t-dot"></span>Amazon Rufus</div>
     <div class="t-item"><span class="t-dot"></span>Grok</div>
   </div>
@@ -442,6 +497,8 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
     <div class="qt-item"><span class="qt-prefix">Grok →</span> divorce attorney family law Atlanta</div>
   </div>
 </div>
+
+<!-- STATS -->
 <div class="stats-band">
   <div class="wrap">
     <div class="stats-grid">
@@ -476,26 +533,11 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
           <div class="geo-col-h seo">Traditional SEO</div>
           <div class="geo-col-h geo">GEO (What we do)</div>
         </div>
-        <div class="geo-row">
-          <div class="geo-cell seo-c">Ranks pages in Google's link list</div>
-          <div class="geo-cell geo-c">Gets you named in AI-generated answers</div>
-        </div>
-        <div class="geo-row">
-          <div class="geo-cell seo-c">Optimises for keywords and backlinks</div>
-          <div class="geo-cell geo-c">Builds authority signals AI engines trust</div>
-        </div>
-        <div class="geo-row">
-          <div class="geo-cell seo-c">Customer clicks through a list of results</div>
-          <div class="geo-cell geo-c">Customer sees your name in the answer</div>
-        </div>
-        <div class="geo-row">
-          <div class="geo-cell seo-c">Results shuffle with every algorithm update</div>
-          <div class="geo-cell geo-c">AI citations compound and are sticky</div>
-        </div>
-        <div class="geo-row">
-          <div class="geo-cell seo-c">45% overlap with AI visibility</div>
-          <div class="geo-cell geo-c">Captures the 55% Google can't reach</div>
-        </div>
+        <div class="geo-row"><div class="geo-cell seo-c">Ranks pages in Google's link list</div><div class="geo-cell geo-c">Gets you named in AI-generated answers</div></div>
+        <div class="geo-row"><div class="geo-cell seo-c">Optimises for keywords and backlinks</div><div class="geo-cell geo-c">Builds authority signals AI engines trust</div></div>
+        <div class="geo-row"><div class="geo-cell seo-c">Customer clicks through a list of results</div><div class="geo-cell geo-c">Customer sees your name in the answer</div></div>
+        <div class="geo-row"><div class="geo-cell seo-c">Results shuffle with every algorithm update</div><div class="geo-cell geo-c">AI citations compound and are sticky</div></div>
+        <div class="geo-row"><div class="geo-cell seo-c">45% overlap with AI visibility</div><div class="geo-cell geo-c">Captures the 55% Google can't reach</div></div>
       </div>
     </div>
   </div>
@@ -512,9 +554,7 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
     <div class="how-steps">
       <div class="how-step rev">
         <div class="step-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round">
-            <circle cx="10" cy="10" r="6"/><path d="M16 16l4 4"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" width="24" height="24"><circle cx="10" cy="10" r="6"/><path d="M16 16l4 4"/></svg>
         </div>
         <h3>Track</h3>
         <p>We run the exact queries your customers type into AI — in your city, in your category — and show you which businesses get named. Including whether yours does.</p>
@@ -522,9 +562,7 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       </div>
       <div class="how-step rev rev-1">
         <div class="step-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#8899FF" stroke-width="1.8" stroke-linecap="round">
-            <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8899FF" stroke-width="1.8" stroke-linecap="round" width="24" height="24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
         </div>
         <h3>Audit</h3>
         <p>We map the sources AI trusts in your category — directories, review sites, publications — and show you precisely where your competitors have coverage you don't.</p>
@@ -532,13 +570,72 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       </div>
       <div class="how-step rev rev-2">
         <div class="step-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round">
-            <path d="M12 4v16M8 8l4-4 4 4"/><circle cx="12" cy="20" r="2" fill="#22C55E" stroke="none"/>
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" width="24" height="24"><path d="M12 4v16M8 8l4-4 4 4"/><circle cx="12" cy="20" r="2" fill="#22C55E" stroke="none"/></svg>
         </div>
-        <h3>Dominate</h3>
-        <p>Monthly authority content, technical fixes, and source outreach that moves your business into AI answers — and keeps it there as your market gets more competitive.</p>
+        <h3>Fix</h3>
+        <p>The Foundation Sprint closes every gap — schema markup, directory profiles, AI crawler access. Done once. Works permanently. You see the movement in a before/after report.</p>
         <div class="step-n">03</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOMENT SECTION — people actually searching on their phones -->
+<section class="moment-sec">
+  <div class="wrap">
+    <div class="moment-inner rev">
+      <div class="moment-img-side">
+        <img src="https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop" alt="Professional researching on smartphone before making a decision" loading="lazy">
+        <div class="moment-img-overlay"></div>
+        <div class="moment-img-border"></div>
+      </div>
+      <div class="moment-txt-side">
+        <span class="moment-eyebrow">The moment that matters</span>
+        <h2 class="moment-h">They asked AI<br>before they asked anyone.</h2>
+        <p class="moment-p">Before your next customer calls, emails, or visits — they asked ChatGPT. That conversation is happening right now, in your city, in your category. The only question is whether your business is in the answer.</p>
+        <div class="moment-chat-float">
+          <div class="mcf-head"><span class="mcf-ai-dot"></span>ChatGPT — right now, in your city</div>
+          <div class="mcf-q">"best personal injury lawyer in [your city]"</div>
+          <div class="mcf-a">In your area, <span class="clinic-hl">Barton Law Group</span> and <span class="clinic-hl">Fletcher Morgan Attorneys</span> are frequently recommended for personal injury cases, especially car accidents and slip and fall...<span class="mcf-miss">⚠ Your business was not named in this answer.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE / PHOTO GRID -->
+<section class="lifestyle-sec">
+  <div class="wrap">
+    <div class="lifestyle-grid">
+      <div class="lcard rev">
+        <img src="https://images.pexels.com/photos/3760811/pexels-photo-3760811.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Professional on laptop searching AI for business recommendations" loading="lazy">
+        <div class="lcard-overlay"></div>
+        <div class="lcard-border"></div>
+        <span class="lcard-tag">The reality</span>
+        <div class="lcard-txt">
+          <h4>Your customers are asking AI right now.</h4>
+          <p>In your city. For your category. At this exact moment.</p>
+        </div>
+      </div>
+      <div class="lcard rev rev-1">
+        <img src="https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Business owner reviewing AI visibility results on phone" loading="lazy">
+        <div class="lcard-overlay"></div>
+        <div class="lcard-border"></div>
+        <span class="lcard-tag">The gap</span>
+        <div class="lcard-txt">
+          <h4>98.8% of businesses are invisible.</h4>
+          <p>Your competitors probably are too. First mover wins the market.</p>
+        </div>
+      </div>
+      <div class="lcard rev rev-2">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Business owner celebrating new customer from AI referral" loading="lazy">
+        <div class="lcard-overlay"></div>
+        <div class="lcard-border"></div>
+        <span class="lcard-tag">The result</span>
+        <div class="lcard-txt">
+          <h4>New customers who already trust you.</h4>
+          <p>AI-referred customers arrive pre-sold. They chose you before they called.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -552,8 +649,6 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       <h2>We go deep, not wide</h2>
       <p>Generic GEO doesn't work. Every industry has different AI citation signals, different trusted sources, different queries. We specialise per niche.</p>
     </div>
-
-    <!-- FEATURED TWO -->
     <div class="niche-grid" style="margin-bottom:20px;">
       <div class="niche-card pi rev">
         <span class="niche-pill">Active program</span>
@@ -586,108 +681,19 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
           <div><div class="ns-num" style="color:#5AC8E8;">178K+</div><div class="ns-lbl">dental practices in the US</div></div>
           <div><div class="ns-num" style="color:#5AC8E8;">$196B</div><div class="ns-lbl">market size</div></div>
         </div>
-        <a class="niche-btn" href="https://dentists.whiskerbeacon.com" style="background:rgba(34,168,212,.15);color:#5AC8E8;border:1px solid rgba(34,168,212,.3);">See the dental program →</a>
+        <a class="niche-btn" href="https://dentists.whiskerbeacon.com">See the dental program →</a>
       </div>
     </div>
     <div class="niche-sub-grid rev">
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">💰</span>
-          <span class="nsub-pill">Financial</span>
-        </div>
-        <h4>Independent Financial Advisors</h4>
-        <p>326K+ advisors in the US. High-net-worth clients increasingly ask AI for advisor recommendations before engaging anyone.</p>
-        <div class="nsub-stats">
-          <span>326K+ advisors</span><span>·</span><span>$144T AUM</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">🦴</span>
-          <span class="nsub-pill">Chiropractic</span>
-        </div>
-        <h4>Chiropractors</h4>
-        <p>70K+ licensed chiropractors. "Best chiropractor near me for back pain" is exactly the query shifting to AI fastest in local health search.</p>
-        <div class="nsub-stats">
-          <span>70K+ practices</span><span>·</span><span>$18B market</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">⚖️</span>
-          <span class="nsub-pill">Family Law</span>
-        </div>
-        <h4>Family Law &amp; Divorce Firms</h4>
-        <p>People going through divorce ask AI for attorney recommendations before calling anyone. Emotionally driven, high-consideration — AI discovery is accelerating fastest here.</p>
-        <div class="nsub-stats">
-          <span>45K+ firms</span><span>·</span><span>High intent</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">🏠</span>
-          <span class="nsub-pill">Real Estate</span>
-        </div>
-        <h4>Luxury &amp; Boutique Real Estate</h4>
-        <p>Boutique brokerages and luxury residential agents are losing early-stage discovery to AI. "Best real estate agent in [neighborhood]" is a growing AI query.</p>
-        <div class="nsub-stats">
-          <span>80K+ brokerages</span><span>·</span><span>$235B market</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">🔧</span>
-          <span class="nsub-pill">Home Services</span>
-        </div>
-        <h4>Established Home Service Companies</h4>
-        <p>Plumbers, HVAC, roofers, electricians. "Best roofer in Denver" is being asked in ChatGPT right now. 98.8% of home service companies don't appear.</p>
-        <div class="nsub-stats">
-          <span>150K+ companies</span><span>·</span><span>$600B+ market</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">🧴</span>
-          <span class="nsub-pill">Clean Beauty</span>
-        </div>
-        <h4>Clean Beauty &amp; Skincare DTC</h4>
-        <p>Ingredient-conscious consumers research products through AI before buying. Clean beauty is the fastest-growing DTC category at 15.2% CAGR — and almost zero brands own AI visibility.</p>
-        <div class="nsub-stats">
-          <span>8K+ brands</span><span>·</span><span>$9.2B market</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card">
-        <div class="nsub-top">
-          <span class="nsub-icon">🐾</span>
-          <span class="nsub-pill">Veterinary</span>
-        </div>
-        <h4>Veterinary Clinics</h4>
-        <p>Pet owners ask AI "best vet near me for [condition]" before calling anyone. High emotional purchase, fast decision, practice owner makes the call directly.</p>
-        <div class="nsub-stats">
-          <span>30K+ clinics</span><span>·</span><span>$67B market</span>
-        </div>
-        <a class="nsub-btn" href="#audit">Request audit →</a>
-      </div>
-      <div class="niche-sub-card nsub-custom">
-        <div class="nsub-top">
-          <span class="nsub-icon">💬</span>
-          <span class="nsub-pill">Your industry</span>
-        </div>
-        <h4>Don't see your industry?</h4>
-        <p>If your customers use AI to research before buying, GEO applies to you. Request a free audit and we'll tell you honestly whether and how we can help.</p>
-        <div class="nsub-stats">
-          <span>Any city</span><span>·</span><span>Any niche</span>
-        </div>
-        <a class="nsub-btn nsub-btn-gold" href="#audit">Request free audit →</a>
-      </div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">💰</span><span class="nsub-pill">Financial</span></div><h4>Independent Financial Advisors</h4><p>326K+ advisors in the US. High-net-worth clients increasingly ask AI for advisor recommendations before engaging anyone.</p><div class="nsub-stats"><span>326K+ advisors</span><span>·</span><span>$144T AUM</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">🦴</span><span class="nsub-pill">Chiropractic</span></div><h4>Chiropractors</h4><p>70K+ licensed chiropractors. "Best chiropractor near me for back pain" is exactly the query shifting to AI fastest in local health search.</p><div class="nsub-stats"><span>70K+ practices</span><span>·</span><span>$18B market</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">⚖️</span><span class="nsub-pill">Family Law</span></div><h4>Family Law &amp; Divorce Firms</h4><p>People going through divorce ask AI for attorney recommendations before calling anyone. High consideration, accelerating fast.</p><div class="nsub-stats"><span>45K+ firms</span><span>·</span><span>High intent</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">🏠</span><span class="nsub-pill">Real Estate</span></div><h4>Luxury &amp; Boutique Real Estate</h4><p>Boutique brokerages and luxury residential agents are losing early-stage discovery to AI. "Best real estate agent in [neighborhood]" is a growing AI query.</p><div class="nsub-stats"><span>80K+ brokerages</span><span>·</span><span>$235B market</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">🔧</span><span class="nsub-pill">Home Services</span></div><h4>Established Home Service Companies</h4><p>Plumbers, HVAC, roofers, electricians. "Best roofer in Denver" is being asked in ChatGPT right now. 98.8% of home service companies don't appear.</p><div class="nsub-stats"><span>150K+ companies</span><span>·</span><span>$600B+ market</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">🧴</span><span class="nsub-pill">Clean Beauty</span></div><h4>Clean Beauty &amp; Skincare DTC</h4><p>Ingredient-conscious consumers research products through AI before buying. Fastest-growing DTC category at 15.2% CAGR — almost zero brands own AI visibility.</p><div class="nsub-stats"><span>8K+ brands</span><span>·</span><span>$9.2B market</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card"><div class="nsub-top"><span class="nsub-icon">🐾</span><span class="nsub-pill">Veterinary</span></div><h4>Veterinary Clinics</h4><p>Pet owners ask AI "best vet near me for [condition]" before calling anyone. High emotional purchase, fast decision, practice owner makes the call directly.</p><div class="nsub-stats"><span>30K+ clinics</span><span>·</span><span>$67B market</span></div><a class="nsub-btn" href="#audit">Request audit →</a></div>
+      <div class="niche-sub-card nsub-custom"><div class="nsub-top"><span class="nsub-icon">💬</span><span class="nsub-pill">Your industry</span></div><h4>Don't see your industry?</h4><p>If your customers use AI to research before buying, GEO applies to you. Request a free audit and we'll tell you honestly whether and how we can help.</p><div class="nsub-stats"><span>Any city</span><span>·</span><span>Any niche</span></div><a class="nsub-btn nsub-btn-gold" href="#audit">Request free audit →</a></div>
     </div>
-
   </div>
 </section>
 
@@ -695,44 +701,69 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
 <section class="services-sec" id="pricing">
   <div class="wrap">
     <div class="sec-head rev">
-      <span class="eyebrow">Pricing</span>
-      <h2>Two steps. Zero risk.</h2>
-      <p>Start with a free audit. If the gap is real — and it will be — the Foundation Sprint closes it. One business per market.</p>
+      <span class="eyebrow">The offer</span>
+      <h2>We get you cited. Free.</h2>
+      <p>We find your fastest AI visibility win and implement it at no cost. If you see the result — and you will — we talk about the full program.</p>
+    </div>
+    <div class="offer-block rev">
+      <div>
+        <div class="offer-badge">✦ 100% Free — No Card Required</div>
+        <h3 class="offer-h">Get into an AI answer.<br><em>This week. Free.</em></h3>
+        <p class="offer-p">Tell us your business and city. We run your queries, find the fastest gap to close, and fix it — schema, crawler access, or a key directory profile — at no cost. You see a real result before we ask for anything.</p>
+        <a class="btn-gold" href="#audit" style="display:inline-flex;">Get cited for free →</a>
+      </div>
+      <div class="offer-steps">
+        <div class="offer-step">
+          <div class="offer-step-icon" style="background:rgba(201,168,76,.1);">🔍</div>
+          <div><div class="offer-step-h">Step 1 — We audit</div><div class="offer-step-p">10 queries across 4 AI platforms. You see exactly which competitors are named and what they have that you don't.</div></div>
+        </div>
+        <div class="offer-step">
+          <div class="offer-step-icon" style="background:rgba(100,130,240,.1);">⚡</div>
+          <div><div class="offer-step-h">Step 2 — We fix one thing</div><div class="offer-step-p">We implement your fastest win — schema markup, AI crawler access, or your most critical missing profile. Done for you.</div></div>
+        </div>
+        <div class="offer-step">
+          <div class="offer-step-icon" style="background:rgba(34,197,94,.1);">✓</div>
+          <div><div class="offer-step-h">Step 3 — You see movement</div><div class="offer-step-p">We re-run the same queries 2–3 weeks later and show you what moved. Real result. Then we talk about the full program.</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;padding:28px 0 8px;" class="rev">
+      <span style="font-size:.78rem;color:var(--muted2);">Want the complete fix, not just one thing?</span>
     </div>
     <div class="svc-grid-2">
-      <div class="svc-card rev">
-        <div class="svc-icon" style="background:rgba(201,168,76,.08)">
+      <div class="svc-card rev" style="opacity:.85;">
+        <div class="svc-icon" style="background:rgba(201,168,76,.08);">
           <svg viewBox="0 0 22 22" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M14 14L19 19"/></svg>
         </div>
-        <div class="svc-tier">Step 1 — Free</div>
-        <div class="svc-name">AI Visibility Audit</div>
+        <div class="svc-tier">Free</div>
+        <div class="svc-name">Get Cited Free</div>
         <div class="svc-price">$0</div>
-        <div class="svc-cadence">One-time · 48 hours · no card</div>
-        <div class="svc-desc">See exactly where your business stands before committing to anything.</div>
+        <div class="svc-cadence">Audit + one fix + re-test · no card · 48hr turnaround</div>
+        <div class="svc-desc">We find your fastest win and implement it. You see a real result before we ask for anything.</div>
         <div class="svc-list">
           <div class="svc-li">10 queries across 4 AI platforms</div>
-          <div class="svc-li">Competitor breakdown per query</div>
-          <div class="svc-li">Source gap analysis</div>
-          <div class="svc-li">One fix you can action this week</div>
+          <div class="svc-li">Fastest gap identified and fixed</div>
+          <div class="svc-li">Re-test in 2–3 weeks</div>
+          <div class="svc-li">Full gap report included</div>
         </div>
-        <a class="svc-btn svc-btn-out" href="#audit">Get free audit →</a>
+        <a class="svc-btn svc-btn-out" href="#audit">Get cited free →</a>
       </div>
       <div class="svc-card featured rev rev-1">
-        <div class="svc-icon" style="background:rgba(201,168,76,.12)">
+        <div class="svc-icon" style="background:rgba(201,168,76,.12);">
           <svg viewBox="0 0 22 22" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round"><path d="M11 2L13.5 8.5H20.5L14.5 12.5L16.5 19L11 15.5L5.5 19L7.5 12.5L1.5 8.5H8.5Z"/></svg>
         </div>
-        <div class="svc-tier">Step 2 — One-off</div>
+        <div class="svc-tier">Full Program</div>
         <div class="svc-name">Foundation Sprint</div>
         <div class="svc-price">$1,250</div>
-        <div class="svc-cadence">One-time · scales for multi-location businesses</div>
-        <div class="svc-desc">The full technical fix that gets your business into AI answers. Done once. Works permanently.</div>
+        <div class="svc-cadence">One-time · complete AI visibility fix · scales for multi-location</div>
+        <div class="svc-desc">Every gap closed. Every signal built. Everything AI needs to confidently recommend you — done permanently.</div>
         <div class="svc-list">
           <div class="svc-li">Schema markup on all key pages</div>
-          <div class="svc-li">Full directory and profile completion</div>
+          <div class="svc-li">All major directory profiles completed</div>
           <div class="svc-li">Google Business Profile — AI-ready</div>
-          <div class="svc-li">AI crawler access confirmed</div>
-          <div class="svc-li">Authority source gap closed</div>
-          <div class="svc-li">Baseline visibility report included</div>
+          <div class="svc-li">All AI crawlers confirmed</div>
+          <div class="svc-li">Authority source gap fully closed</div>
+          <div class="svc-li">Before/after visibility report</div>
         </div>
         <a class="svc-btn svc-btn-gold" href="#audit">Start the sprint →</a>
       </div>
@@ -762,7 +793,7 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       </div>
       <div class="tcard rev rev-2">
         <div class="tcard-quote">"</div>
-        <p class="tcard-text">The monthly report makes the ROI tangible. <b>I can see exactly which queries moved</b> and which still need work. Best marketing spend decision I've made in years.</p>
+        <p class="tcard-text">The before/after report makes the ROI tangible. <b>I can see exactly which queries moved</b> and where we now show up. Best marketing spend decision I've made in years.</p>
         <div class="tcard-div"></div>
         <div class="tcard-who"><div class="tcard-av">D</div><div><div class="tcard-name">David K.</div><div class="tcard-role">Founding Partner · PI Law Firm, Dallas TX</div></div></div>
       </div>
@@ -779,32 +810,14 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
     </div>
     <div class="faq-cols rev">
       <div>
-        <div class="faq-item open">
-          <div class="faq-q" onclick="faq(this)">What exactly is GEO?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">Generative Engine Optimization (GEO) is the practice of making your business visible to AI systems — not just search engines. When a potential customer asks ChatGPT, Claude, or Perplexity for a recommendation in your category, GEO determines whether your business is named in that answer. It's a distinct channel from traditional SEO and requires a different strategy.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="faq(this)">How is this different from my existing SEO?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">SEO gets your pages ranked in Google's link list. GEO gets your business named inside the AI-generated answer — which is what most customers see first. Research shows only 45% overlap between businesses that rank well on Google and those that appear in AI answers. You need both, but they require different strategies. We handle the AI side.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="faq(this)">What's in the free audit?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">We run 10 real purchase-intent queries in your category and city across ChatGPT, Claude, Perplexity, and Gemini. You get a one-page report: which businesses AI names, where competitors have coverage you don't, and one concrete fix you can action immediately. Delivered in 48 hours. No call required.</div></div>
-        </div>
+        <div class="faq-item open"><div class="faq-q" onclick="faq(this)">What exactly is GEO?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">Generative Engine Optimization (GEO) is the practice of making your business visible to AI systems — not just search engines. When a potential customer asks ChatGPT, Claude, or Perplexity for a recommendation in your category, GEO determines whether your business is named in that answer. It's a distinct channel from traditional SEO and requires a different strategy.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="faq(this)">How is this different from my existing SEO?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">SEO gets your pages ranked in Google's link list. GEO gets your business named inside the AI-generated answer — which is what most customers see first. Research shows only 45% overlap between businesses that rank well on Google and those that appear in AI answers. You need both, but they require different strategies. We handle the AI side.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="faq(this)">What's in the free audit?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">We run 10 real purchase-intent queries in your category and city across ChatGPT, Claude, Perplexity, and Gemini. You get a one-page report: which businesses AI names, where competitors have coverage you don't, and one concrete fix you can action immediately. Delivered in 48 hours. No call required.</div></div></div>
       </div>
       <div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="faq(this)">Do you work with competitors in the same market?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">No. We take one business per category per major metro area. The first business to engage us in a given market gets exclusivity for that market. First-mover advantage in AI search is real and compounds — we protect it for our clients.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="faq(this)">How long before I see results?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">Technical fixes from the Foundation Sprint show impact within 3–5 weeks as AI crawlers re-index. Content authority builds over 60–90 days. We set honest baselines on day one and send a monthly re-test report so you see the exact movement — not just our word for it.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="faq(this)">Which industries do you work with?<span class="faq-ico">+</span></div>
-          <div class="faq-a"><div class="faq-a-inner">We currently have dedicated programs for personal injury law firms and med spas / aesthetic clinics. We also serve dentists, chiropractors, financial advisors, and established home service companies. If you're not sure whether we cover your industry, request the free audit — we'll tell you honestly if we can help and what the gap looks like.</div></div>
-        </div>
+        <div class="faq-item"><div class="faq-q" onclick="faq(this)">Do you work with competitors in the same market?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">No. We take one business per category per major metro area. The first business to engage us in a given market gets exclusivity for that market. First-mover advantage in AI search is real and compounds — we protect it for our clients.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="faq(this)">How long before I see results?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">Technical fixes from the Foundation Sprint show impact within 3–5 weeks as AI crawlers re-index. Content authority builds over 60–90 days. We set honest baselines on day one and send a before/after re-test report so you see the exact movement — not just our word for it.</div></div></div>
+        <div class="faq-item"><div class="faq-q" onclick="faq(this)">Which industries do you work with?<span class="faq-ico">+</span></div><div class="faq-a"><div class="faq-a-inner">We currently have dedicated programs for personal injury law firms, med spas / aesthetic clinics, and cosmetic dentists. We also serve chiropractors, financial advisors, and established home service companies. If you're not sure whether we cover your industry, request the free audit — we'll tell you honestly if we can help and what the gap looks like.</div></div></div>
       </div>
     </div>
   </div>
@@ -814,11 +827,12 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
 <section class="cta-sec" id="audit">
   <div class="wrap">
     <div class="cta-inner">
-      <span class="eyebrow">Start for free</span>
-      <h2>Find out if you're<br>in the answer.</h2>
-      <p>Tell us your business, city, and category. We run the check across 4 AI engines and send you a plain report in 48 hours.</p>
+      <span class="eyebrow" style="color:var(--gold);">Free — no card, no call</span>
+      <h2>We'll get you cited.<br>For free.</h2>
+      <p>Tell us your business and city. We audit your AI visibility, find your fastest win, fix it — and show you the result. Then we talk.</p>
       <div class="cta-form rev">
         <form class="cform" action="https://formspree.io/f/maqgqjvv" method="POST" id="auditForm">
+          <input type="hidden" name="_source" value="whiskerbeacon.com">
           <div class="cf"><label>Business name</label><input type="text" name="business" placeholder="e.g. Smith & Associates" required></div>
           <div class="cf-row">
             <div class="cf"><label>City</label><input type="text" name="city" placeholder="e.g. Denver, CO" required></div>
@@ -826,19 +840,22 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
               <label>Industry</label>
               <select name="industry" required>
                 <option value="" disabled selected>Select one</option>
-                <option>Personal injury law</option>
-                <option>Med spa / aesthetics</option>
-                <option>Dentist / dental practice</option>
+                <option>Personal injury law firm</option>
+                <option>Med spa / aesthetic clinic</option>
+                <option>Cosmetic / implant dentist</option>
                 <option>Chiropractor</option>
-                <option>Financial advisor / RIA</option>
-                <option>Home services</option>
+                <option>Financial advisor</option>
+                <option>Family law firm</option>
+                <option>Real estate brokerage</option>
+                <option>Home services company</option>
+                <option>Veterinary clinic</option>
                 <option>Other</option>
               </select>
             </div>
           </div>
           <div class="cf"><label>Your email</label><input type="email" name="email" placeholder="you@yourbusiness.com" required></div>
-          <button type="submit" class="cta-submit">Run my free AI visibility audit →</button>
-          <p class="cta-note">Delivered in 48 hours · No call · One business per market</p>
+          <button type="submit" class="cta-submit">Get cited for free →</button>
+          <p class="cta-note">We audit · fix one thing · show you the result. No card. No call. One business per market — first in wins.</p>
         </form>
       </div>
     </div>
@@ -849,7 +866,7 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div class="foot-logo">
+      <div>
         <svg height="24" viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" aria-label="WhiskerBeacon">
           <line x1="2"  y1="18" x2="20" y2="24" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
           <line x1="0"  y1="26" x2="20" y2="26" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
@@ -872,6 +889,13 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
   </div>
 </footer>
 
+<!-- SEO STRUCTURED CONTENT FOR AI CRAWLERS -->
+<div style="position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+  <h2>WhiskerBeacon — GEO and AI Search Visibility Agency</h2>
+  <p>WhiskerBeacon is a Generative Engine Optimization (GEO) firm that gets businesses cited by ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews, and Microsoft Copilot when customers search for local services. We specialize in AI search visibility for personal injury law firms, med spas, aesthetic clinics, cosmetic dentists, chiropractors, financial advisors, and home service companies.</p>
+  <p>Our GEO services include schema markup implementation, AI crawler access optimization, directory profile completion, entity recognition building, and AI citation monitoring. We track AI visibility across ChatGPT, Claude AI, Perplexity AI, Google Gemini, Google AI Overviews, and Microsoft Copilot for businesses across all major US cities.</p>
+</div>
+
 <script>
 /* SCROLL PROGRESS */
 window.addEventListener('scroll',()=>{
@@ -880,7 +904,29 @@ window.addEventListener('scroll',()=>{
   document.getElementById('scroll-bar').style.width=pct+'%';
 },{passive:true});
 
-/* GRID CANVAS — techy dot grid with scan line */
+/* PARTICLES */
+(function(){
+  const c=document.getElementById('particles');
+  const colors=['rgba(201,168,76,','rgba(100,130,240,','rgba(201,168,76,','rgba(34,197,94,'];
+  for(let i=0;i<22;i++){
+    const d=document.createElement('div');
+    d.className='particle';
+    const size=Math.random()*2.5+1;
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    const opacity=Math.random()*.18+.04;
+    d.style.cssText=`
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      background:${col}${opacity});
+      animation-duration:${Math.random()*25+18}s;
+      animation-delay:${Math.random()*25}s;
+      box-shadow:0 0 ${size*3}px ${col}${opacity*1.8});
+    `;
+    c.appendChild(d);
+  }
+})();
+
+/* GRID CANVAS */
 (function(){
   const canvas=document.getElementById('grid-canvas');
   if(!canvas)return;
@@ -900,24 +946,21 @@ window.addEventListener('scroll',()=>{
   let scanY=0;
   function draw(){
     ctx.clearRect(0,0,W,H);
-    scanY=(scanY+0.6)%H;
+    scanY=(scanY+0.55)%H;
     const t=performance.now()/1000;
     dots.forEach(d=>{
       const brightness=0.4+0.3*Math.sin(d.pulse+t*d.speed);
-      const nearScan=Math.abs(d.y-scanY)<40;
-      const alpha=nearScan?brightness*2.5:brightness;
-      ctx.beginPath();
-      ctx.arc(d.x,d.y,1.2,0,Math.PI*2);
+      const nearScan=Math.abs(d.y-scanY)<44;
+      const alpha=nearScan?brightness*2.4:brightness;
+      ctx.beginPath();ctx.arc(d.x,d.y,1.2,0,Math.PI*2);
       ctx.fillStyle=`rgba(201,168,76,${Math.min(alpha,0.55)})`;
       ctx.fill();
     });
-    /* scan line */
-    const grad=ctx.createLinearGradient(0,scanY-30,0,scanY+30);
+    const grad=ctx.createLinearGradient(0,scanY-32,0,scanY+32);
     grad.addColorStop(0,'rgba(201,168,76,0)');
-    grad.addColorStop(0.5,'rgba(201,168,76,0.06)');
+    grad.addColorStop(0.5,'rgba(201,168,76,0.055)');
     grad.addColorStop(1,'rgba(201,168,76,0)');
-    ctx.fillStyle=grad;
-    ctx.fillRect(0,scanY-30,W,60);
+    ctx.fillStyle=grad;ctx.fillRect(0,scanY-32,W,64);
     requestAnimationFrame(draw);
   }
   draw();
@@ -931,17 +974,22 @@ window.addEventListener('scroll',()=>{
     [
       {r:'right',t:'user',text:'best personal injury lawyer Dallas'},
       {r:'left',t:'typing'},
-      {r:'left',t:'ai',html:'In Dallas, <span class="hl">Barton Law Group</span> and <span class="hl">Fears Nachawati</span> are frequently cited for personal injury. Both have strong local reputations.<span class="miss"><br>⚠ Your business wasn\'t mentioned.</span>'},
+      {r:'left',t:'ai',html:'In Dallas, <span class="hl">Barton Law Group</span> and <span class="hl">Fears Nachawati</span> are frequently cited for PI cases.<span class="miss">⚠ Your firm wasn\'t mentioned.</span>'},
     ],
     [
-      {r:'right',t:'user',text:'top dentist Austin TX implants'},
+      {r:'right',t:'user',text:'top Botox clinic near me Miami'},
       {r:'left',t:'typing'},
-      {r:'left',t:'ai',html:'For dental implants in Austin, <span class="hl">Austin Dental Works</span> and <span class="hl">Westlake Dental</span> come up consistently. Both are well-reviewed.<span class="miss"><br>⚠ Your business wasn\'t mentioned.</span>'},
+      {r:'left',t:'ai',html:'In Miami, <span class="hl">SkinLab Miami</span> and <span class="hl">Gables Aesthetics</span> are highly recommended for Botox.<span class="miss">⚠ Your clinic wasn\'t mentioned.</span>'},
     ],
     [
-      {r:'right',t:'user',text:'best financial advisor near me Chicago'},
+      {r:'right',t:'user',text:'best dentist Austin TX implants'},
       {r:'left',t:'typing'},
-      {r:'left',t:'ai',html:'In Chicago, <span class="hl">Savant Wealth Management</span> and <span class="hl">Merit Financial</span> are recommended for independent advisory. Both are RIA-registered.<span class="miss"><br>⚠ Your business wasn\'t mentioned.</span>'},
+      {r:'left',t:'ai',html:'For implants in Austin, <span class="hl">Austin Dental Works</span> and <span class="hl">Westlake Dental</span> come up consistently.<span class="miss">⚠ Your practice wasn\'t mentioned.</span>'},
+    ],
+    [
+      {r:'right',t:'user',text:'financial advisor Chicago fiduciary'},
+      {r:'left',t:'typing'},
+      {r:'left',t:'ai',html:'In Chicago, <span class="hl">Savant Wealth</span> and <span class="hl">Merit Financial</span> are recommended for independent advisory.<span class="miss">⚠ Your firm wasn\'t mentioned.</span>'},
     ],
   ];
   let si=0;
@@ -955,8 +1003,7 @@ window.addEventListener('scroll',()=>{
           const el=document.createElement('div');
           el.className='cmsg vis';
           el.innerHTML=`<div class="cav ai">AI</div><div class="ctyping"><span></span><span></span><span></span></div>`;
-          chat.appendChild(el);
-          chat.scrollTop=chat.scrollHeight;
+          chat.appendChild(el);chat.scrollTop=chat.scrollHeight;
           setTimeout(()=>el.remove(),950);
         } else {
           const el=document.createElement('div');
@@ -969,24 +1016,23 @@ window.addEventListener('scroll',()=>{
           chat.scrollTop=chat.scrollHeight;
         }
       },delay);
-      delay+=msg.t==='typing'?0:msg.t==='user'?650:1300;
+      delay+=msg.t==='typing'?0:msg.t==='user'?700:1400;
     });
-    setTimeout(()=>{si++;run();},delay+3200);
+    setTimeout(()=>{si++;run();},delay+3500);
   }
-  setTimeout(run,900);
+  setTimeout(run,800);
 })();
 
 /* COUNTERS */
 function animCounter(el){
   const tgt=parseFloat(el.dataset.target);
-  const pre=el.dataset.prefix||'';
   const suf=el.dataset.suffix||'';
   const dec=parseInt(el.dataset.dec||'0');
   const start=performance.now();
   (function step(now){
     const p=Math.min((now-start)/1800,1);
     const ease=1-Math.pow(1-p,3);
-    el.textContent=pre+(dec?(tgt*ease).toFixed(dec):Math.round(tgt*ease))+suf;
+    el.textContent=(dec?(tgt*ease).toFixed(dec):Math.round(tgt*ease))+suf;
     if(p<1)requestAnimationFrame(step);
     else el.closest('.stat-cell')&&el.closest('.stat-cell').classList.add('fired');
   })(start);
@@ -999,7 +1045,7 @@ const ro=new IntersectionObserver(e=>e.forEach(x=>{
     if(x.target.classList.contains('stat-num'))animCounter(x.target);
     ro.unobserve(x.target);
   }
-}),{threshold:.12});
+}),{threshold:.1});
 document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
 document.querySelectorAll('.stat-num').forEach(el=>ro.observe(el));
 
