@@ -137,6 +137,24 @@ nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);back
 .more-niches{text-align:center;margin-top:28px;font-size:.875rem;color:var(--muted2);}
 .more-niches b{color:var(--muted);}
 
+/* SECONDARY NICHE GRID */
+.niche-sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:0;}
+.niche-sub-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s;}
+.niche-sub-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.niche-sub-card.nsub-custom{border-color:rgba(201,168,76,.2);background:rgba(201,168,76,.03);}
+.nsub-top{display:flex;align-items:center;gap:9px;}
+.nsub-icon{font-size:1.2rem;flex-shrink:0;}
+.nsub-pill{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:2px 8px;}
+.niche-sub-card h4{font-family:var(--fd);font-size:.95rem;line-height:1.25;color:var(--white);}
+.niche-sub-card p{font-size:.8rem;line-height:1.6;color:var(--muted);flex:1;}
+.nsub-stats{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--muted2);}
+.nsub-btn{display:inline-flex;align-items:center;font-size:.78rem;font-weight:700;color:var(--muted);transition:color .15s;margin-top:2px;}
+.nsub-btn:hover{color:var(--white);}
+.nsub-btn-gold{color:var(--gold);}
+.nsub-btn-gold:hover{color:var(--gold-lt);}
+@media(max-width:860px){.niche-sub-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.niche-sub-grid{grid-template-columns:1fr;}}
+
 /* SERVICES */
 .services-sec{padding:0 0 88px;}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
@@ -480,10 +498,11 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
       <h2>We go deep, not wide</h2>
       <p>Generic GEO doesn't work. Every industry has different AI citation signals, different trusted sources, different queries. We specialise per niche.</p>
     </div>
-    <div class="niche-grid">
-      <!-- PI Lawyers -->
+
+    <!-- FEATURED TWO -->
+    <div class="niche-grid" style="margin-bottom:20px;">
       <div class="niche-card pi rev">
-        <span class="niche-pill">Personal Injury Law</span>
+        <span class="niche-pill">Active program</span>
         <div class="niche-icon">⚖️</div>
         <h3>Personal Injury<br>Law Firms</h3>
         <p>When someone asks ChatGPT for a PI lawyer after a car accident in your city, your firm should be named first. We track every relevant query, close the source gap, and keep you cited as competition grows.</p>
@@ -493,9 +512,8 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
         </div>
         <a class="niche-btn" href="https://lawyers.whiskerbeacon.com">See the PI program →</a>
       </div>
-      <!-- Med Spas -->
       <div class="niche-card ms rev rev-1">
-        <span class="niche-pill" style="background:rgba(139,111,212,.1);color:#A090E0;">Med Spas & Aesthetics</span>
+        <span class="niche-pill" style="background:rgba(139,111,212,.1);color:#A090E0;">Active program</span>
         <div class="niche-icon">✨</div>
         <h3>Med Spas &<br>Aesthetic Clinics</h3>
         <p>Botox, filler, and CoolSculpting searches are shifting to AI fast. Patients research treatments and providers through ChatGPT before booking. We get your clinic into the answer before your competitors do.</p>
@@ -506,7 +524,107 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
         <a class="niche-btn" href="https://medspas.whiskerbeacon.com">See the med spa program →</a>
       </div>
     </div>
-    <p class="more-niches rev">Also serving <b>dentists, chiropractors, financial advisors, and home services.</b> Don't see your industry? <a href="#audit" style="color:var(--gold)">Request a free audit anyway →</a></p>
+
+    <!-- SECONDARY NICHES — 4 col grid -->
+    <div class="niche-sub-grid rev">
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">🦷</span>
+          <span class="nsub-pill">Dentists</span>
+        </div>
+        <h4>Independent Dental Practices</h4>
+        <p>178K+ dental practices in the US. AI is becoming the first stop for patients choosing a dentist. Most practices have zero AI presence.</p>
+        <div class="nsub-stats">
+          <span>178K+ practices</span><span>·</span><span>$196B market</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">💰</span>
+          <span class="nsub-pill">Financial</span>
+        </div>
+        <h4>Independent Financial Advisors</h4>
+        <p>326K+ advisors in the US. High-net-worth clients increasingly ask AI for advisor recommendations before engaging anyone.</p>
+        <div class="nsub-stats">
+          <span>326K+ advisors</span><span>·</span><span>$144T AUM</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">🦴</span>
+          <span class="nsub-pill">Chiropractic</span>
+        </div>
+        <h4>Chiropractors</h4>
+        <p>70K+ licensed chiropractors. "Best chiropractor near me for back pain" is exactly the query shifting to AI fastest in local health search.</p>
+        <div class="nsub-stats">
+          <span>70K+ practices</span><span>·</span><span>$18B market</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">⚖️</span>
+          <span class="nsub-pill">Family Law</span>
+        </div>
+        <h4>Family Law &amp; Divorce Firms</h4>
+        <p>People going through divorce ask AI for attorney recommendations before calling anyone. Emotionally driven, high-consideration — AI discovery is accelerating fastest here.</p>
+        <div class="nsub-stats">
+          <span>45K+ firms</span><span>·</span><span>High intent</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">🏠</span>
+          <span class="nsub-pill">Real Estate</span>
+        </div>
+        <h4>Luxury &amp; Boutique Real Estate</h4>
+        <p>Boutique brokerages and luxury residential agents are losing early-stage discovery to AI. "Best real estate agent in [neighborhood]" is a growing AI query.</p>
+        <div class="nsub-stats">
+          <span>80K+ brokerages</span><span>·</span><span>$235B market</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">🔧</span>
+          <span class="nsub-pill">Home Services</span>
+        </div>
+        <h4>Established Home Service Companies</h4>
+        <p>Plumbers, HVAC, roofers, electricians. "Best roofer in Denver" is being asked in ChatGPT right now. 98.8% of home service companies don't appear.</p>
+        <div class="nsub-stats">
+          <span>150K+ companies</span><span>·</span><span>$600B+ market</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card">
+        <div class="nsub-top">
+          <span class="nsub-icon">🧴</span>
+          <span class="nsub-pill">Clean Beauty</span>
+        </div>
+        <h4>Clean Beauty &amp; Skincare DTC</h4>
+        <p>Ingredient-conscious consumers research products through AI before buying. Clean beauty is the fastest-growing DTC category at 15.2% CAGR — and almost zero brands own AI visibility.</p>
+        <div class="nsub-stats">
+          <span>8K+ brands</span><span>·</span><span>$9.2B market</span>
+        </div>
+        <a class="nsub-btn" href="#audit">Request audit →</a>
+      </div>
+      <div class="niche-sub-card nsub-custom">
+        <div class="nsub-top">
+          <span class="nsub-icon">💬</span>
+          <span class="nsub-pill">Your industry</span>
+        </div>
+        <h4>Don't see your industry?</h4>
+        <p>If your customers use AI to research before buying, GEO applies to you. Request a free audit and we'll tell you honestly whether and how we can help.</p>
+        <div class="nsub-stats">
+          <span>Any city</span><span>·</span><span>Any niche</span>
+        </div>
+        <a class="nsub-btn nsub-btn-gold" href="#audit">Request free audit →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
