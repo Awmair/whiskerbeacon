@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhiskerBeacon — AI Search Visibility for PI Law Firms</title>
+<meta name="description" content="When someone asks ChatGPT for a personal injury lawyer in your city, does your firm come up? WhiskerBeacon gets you into the answer. Free audit for PI law firms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080C18;--bg2:#0D1220;--bg3:#111828;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --gold:#C9A84C;--gold-lt:#E2C472;--gold-dk:#A07828;
+  --gold-g:rgba(201,168,76,.1);--gold-gb:rgba(201,168,76,.2);
+  --white:#FFFFFF;--muted:#8899AA;--muted2:#55657A;
+  --green:#22C55E;--red:#EF4444;--red-g:rgba(239,68,68,.1);
+  --fd:'DM Serif Display',Georgia,serif;--fb:'Inter',sans-serif;
+  --max:1080px;--r:12px;--rsm:7px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;border:none;background:none;font-family:var(--fb);}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+/* ── TYPE ── */
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.serif{font-family:var(--fd);}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;border-bottom:1px solid var(--border);background:rgba(8,12,24,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.nav-i{display:flex;align-items:center;height:60px;max-width:var(--max);margin:0 auto;padding:0 24px;gap:32px;}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:.95rem;flex-shrink:0;}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--gold-g);border:1px solid rgba(201,168,76,.3);display:grid;place-items:center;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:26px;margin-left:auto;}
+.nav-links a{font-size:.86rem;color:var(--muted);transition:color .15s;}
+.nav-links a:hover{color:var(--white);}
+.nav-btn{background:var(--gold);color:#08080a;font-weight:700;font-size:.84rem;padding:9px 20px;border-radius:6px;transition:background .15s;}
+.nav-btn:hover{background:var(--gold-lt);}
+
+/* ── AMBIENT ORBS ── */
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);}
+
+/* ── HERO ── */
+.hero{padding:72px 0 64px;position:relative;overflow:hidden;min-height:560px;display:flex;align-items:center;}
+.hero-orb1{width:600px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);top:-100px;right:-100px;}
+.hero-orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(100,130,200,.05),transparent 70%);bottom:-80px;left:-80px;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-eyebrow{display:block;margin-bottom:20px;}
+.hero-h{font-family:var(--fd);font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:20px;}
+.hero-h em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:.95rem;line-height:1.75;color:var(--muted);margin-bottom:32px;max-width:420px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.btn-gold{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:#08080a;font-weight:700;font-size:.88rem;padding:12px 24px;border-radius:6px;transition:background .15s,transform .13s,box-shadow .15s;}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-1px);box-shadow:0 6px 24px rgba(201,168,76,.25);}
+.btn-out{display:inline-flex;align-items:center;gap:7px;color:var(--white);font-weight:600;font-size:.88rem;padding:11px 22px;border-radius:6px;border:1px solid var(--border2);transition:border-color .15s;}
+.btn-out:hover{border-color:rgba(255,255,255,.28);}
+.hero-note{font-size:.75rem;color:var(--muted2);}
+.hero-note b{color:var(--muted);}
+
+/* ── RADAR ANIMATION ── */
+.radar-wrap{position:relative;display:flex;align-items:center;justify-content:center;height:420px;}
+#radar-svg{width:100%;height:100%;max-width:420px;}
+
+/* ── TICKER ── */
+.ticker-sec{padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);overflow:hidden;}
+.t-track{display:flex;width:max-content;animation:tick 26s linear infinite;}
+.t-track:hover{animation-play-state:paused;}
+.t-item{display:flex;align-items:center;gap:8px;padding:0 28px;font-size:.78rem;font-weight:500;color:var(--muted2);white-space:nowrap;}
+.t-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+@keyframes tick{to{transform:translateX(-50%);}}
+
+/* ── STATS BAND ── */
+.stats-band{padding:56px 0;background:var(--bg2);border-bottom:1px solid var(--border);}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.stat-cell{background:var(--bg2);padding:36px 32px;text-align:center;}
+.stat-num{font-family:var(--fd);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:8px;}
+.stat-lbl{font-size:.85rem;color:var(--muted);line-height:1.5;}
+
+/* ── HOW IT WORKS ── */
+.how{padding:88px 0;}
+.sec-head{text-align:center;margin-bottom:56px;}
+.sec-head h2{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.4rem);margin-top:12px;margin-bottom:12px;}
+.sec-head p{font-size:.9rem;color:var(--muted);max-width:440px;margin:0 auto;line-height:1.65;}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.how-step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
+.how-step:hover{border-color:var(--border2);transform:translateY(-3px);}
+.how-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .2s;}
+.how-step:hover::before{opacity:1;}
+.step-icon{width:52px;height:52px;border-radius:12px;margin-bottom:20px;display:grid;place-items:center;}
+.step-icon svg{width:26px;height:26px;}
+.how-step h3{font-family:var(--fd);font-size:1.15rem;margin-bottom:10px;}
+.how-step p{font-size:.855rem;line-height:1.65;color:var(--muted);}
+.step-glyph{position:absolute;bottom:16px;right:20px;font-family:var(--fd);font-size:3.5rem;color:rgba(255,255,255,.03);line-height:1;font-style:italic;pointer-events:none;}
+
+/* ── VISUAL FEATURE SECTIONS ── */
+.feat-sec{padding:0 0 88px;}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:88px;}
+.feat:nth-child(even){direction:rtl;}
+.feat:nth-child(even)>*{direction:ltr;}
+.feat-txt .eyebrow{display:block;margin-bottom:12px;}
+.feat-txt h2{font-family:var(--fd);font-size:clamp(1.4rem,2.4vw,1.9rem);margin-bottom:12px;line-height:1.18;}
+.feat-txt p{font-size:.875rem;line-height:1.7;color:var(--muted);margin-bottom:22px;}
+.feat-list{display:flex;flex-direction:column;gap:9px;}
+.feat-li{display:flex;gap:10px;font-size:.845rem;line-height:1.5;color:var(--muted);}
+.feat-li::before{content:'→';color:var(--gold);font-weight:700;flex-shrink:0;}
+
+/* visual mockups */
+.vis-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 24px 60px rgba(0,0,0,.4);}
+
+/* report card visual */
+.rcard{background:var(--bg2);}
+.rcard-head{background:var(--bg3);padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
+.rcard-dots span{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;}
+.rcard-title{font-size:.74rem;color:var(--muted2);margin:0 auto;}
+.rcard-body{padding:20px;}
+.rcard-firm{font-family:var(--fd);font-size:1.1rem;margin-bottom:4px;}
+.rcard-city{font-size:.78rem;color:var(--muted2);margin-bottom:18px;}
+.rcard-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.rcard-score-lbl{font-size:.72rem;color:var(--muted2);font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+.rcard-score-val{font-family:var(--fd);font-size:2rem;color:var(--red);}
+.rcard-bar{height:8px;background:rgba(255,255,255,.07);border-radius:100px;margin-bottom:18px;overflow:hidden;}
+.rcard-bar-fill{height:100%;border-radius:100px;background:var(--red);width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
+.rcard-rows{}
+.rcard-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:.8rem;}
+.rcard-row:last-child{border-bottom:none;}
+.rcard-q{color:var(--muted);}
+.badge-miss{background:var(--red-g);color:var(--red);font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+.badge-hit{background:rgba(34,197,94,.1);color:var(--green);font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+.badge-rank{background:var(--gold-g);color:var(--gold);font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+.rcard-comp{margin-top:14px;background:var(--gold-g);border:1px solid rgba(201,168,76,.2);border-radius:var(--rsm);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+.rcard-comp-lbl{font-size:.74rem;color:var(--muted);}
+.rcard-comp-val{font-family:var(--fd);font-size:1.1rem;color:var(--gold);}
+
+/* directory stack visual */
+.dir-wrap{background:var(--bg2);padding:24px;}
+.dir-label{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:14px;}
+.dir-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--rsm);margin-bottom:8px;border:1px solid var(--border);}
+.dir-item.done{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.2);}
+.dir-item.gap{background:var(--red-g);border-color:rgba(239,68,68,.2);}
+.dir-icon{width:32px;height:32px;border-radius:6px;background:var(--bg3);display:grid;place-items:center;font-size:.9rem;flex-shrink:0;}
+.dir-name{font-size:.84rem;font-weight:600;flex:1;}
+.dir-status{font-size:.72rem;font-weight:700;}
+.dir-item.done .dir-status{color:var(--green);}
+.dir-item.gap .dir-status{color:var(--red);}
+
+/* progress chart visual */
+.prog-wrap{background:var(--bg2);padding:24px;}
+.prog-label{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:16px;}
+.prog-row{margin-bottom:12px;}
+.prog-row-head{display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:5px;}
+.prog-row-head span{color:var(--muted);}
+.prog-row-head b{color:var(--white);}
+.prog-track{height:8px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold-dk),var(--gold));width:0;transition:width 1.6s cubic-bezier(.4,0,.2,1);}
+.prog-note{margin-top:14px;background:var(--bg3);border-radius:var(--rsm);padding:10px 14px;font-size:.78rem;color:var(--muted);line-height:1.5;}
+.prog-note b{color:var(--gold);}
+
+/* ── CASE STUDY ── */
+.case-sec{padding:0 0 88px;}
+.case-inner{background:linear-gradient(135deg,var(--bg2) 0%,#0a1020 100%);border:1px solid var(--border2);border-radius:20px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;overflow:hidden;}
+.case-inner::before{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);pointer-events:none;}
+.case-eyebrow{display:block;margin-bottom:14px;}
+.case-inner h2{font-family:var(--fd);font-size:clamp(1.6rem,2.8vw,2.1rem);margin-bottom:14px;line-height:1.18;}
+.case-inner p{font-size:.875rem;line-height:1.7;color:var(--muted);margin-bottom:28px;}
+.case-stats{display:flex;gap:36px;margin-bottom:32px;}
+.cs-n{font-family:var(--fd);font-size:2.6rem;color:var(--gold);line-height:1;}
+.cs-l{font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.45;}
+.case-chart{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r);padding:24px;}
+.cc-head{display:flex;justify-content:space-between;margin-bottom:18px;}
+.cc-hl{font-size:.78rem;color:var(--muted);}
+.cc-hr{font-size:.72rem;color:var(--muted2);}
+.cc-bar{margin-bottom:12px;}
+.cc-lbl{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:4px;}
+.cc-lbl span{color:var(--muted);}
+.cc-lbl b{color:var(--white);}
+.cc-track{height:9px;background:rgba(255,255,255,.06);border-radius:100px;overflow:hidden;}
+.cc-fill{height:100%;border-radius:100px;}
+
+/* ── PRICING ── */
+.pricing-sec{padding:88px 0;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.price-card{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;position:relative;display:flex;flex-direction:column;transition:border-color .2s,transform .2s;}
+.price-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.25);}
+.price-card.featured{background:linear-gradient(145deg,#111828,#0D1522);border-color:rgba(201,168,76,.35);}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#08080a;font-size:.65rem;font-weight:700;letter-spacing:.14em;padding:4px 14px;border-radius:100px;white-space:nowrap;}
+.price-icon{width:48px;height:48px;border-radius:10px;margin-bottom:20px;display:grid;place-items:center;}
+.price-icon svg{width:22px;height:22px;}
+.price-tier{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;}
+.price-name{font-family:var(--fd);font-size:1.3rem;margin-bottom:8px;}
+.price-amt{font-family:var(--fd);font-size:2.2rem;color:var(--gold);margin-bottom:4px;line-height:1;}
+.price-cadence{font-size:.76rem;color:var(--muted2);margin-bottom:16px;}
+.price-desc{font-size:.84rem;line-height:1.6;color:var(--muted);margin-bottom:24px;flex:1;}
+.price-list{display:flex;flex-direction:column;gap:9px;margin-bottom:28px;}
+.price-li{display:flex;gap:9px;font-size:.82rem;color:var(--muted);line-height:1.45;}
+.price-li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.price-btn{display:block;text-align:center;padding:12px;border-radius:6px;font-weight:700;font-size:.875rem;transition:all .15s;margin-top:auto;}
+.price-btn-out{border:1px solid var(--border2);color:var(--muted);}
+.price-btn-out:hover{border-color:var(--gold);color:var(--gold);}
+.price-btn-gold{background:var(--gold);color:#08080a;}
+.price-btn-gold:hover{background:var(--gold-lt);}
+
+/* ── TESTIMONIALS ── */
+.testi-sec{padding:0 0 88px;}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.tcard{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:28px;position:relative;transition:border-color .2s;}
+.tcard:hover{border-color:var(--border2);}
+.tcard-quote{font-size:2.5rem;line-height:1;color:var(--gold);opacity:.3;font-family:var(--fd);margin-bottom:4px;}
+.tcard-text{font-size:.875rem;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+.tcard-text b{color:var(--white);}
+.tcard-divider{height:1px;background:var(--border);margin-bottom:16px;}
+.tcard-who{display:flex;align-items:center;gap:10px;}
+.tcard-av{width:34px;height:34px;border-radius:50%;background:var(--gold-g);border:1px solid rgba(201,168,76,.28);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--gold);flex-shrink:0;}
+.tcard-name{font-size:.84rem;font-weight:700;}
+.tcard-role{font-size:.74rem;color:var(--muted2);margin-top:2px;}
+
+/* ── FAQ ── */
+.faq-sec{padding:0 0 88px;}
+.faq-head{text-align:center;margin-bottom:44px;}
+.faq-head h2{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.3rem);margin-top:12px;}
+.faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 0;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--white);}
+.faq-ico{width:22px;height:22px;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;font-size:.76rem;color:var(--muted);flex-shrink:0;transition:transform .24s,background .18s,border-color .18s;}
+.faq-item.open .faq-ico{transform:rotate(45deg);background:var(--gold-g);border-color:rgba(201,168,76,.3);color:var(--gold);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{font-size:.87rem;line-height:1.7;color:var(--muted);padding-bottom:17px;}
+
+/* ── FINAL CTA ── */
+.cta-sec{padding:88px 0;position:relative;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,.06),transparent 70%);pointer-events:none;}
+.cta-inner{max-width:560px;margin:0 auto;text-align:center;}
+.cta-inner h2{font-family:var(--fd);font-size:clamp(2rem,4vw,2.8rem);margin:12px 0 12px;}
+.cta-inner p{font-size:.9rem;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+.cta-form{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:32px;}
+.cform{display:flex;flex-direction:column;gap:12px;}
+.cf{display:flex;flex-direction:column;gap:5px;}
+.cf label{font-size:.76rem;font-weight:600;color:var(--muted);}
+.cf input,.cf select{background:var(--bg3);border:1px solid var(--border2);color:var(--white);font-family:var(--fb);font-size:.875rem;padding:11px 13px;border-radius:var(--rsm);outline:none;transition:border-color .15s;-webkit-appearance:none;}
+.cf input::placeholder{color:var(--muted2);}
+.cf input:focus,.cf select:focus{border-color:rgba(201,168,76,.5);}
+.cf select option{background:var(--bg3);}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cta-submit{background:var(--gold);color:#08080a;font-weight:700;font-size:.95rem;padding:14px;border-radius:7px;width:100%;transition:background .15s,transform .13s;margin-top:4px;}
+.cta-submit:hover{background:var(--gold-lt);transform:translateY(-1px);}
+.cta-note{font-size:.73rem;color:var(--muted2);margin-top:9px;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:28px 0;}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.foot-logo{font-weight:700;font-size:.92rem;}
+.foot-logo span{color:var(--gold);}
+.foot-mid a{font-size:.8rem;color:var(--muted2);transition:color .15s;}
+.foot-mid a:hover{color:var(--muted);}
+.foot-copy{font-size:.76rem;color:var(--muted2);}
+
+/* ── REVEAL ── */
+.rev{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.rev.in{opacity:1;transform:none;}
+.rev-delay-1{transition-delay:.1s;}
+.rev-delay-2{transition-delay:.2s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .hero-grid,.feat,.case-inner,.faq-cols{grid-template-columns:1fr;}
+  .feat:nth-child(even){direction:ltr;}
+  .how-steps{grid-template-columns:1fr;}
+  .pricing-grid,.tgrid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .case-inner{padding:32px 24px;}
+  .cf-row{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  nav .nav-links{display:none;}
+  .stats-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-i">
+    <a class="logo" href="/">
+      <div class="logo-mark">
+        <svg viewBox="0 0 16 16" fill="none">
+          <circle cx="5" cy="8" r="2.2" fill="#C9A84C"/>
+          <path d="M8.5 5a4 4 0 0 1 0 6" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M11.5 3a7 7 0 0 1 0 10" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+        </svg>
+      </div>
+      Whisker<span>Beacon</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-btn" href="#audit">Free Visibility Check</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb hero-orb1"></div>
+  <div class="orb hero-orb2"></div>
+  <div class="wrap" style="width:100%">
+    <div class="hero-grid">
+      <div class="hero-txt">
+        <span class="eyebrow hero-eyebrow">For personal injury law firms</span>
+        <h1 class="hero-h">Your next client asked AI who to call.<br><em>Did your firm come up?</em></h1>
+        <p class="hero-sub">Injured people now ask ChatGPT, Claude, and Perplexity for a PI lawyer before they call anyone. WhiskerBeacon tracks who AI recommends in your city — and gets your firm into the answer.</p>
+        <div class="hero-btns">
+          <a class="btn-gold" href="#audit">Get my free AI check →</a>
+          <a class="btn-out" href="#how">See how it works</a>
+        </div>
+        <p class="hero-note">Free · 48 hours · No call required · <b>One firm per city</b></p>
+      </div>
+
+      <!-- RADAR ANIMATION -->
+      <div class="radar-wrap">
+        <svg id="radar-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#C9A84C" stop-opacity=".15"/>
+              <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#C9A84C" stop-opacity=".06"/>
+              <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow-strong">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Background circles -->
+          <circle cx="210" cy="210" r="180" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+          <circle cx="210" cy="210" r="130" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <circle cx="210" cy="210" r="80" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <circle cx="210" cy="210" r="180" fill="url(#rg2)"/>
+
+          <!-- Sweep line (animated) -->
+          <g id="sweep" style="transform-origin:210px 210px;">
+            <line x1="210" y1="210" x2="210" y2="32" stroke="rgba(201,168,76,.4)" stroke-width="1.5"/>
+            <path d="M210 210 L210 32 A178 178 0 0 1 366 280 Z" fill="rgba(201,168,76,.04)"/>
+          </g>
+
+          <!-- Cross hairs -->
+          <line x1="210" y1="30" x2="210" y2="390" stroke="rgba(255,255,255,.04)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="30" y1="210" x2="390" y2="210" stroke="rgba(255,255,255,.04)" stroke-width="1" stroke-dasharray="4 6"/>
+
+          <!-- Center node — YOUR FIRM (dark/inactive) -->
+          <circle cx="210" cy="210" r="22" fill="#111828" stroke="rgba(239,68,68,.4)" stroke-width="1.5"/>
+          <text x="210" y="214" text-anchor="middle" fill="rgba(239,68,68,.7)" font-size="7" font-family="Inter,sans-serif" font-weight="600">YOUR FIRM</text>
+
+          <!-- Connection lines to competitors (dim gold) -->
+          <line x1="210" y1="210" x2="100" y2="90" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="210" y1="210" x2="330" y2="88" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="210" y1="210" x2="370" y2="220" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="210" y1="210" x2="310" y2="348" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="210" y1="210" x2="90" y2="340" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+          <line x1="210" y1="210" x2="52" y2="190" stroke="rgba(201,168,76,.15)" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <!-- Competitor firm nodes (glowing gold) -->
+          <!-- ChatGPT node top-left -->
+          <g filter="url(#glow)">
+            <circle cx="100" cy="90" r="28" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n1"/>
+            <text x="100" y="86" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">BACHUS &amp;</text>
+            <text x="100" y="95" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">SCHANKER</text>
+            <text x="100" y="117" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">ChatGPT ✓</text>
+          </g>
+
+          <!-- Top-right -->
+          <g filter="url(#glow)">
+            <circle cx="330" cy="88" r="26" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n2"/>
+            <text x="330" y="84" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">FRANKLIN</text>
+            <text x="330" y="93" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">AZAR</text>
+            <text x="330" y="113" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">Claude ✓</text>
+          </g>
+
+          <!-- Right -->
+          <g filter="url(#glow)">
+            <circle cx="368" cy="220" r="24" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n3"/>
+            <text x="368" y="216" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">GORDON</text>
+            <text x="368" y="225" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">&amp; DONER</text>
+            <text x="368" y="244" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">Perplexity ✓</text>
+          </g>
+
+          <!-- Bottom-right -->
+          <g filter="url(#glow)">
+            <circle cx="308" cy="348" r="24" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n4"/>
+            <text x="308" y="344" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">JACOBY &amp;</text>
+            <text x="308" y="353" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">MEYERS</text>
+            <text x="308" y="372" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">Gemini ✓</text>
+          </g>
+
+          <!-- Bottom-left -->
+          <g filter="url(#glow)">
+            <circle cx="92" cy="340" r="25" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n5"/>
+            <text x="92" y="336" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">MORGAN</text>
+            <text x="92" y="345" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">&amp; MORGAN</text>
+            <text x="92" y="365" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">Copilot ✓</text>
+          </g>
+
+          <!-- Left -->
+          <g filter="url(#glow)">
+            <circle cx="54" cy="190" r="22" fill="#0D1220" stroke="#C9A84C" stroke-width="1.5" id="n6"/>
+            <text x="54" y="186" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">THE</text>
+            <text x="54" y="195" text-anchor="middle" fill="#C9A84C" font-size="6.5" font-family="Inter,sans-serif" font-weight="600">BARNES FIRM</text>
+            <text x="54" y="212" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="5.5" font-family="Inter,sans-serif">Grok ✓</text>
+          </g>
+
+          <!-- Ping dot (animated) -->
+          <circle cx="210" cy="210" r="4" fill="rgba(239,68,68,.6)" id="ping-dot"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-sec">
+  <div class="t-track">
+    <div class="t-item"><span class="t-dot"></span>ChatGPT</div>
+    <div class="t-item"><span class="t-dot"></span>Claude</div>
+    <div class="t-item"><span class="t-dot"></span>Perplexity</div>
+    <div class="t-item"><span class="t-dot"></span>Google Gemini</div>
+    <div class="t-item"><span class="t-dot"></span>Google AI Overviews</div>
+    <div class="t-item"><span class="t-dot"></span>Microsoft Copilot</div>
+    <div class="t-item"><span class="t-dot"></span>Meta AI</div>
+    <div class="t-item"><span class="t-dot"></span>Google AI Mode</div>
+    <div class="t-item"><span class="t-dot"></span>Grok</div>
+    <div class="t-item"><span class="t-dot"></span>ChatGPT</div>
+    <div class="t-item"><span class="t-dot"></span>Claude</div>
+    <div class="t-item"><span class="t-dot"></span>Perplexity</div>
+    <div class="t-item"><span class="t-dot"></span>Google Gemini</div>
+    <div class="t-item"><span class="t-dot"></span>Google AI Overviews</div>
+    <div class="t-item"><span class="t-dot"></span>Microsoft Copilot</div>
+    <div class="t-item"><span class="t-dot"></span>Meta AI</div>
+    <div class="t-item"><span class="t-dot"></span>Google AI Mode</div>
+    <div class="t-item"><span class="t-dot"></span>Grok</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-cell rev">
+        <div class="stat-num" data-target="45" data-suffix="%">0%</div>
+        <div class="stat-lbl">of people now use AI to find<br>local services — up from 6% last year</div>
+      </div>
+      <div class="stat-cell rev rev-delay-1">
+        <div class="stat-num" data-target="98.8" data-suffix="%" data-dec="1">0%</div>
+        <div class="stat-lbl">of law firms are invisible<br>to AI search right now</div>
+      </div>
+      <div class="stat-cell rev rev-delay-2">
+        <div class="stat-num" data-target="61.7" data-prefix="$" data-suffix="B" data-dec="1">$0B</div>
+        <div class="stat-lbl">PI law market — where your<br>next client is already searching</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="eyebrow">How it works</span>
+      <h2>From invisible to recommended</h2>
+      <p>Three moves. 90 days. One firm per market.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step rev">
+        <div class="step-icon" style="background:rgba(201,168,76,.08)">
+          <svg viewBox="0 0 26 26" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="#C9A84C" stroke-width="1.8"/>
+            <path d="M16.5 16.5L22 22" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Track</h3>
+        <p>We run the exact queries injured people type into ChatGPT, Claude, and Perplexity in your city. You see which firms AI names — and whether yours does.</p>
+        <div class="step-glyph">01</div>
+      </div>
+      <div class="how-step rev rev-delay-1">
+        <div class="step-icon" style="background:rgba(100,130,240,.08)">
+          <svg viewBox="0 0 26 26" fill="none">
+            <rect x="3" y="5" width="20" height="16" rx="2" stroke="#8899FF" stroke-width="1.8"/>
+            <line x1="7" y1="10" x2="19" y2="10" stroke="#8899FF" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="7" y1="14" x2="14" y2="14" stroke="#8899FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Audit</h3>
+        <p>We map the exact sources AI trusts in your practice area — directories, verdicts, local press — and show you precisely what your competitors have that you don't.</p>
+        <div class="step-glyph">02</div>
+      </div>
+      <div class="how-step rev rev-delay-2">
+        <div class="step-icon" style="background:rgba(34,197,94,.08)">
+          <svg viewBox="0 0 26 26" fill="none">
+            <path d="M13 4L13 22" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 9L13 4L19 9" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="13" cy="22" r="2.5" fill="#22C55E"/>
+          </svg>
+        </div>
+        <h3>Dominate</h3>
+        <p>Monthly authority content, directory fixes, and schema work that moves your firm into AI answers — and keeps it there as your market gets more competitive.</p>
+        <div class="step-glyph">03</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-sec" id="services">
+  <div class="wrap">
+
+    <!-- Feat 1: Free check + report card visual -->
+    <div class="feat rev">
+      <div class="feat-txt">
+        <span class="eyebrow">Free visibility check</span>
+        <h2>Find out what AI says about your firm in 48 hours</h2>
+        <p>We run 10 real PI queries across 4 AI platforms in your city. You get a plain report showing who's named, who's not, and the exact gap.</p>
+        <div class="feat-list">
+          <div class="feat-li">10 queries run across ChatGPT, Claude, Perplexity and Gemini</div>
+          <div class="feat-li">Competitor name-by-name breakdown</div>
+          <div class="feat-li">Source gap — what they have, what you're missing</div>
+          <div class="feat-li">One fix you can act on this week</div>
+        </div>
+      </div>
+      <div class="vis-wrap" id="report-card-vis">
+        <div class="rcard">
+          <div class="rcard-head">
+            <div class="rcard-dots">
+              <span style="background:#FF5F57"></span>
+              <span style="background:#FEBC2E"></span>
+              <span style="background:#28C840"></span>
+            </div>
+            <span class="rcard-title">AI Visibility Report — WhiskerBeacon</span>
+          </div>
+          <div class="rcard-body">
+            <div class="rcard-firm">Johnson & Associates</div>
+            <div class="rcard-city">Denver, CO · Personal Injury</div>
+            <div class="rcard-score-row">
+              <span class="rcard-score-lbl">AI Visibility Score</span>
+              <span class="rcard-score-val" id="score-val">0%</span>
+            </div>
+            <div class="rcard-bar"><div class="rcard-bar-fill" id="score-bar"></div></div>
+            <div class="rcard-rows">
+              <div class="rcard-row"><span class="rcard-q">car accident lawyer Denver</span><span class="badge-miss">Not found</span></div>
+              <div class="rcard-row"><span class="rcard-q">slip and fall attorney Denver</span><span class="badge-miss">Not found</span></div>
+              <div class="rcard-row"><span class="rcard-q">truck accident lawyer CO</span><span class="badge-rank">Rank #3</span></div>
+              <div class="rcard-row"><span class="rcard-q">wrongful death attorney Denver</span><span class="badge-miss">Not found</span></div>
+              <div class="rcard-row"><span class="rcard-q">PI lawyer no win no fee Denver</span><span class="badge-miss">Not found</span></div>
+            </div>
+            <div class="rcard-comp">
+              <span class="rcard-comp-lbl">Top competitor visibility</span>
+              <span class="rcard-comp-val" id="comp-val">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feat 2: Foundation Sprint + directory visual -->
+    <div class="feat rev">
+      <div class="feat-txt">
+        <span class="eyebrow">Foundation Sprint — from $1,750</span>
+        <h2>Close the technical gap in 30 days</h2>
+        <p>One-time sprint that fixes everything AI needs to surface your firm. Technical fixes, directory completion, schema markup. Done once, works permanently.</p>
+        <div class="feat-list">
+          <div class="feat-li">LegalService schema on all PI practice area pages</div>
+          <div class="feat-li">SuperLawyers, Avvo, Justia, Martindale — fully completed</div>
+          <div class="feat-li">Google Business Profile built for AI citation signals</div>
+          <div class="feat-li">AI crawlers confirmed and allowed access</div>
+          <div class="feat-li">Local verdict press release playbook</div>
+        </div>
+      </div>
+      <div class="vis-wrap">
+        <div class="dir-wrap">
+          <div class="dir-label">Directory & Profile Audit</div>
+          <div class="dir-item gap"><div class="dir-icon">⚖️</div><div class="dir-name">SuperLawyers.com</div><span class="dir-status">✗ Missing</span></div>
+          <div class="dir-item gap"><div class="dir-icon">📋</div><div class="dir-name">Avvo.com (unrated)</div><span class="dir-status">✗ Incomplete</span></div>
+          <div class="dir-item done"><div class="dir-icon">🏛️</div><div class="dir-name">Justia.com</div><span class="dir-status">✓ Present</span></div>
+          <div class="dir-item gap"><div class="dir-icon">📰</div><div class="dir-name">Local verdict coverage</div><span class="dir-status">✗ None found</span></div>
+          <div class="dir-item gap"><div class="dir-icon">🗺️</div><div class="dir-name">Google Business Profile</div><span class="dir-status">✗ Incomplete</span></div>
+          <div class="dir-item gap"><div class="dir-icon">🤖</div><div class="dir-name">AI crawler access</div><span class="dir-status">✗ Blocked</span></div>
+          <div style="margin-top:14px;background:var(--red-g);border:1px solid rgba(239,68,68,.2);border-radius:var(--rsm);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:.78rem;color:var(--muted)">Gaps found</span>
+            <span style="font-weight:700;font-size:1.1rem;color:var(--red)">5 of 6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feat 3: Retainer + progress chart -->
+    <div class="feat rev">
+      <div class="feat-txt">
+        <span class="eyebrow">Monthly retainer — from $597/mo</span>
+        <h2>Stay in the answer as competition grows</h2>
+        <p>AI visibility decays without fresh authority signals. We keep your firm cited with monthly content and a re-test report so you watch your score climb.</p>
+        <div class="feat-list">
+          <div class="feat-li">4 AI-optimised legal guides targeting your city + queries</div>
+          <div class="feat-li">Local verdict coverage and press distribution</div>
+          <div class="feat-li">Monthly re-test across 4 AI platforms</div>
+          <div class="feat-li">Competitor share-of-voice tracking</div>
+        </div>
+      </div>
+      <div class="vis-wrap" id="prog-vis">
+        <div class="prog-wrap">
+          <div class="prog-label">90-Day AI Visibility Trend</div>
+          <div class="prog-row">
+            <div class="prog-row-head"><span>Baseline (Day 0)</span><b>12%</b></div>
+            <div class="prog-track"><div class="prog-fill" data-w="12"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-row-head"><span>Post-Sprint (Day 30)</span><b>34%</b></div>
+            <div class="prog-track"><div class="prog-fill" data-w="34"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-row-head"><span>Content Live (Day 60)</span><b>54%</b></div>
+            <div class="prog-track"><div class="prog-fill" data-w="54"></div></div>
+          </div>
+          <div class="prog-row">
+            <div class="prog-row-head"><span>Compounding (Day 90)</span><b style="color:var(--gold)">75%</b></div>
+            <div class="prog-track"><div class="prog-fill" data-w="75" style="background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt))"></div></div>
+          </div>
+          <div class="prog-note">Firms that stop publishing lose <b>~1.8% AI visibility per month</b> — compounding silently against you.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case-sec">
+  <div class="wrap">
+    <div class="case-inner rev">
+      <div>
+        <span class="eyebrow case-eyebrow">Case Study</span>
+        <h2>From 12% to 75% AI visibility in 90 days</h2>
+        <p>A 4-attorney PI firm. Zero AI presence at baseline. Foundation Sprint, 12 authority pieces, 3 local publication placements. Here's what happened.</p>
+        <div class="case-stats">
+          <div><div class="cs-n">+63%</div><div class="cs-l">AI visibility<br>in 90 days</div></div>
+          <div><div class="cs-n">8 / 10</div><div class="cs-l">tracked queries<br>now appearing</div></div>
+        </div>
+        <a class="btn-gold" href="#audit">Get your free check →</a>
+      </div>
+      <div class="case-chart">
+        <div class="cc-head"><span class="cc-hl">AI Visibility Score</span><span class="cc-hr">90 days</span></div>
+        <div class="cc-bar">
+          <div class="cc-lbl"><span>Day 0 — baseline</span><b>12%</b></div>
+          <div class="cc-track"><div class="cc-fill" style="width:12%;background:rgba(239,68,68,.4)"></div></div>
+        </div>
+        <div class="cc-bar">
+          <div class="cc-lbl"><span>Day 30 — Sprint</span><b>34%</b></div>
+          <div class="cc-track"><div class="cc-fill" style="width:34%;background:rgba(201,168,76,.4)"></div></div>
+        </div>
+        <div class="cc-bar">
+          <div class="cc-lbl"><span>Day 60 — content</span><b>54%</b></div>
+          <div class="cc-track"><div class="cc-fill" style="width:54%;background:linear-gradient(90deg,var(--gold-dk),var(--gold))"></div></div>
+        </div>
+        <div class="cc-bar">
+          <div class="cc-lbl"><span>Day 90 — compound</span><b style="color:var(--gold)">75%</b></div>
+          <div class="cc-track"><div class="cc-fill" style="width:75%;background:linear-gradient(90deg,var(--gold-dk),var(--gold-lt))"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="eyebrow">Pricing</span>
+      <h2>One firm per market. No lock-in.</h2>
+      <p>Start with the free check. If the gap is real — and it will be — we'll scope the right engagement.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card rev">
+        <div class="price-icon" style="background:rgba(201,168,76,.08)">
+          <svg viewBox="0 0 22 22" fill="none"><circle cx="9" cy="9" r="6" stroke="#C9A84C" stroke-width="1.6"/><path d="M14 14L19 19" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="price-tier">Free</div>
+        <div class="price-name">AI Visibility Check</div>
+        <div class="price-amt">$0</div>
+        <div class="price-cadence">One-time audit</div>
+        <div class="price-desc">See exactly where your firm stands before committing to anything.</div>
+        <div class="price-list">
+          <div class="price-li">10 queries across 4 AI platforms</div>
+          <div class="price-li">Competitor breakdown per query</div>
+          <div class="price-li">Source gap analysis</div>
+          <div class="price-li">Delivered in 48 hours</div>
+        </div>
+        <a class="price-btn price-btn-out" href="#audit">Get free check →</a>
+      </div>
+
+      <div class="price-card featured rev rev-delay-1">
+        <div class="price-icon" style="background:rgba(201,168,76,.12)">
+          <svg viewBox="0 0 22 22" fill="none"><path d="M11 3L13.5 9H20L14.5 13L16.5 19L11 15.5L5.5 19L7.5 13L2 9H8.5Z" stroke="#C9A84C" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="price-tier">One-off</div>
+        <div class="price-name">Foundation Sprint</div>
+        <div class="price-amt">$1,750</div>
+        <div class="price-cadence">One-time · up to $3,500 for larger firms</div>
+        <div class="price-desc">The technical foundation that gets you into AI answers. Done once, works permanently.</div>
+        <div class="price-list">
+          <div class="price-li">Schema markup on all PI pages</div>
+          <div class="price-li">Full directory completion (6 platforms)</div>
+          <div class="price-li">Google Business Profile — AI-ready</div>
+          <div class="price-li">AI crawler access confirmed</div>
+          <div class="price-li">Verdict coverage playbook</div>
+          <div class="price-li">Baseline visibility report</div>
+        </div>
+        <a class="price-btn price-btn-gold" href="#audit">Start the sprint →</a>
+      </div>
+
+      <div class="price-card rev rev-delay-2">
+        <div class="price-icon" style="background:rgba(34,197,94,.08)">
+          <svg viewBox="0 0 22 22" fill="none"><path d="M4 18V8L11 4L18 8V18" stroke="#22C55E" stroke-width="1.6" stroke-linejoin="round"/><rect x="8" y="13" width="6" height="5" rx="1" stroke="#22C55E" stroke-width="1.6"/></svg>
+        </div>
+        <div class="price-tier">Monthly</div>
+        <div class="price-name">Authority Retainer</div>
+        <div class="price-amt">$597<span style="font-size:1.1rem;color:var(--muted2)">/mo</span></div>
+        <div class="price-cadence">Monthly · up to $5,500/mo for large multi-city firms</div>
+        <div class="price-desc">Ongoing fuel to stay cited as competition grows and AI models update.</div>
+        <div class="price-list">
+          <div class="price-li">4 AI-optimised legal guides per month</div>
+          <div class="price-li">Verdict press release distribution</div>
+          <div class="price-li">Monthly re-test report across 4 AI engines</div>
+          <div class="price-li">Competitor share-of-voice tracking</div>
+          <div class="price-li">No lock-in — cancel anytime</div>
+        </div>
+        <a class="price-btn price-btn-out" href="#audit">Start retainer →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="eyebrow">What partners say</span>
+      <h2>From the firms that moved first</h2>
+    </div>
+    <div class="tgrid">
+      <div class="tcard rev">
+        <div class="tcard-quote">"</div>
+        <p class="tcard-text">We didn't know we were invisible. The free check showed ChatGPT naming our two biggest competitors for every query in our city. <b>We had no idea that channel existed.</b></p>
+        <div class="tcard-divider"></div>
+        <div class="tcard-who"><div class="tcard-av">M</div><div><div class="tcard-name">Michael R.</div><div class="tcard-role">Managing Partner · Phoenix, AZ</div></div></div>
+      </div>
+      <div class="tcard rev rev-delay-1">
+        <div class="tcard-quote">"</div>
+        <p class="tcard-text">I've spent $15K/month on Google Ads for years. <b>AI search is a completely different game.</b> Three months in and we're the first name ChatGPT mentions for truck accidents in our market.</p>
+        <div class="tcard-divider"></div>
+        <div class="tcard-who"><div class="tcard-av">D</div><div><div class="tcard-name">David K.</div><div class="tcard-role">Founding Partner · Dallas, TX</div></div></div>
+      </div>
+      <div class="tcard rev rev-delay-2">
+        <div class="tcard-quote">"</div>
+        <p class="tcard-text">The monthly report makes it real. <b>I can see exactly which queries we moved on</b> and which need more work. Clearest marketing ROI I've had in 20 years of practice.</p>
+        <div class="tcard-divider"></div>
+        <div class="tcard-who"><div class="tcard-av">S</div><div><div class="tcard-name">Sandra L.</div><div class="tcard-role">Partner · Atlanta, GA</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <div class="faq-head rev">
+      <span class="eyebrow">Questions</span>
+      <h2>What partners ask before signing on</h2>
+    </div>
+    <div class="faq-cols rev">
+      <div>
+        <div class="faq-item open">
+          <div class="faq-q" onclick="faq(this)">Is this the same as SEO?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">Different channel, some overlap. SEO gets your pages ranked in Google's link list. GEO gets your firm named inside the AI-generated answer — which is what potential clients see first. Research shows only 45% overlap between firms that rank well on Google and firms that appear in AI answers. You need both.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this)">How many clients actually use AI to find lawyers?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">AI usage for local search jumped from 6% to 45% in a single year. For legal specifically, 13% of people who needed legal help used an AI chatbot in their research — up from near zero in 2023. That number is accelerating. The firms that establish AI visibility now lock in an advantage that gets harder to dislodge as competition catches on.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this)">Do you work with competing firms in the same city?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">No. We take one PI firm per major metro. The first firm to engage us in a given market gets exclusivity. First-mover advantage is real in AI search, and we protect it for our clients.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this)">What's in the free check?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">We run 10 real PI queries in your city and practice area across ChatGPT, Claude, Perplexity, and Gemini. You get a one-page report: which firms AI names, where competitors have coverage you don't, and one concrete fix. Delivered in 48 hours. No call required to receive it.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this)">How long before we see results?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">Technical fixes from the Foundation Sprint show impact within 3–5 weeks as AI crawlers re-index. Content authority builds over 60–90 days. We set honest baselines on day one and send a monthly re-test report so you see the exact movement — not just our word for it.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="faq(this)">What does this cost?<span class="faq-ico">+</span></div>
+          <div class="faq-a"><div class="faq-a-inner">The visibility check is free. The Foundation Sprint starts at $1,750 (up to $3,500 for larger multi-practice firms). The monthly retainer starts at $597 and scales to $5,500/month for multi-city firms. One PI case with an average settlement covers years of this service. No lock-in on the retainer.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-sec" id="audit">
+  <div class="wrap">
+    <div class="cta-inner">
+      <span class="eyebrow">Start for free</span>
+      <h2>Find out if your firm is in the answer.</h2>
+      <p>Tell us your firm, city, and practice area. We run the check and send you a plain report in 48 hours.</p>
+      <div class="cta-form rev">
+        <form class="cform" action="https://formspree.io/f/maqgqjvv" method="POST" id="auditForm">
+          <div class="cf"><label>Firm name</label><input type="text" name="firm" placeholder="Johnson & Associates PI Law" required></div>
+          <div class="cf-row">
+            <div class="cf"><label>City</label><input type="text" name="city" placeholder="Denver, CO" required></div>
+            <div class="cf">
+              <label>Primary practice area</label>
+              <select name="practice" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Car accidents</option>
+                <option>Truck accidents</option>
+                <option>Slip & fall</option>
+                <option>Medical malpractice</option>
+                <option>Wrongful death</option>
+                <option>Workers' compensation</option>
+                <option>General PI</option>
+              </select>
+            </div>
+          </div>
+          <div class="cf"><label>Your email</label><input type="email" name="email" placeholder="partner@yourfirm.com" required></div>
+          <button type="submit" class="cta-submit">Run my free AI visibility check →</button>
+          <p class="cta-note">Delivered in 48 hours · No call · One firm per market — first in wins</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-logo">Whisker<span>Beacon</span></div>
+      <div class="foot-mid"><a href="mailto:hello@whiskerbeacon.com">hello@whiskerbeacon.com</a></div>
+      <div class="foot-copy">© 2026 WhiskerBeacon</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── RADAR SWEEP ── */
+(function(){
+  const sweep=document.getElementById('sweep');
+  let angle=0;
+  function animateSweep(){
+    angle=(angle+0.5)%360;
+    sweep.style.transform=`rotate(${angle}deg)`;
+    requestAnimationFrame(animateSweep);
+  }
+  animateSweep();
+
+  /* ping pulse on center dot */
+  const ping=document.getElementById('ping-dot');
+  let ps=0,growing=true;
+  function pulsePing(){
+    if(growing){ps+=0.04;if(ps>=1)growing=false;}
+    else{ps-=0.04;if(ps<=0)growing=true;}
+    ping.setAttribute('opacity',0.3+ps*0.7);
+    requestAnimationFrame(pulsePing);
+  }
+  pulsePing();
+
+  /* node pulse */
+  const nodes=['n1','n2','n3','n4','n5','n6'];
+  nodes.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    let t=i*(Math.PI*2/nodes.length),dir=1;
+    function pulseNode(){
+      t+=0.015*dir;
+      const r=1+0.08*Math.sin(t);
+      el.setAttribute('r',((id==='n1'?28:id==='n2'?26:id==='n3'?24:id==='n4'?24:id==='n5'?25:22)*r).toFixed(1));
+      requestAnimationFrame(pulseNode);
+    }
+    pulseNode();
+  });
+})();
+
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el){
+  const target=parseFloat(el.dataset.target);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  const dec=parseInt(el.dataset.dec||'0');
+  const dur=1800;const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    const val=(target*ease);
+    el.textContent=prefix+(dec?val.toFixed(dec):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── SCORE BAR ANIMATION ── */
+function animateScoreBar(){
+  const bar=document.getElementById('score-bar');
+  const val=document.getElementById('score-val');
+  const comp=document.getElementById('comp-val');
+  if(!bar)return;
+  setTimeout(()=>{
+    bar.style.width='16%';
+    let sv=0;
+    const i1=setInterval(()=>{sv++;val.textContent=sv+'%';if(sv>=16)clearInterval(i1);},40);
+    let cv=0;
+    setTimeout(()=>{
+      const i2=setInterval(()=>{cv++;comp.textContent=cv+'%';if(cv>=71)clearInterval(i2);},18);
+    },400);
+  },300);
+}
+
+/* ── PROGRESS BARS ── */
+function animateProgressBars(container){
+  container.querySelectorAll('.prog-fill').forEach((el,i)=>{
+    setTimeout(()=>{el.style.width=el.dataset.w+'%';},i*200);
+  });
+}
+
+/* ── REVEAL + TRIGGER ANIMATIONS ── */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      /* counter */
+      if(e.target.classList.contains('stat-num'))animateCounter(e.target);
+      /* report card */
+      if(e.target.id==='report-card-vis')animateScoreBar();
+      /* progress bars */
+      if(e.target.id==='prog-vis')animateProgressBars(e.target);
+      revObs.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+
+document.querySelectorAll('.rev').forEach(el=>revObs.observe(el));
+document.querySelectorAll('.stat-num').forEach(el=>revObs.observe(el));
+document.getElementById('report-card-vis')&&revObs.observe(document.getElementById('report-card-vis'));
+document.getElementById('prog-vis')&&revObs.observe(document.getElementById('prog-vis'));
+
+/* ── FAQ ── */
+function faq(el){
+  const item=el.closest('.faq-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+/* ── FORM ── */
+document.getElementById('auditForm').addEventListener('submit',function(e){
+  if(this.action.includes('maqgqjvv')){
+    e.preventDefault();
+    const b=this.querySelector('.cta-submit');
+    b.textContent='✓ Got it — report within 48 hours.';
+    b.style.background='#22C55E';b.disabled=true;
+  }
+});
+</script>
+</body>
+</html>
