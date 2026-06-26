@@ -429,6 +429,35 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
 @media(max-width:860px){.niche-sec-row{grid-template-columns:1fr 1fr;}
 .stats-grid{grid-template-columns:repeat(2,1fr)!important;}}
 @media(max-width:480px){.niche-sec-row{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr!important;}}
+/* ===== mobile nav + responsive enhancements ===== */
+.nav-burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:11px;border:1px solid var(--border2);background:var(--bg2);flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;cursor:pointer;}
+.nav-burger span{display:block;width:19px;height:2px;background:var(--white);border-radius:2px;transition:transform .25s ease,opacity .2s ease;}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.m-menu{position:fixed;inset:0;z-index:60;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .26s ease;display:flex;flex-direction:column;padding:0 30px 40px;overflow-y:auto;}
+.m-menu.open{opacity:1;visibility:visible;}
+.m-top{display:flex;align-items:center;justify-content:space-between;height:62px;border-bottom:1px solid var(--border);margin-bottom:20px;position:sticky;top:0;background:var(--bg);}
+.m-brand{font-family:var(--fb);font-weight:700;font-size:1.06rem;color:var(--white);}
+.m-brand span{color:var(--gold);}
+.m-close{width:44px;height:44px;border-radius:11px;border:1px solid var(--border2);background:var(--bg2);color:var(--white);font-size:25px;line-height:1;display:grid;place-items:center;cursor:pointer;}
+.m-link{display:block;font-family:var(--fd);font-size:1.7rem;color:var(--white);padding:16px 0;border-bottom:1px solid var(--border);transition:color .15s;}
+.m-link:hover,.m-link.cur{color:var(--gold);}
+.m-menu .btn-gold{margin-top:30px;align-self:flex-start;font-size:1rem;}
+body.menu-open{overflow:hidden;}
+body.menu-open nav{visibility:hidden;}
+img{max-width:100%;height:auto;}
+@media(min-width:601px) and (max-width:860px){
+  .how-steps,.niche-grid,.tgrid{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:860px){
+  nav .nav-links{display:none!important;}
+  nav .nav-btn{display:none;}
+  .nav-burger{display:flex;}
+}
+@media(max-width:600px){
+  .how-steps,.niche-grid,.tgrid{grid-template-columns:1fr!important;}
+}
 </style>
 </head>
 <body>
@@ -454,13 +483,28 @@ footer{border-top:1px solid var(--border);padding:32px 0;}
     </a>
     <div class="nav-links">
       <a href="#how">How it works</a>
+      <a href="what-is-geo.html">What is GEO</a>
       <a href="#niches">Industries</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </div>
     <a class="nav-btn" href="#audit">Get Cited Free</a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<div class="m-menu" id="mMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="m-top">
+    <span class="m-brand">Whisker<span>Beacon</span></span>
+    <button class="m-close" id="mClose" aria-label="Close menu">&times;</button>
+  </div>
+  <a class="m-link" href="#how">How it works</a>
+  <a class="m-link" href="what-is-geo.html">What is GEO</a>
+  <a class="m-link" href="#niches">Industries</a>
+  <a class="m-link" href="#pricing">Pricing</a>
+  <a class="m-link" href="#faq">FAQ</a>
+  <a class="btn-gold" href="#audit">Get Cited Free &rarr;</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1178,6 +1222,17 @@ document.getElementById('auditForm').addEventListener('submit',function(e){
   b.textContent='✓ Got it — report within 48 hours.';
   b.style.background='#22C55E';b.disabled=true;
 });
+</script>
+<script>
+(function(){
+  var b=document.getElementById('navBurger'),m=document.getElementById('mMenu'),c=document.getElementById('mClose');
+  if(!b||!m)return;
+  function openM(){m.classList.add('open');document.body.classList.add('menu-open');b.setAttribute('aria-expanded','true');}
+  function shutM(){m.classList.remove('open');document.body.classList.remove('menu-open');b.setAttribute('aria-expanded','false');}
+  b.addEventListener('click',openM);c.addEventListener('click',shutM);
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',shutM);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))shutM();});
+})();
 </script>
 </body>
 </html>
