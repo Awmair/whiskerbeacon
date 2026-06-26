@@ -1,0 +1,4 @@
+Contact: mailto:hello@whiskerbeacon.com
+Expires: 2027-06-27T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://whiskerbeacon.com/.well-known/security.txt
