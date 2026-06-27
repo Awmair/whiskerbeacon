@@ -4,7 +4,7 @@ description: "Industry data says the average vet clinic misses around 1 in 4 cal
 pubDate: 2026-06-28
 author: "WhiskerBeacon"
 tags: ["Missed calls", "Front desk", "Revenue"]
-heroImage: "/img/missed-calls.png"
+heroImage: "/img/photo1.jpg"
 ---
 
 If you asked most practice owners how many phone calls their clinic misses in a day, they would guess a handful. The data says otherwise, and the gap between the guess and the reality is where a lot of quiet revenue goes.
@@ -33,14 +33,14 @@ You do not need fancy software to get a rough estimate. Try this:
 
 > A clinic taking 60 calls a day, missing 15, across a month, is looking at hundreds of missed connections. Most are gone for good.
 
-On conservative industry estimates, an average clinic leaves **north of $100,000 in recoverable revenue** on the table each year through missed calls alone. Your number will vary by size and call volume, but the direction is always the same.
+On conservative industry estimates, an average clinic leaves **north of $100,000 in recoverable revenue** on the table each year through missed calls alone. Your number will vary by size and call volume, but the direction is always the same. (If you want to run the full calculation, including no-shows and lapsed patients, see our breakdown of the [ROI of automating the front desk](/insights/roi-of-automating-vet-front-desk/).)
 
 ## What you can do about it this week
 
 Some of these cost nothing:
 
 - **Trim your phone menu.** Every extra option increases the chance a caller hangs up. Keep it to three or four.
-- **Add simple online booking** for routine visits. It can take 15 to 25 percent of routine calls off the phone entirely.
+- **Add simple [online booking](/insights/online-booking-for-vet-clinics/)** for routine visits. It can take a large share of routine calls off the phone entirely.
 - **Set a callback rule.** Make sure missed calls are actually returned the same day, not left in a voicemail graveyard.
 
 These help. But they all still depend on a human having the time.

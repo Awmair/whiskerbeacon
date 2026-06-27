@@ -15,7 +15,7 @@ Front-desk automation does not make money by magic. It plugs specific, measurabl
 
 ### 1. Missed calls you now catch
 
-Industry analyses consistently find that **roughly 1 in 4 calls to the average clinic go unanswered**, and about **85 percent of those callers never call back**. Since over 90 percent of appointments are still booked by phone, each missed call is effectively a missed booking. Catching even a fraction of them is the single biggest line in the ROI.
+Industry analyses consistently find that **roughly 1 in 4 calls to the average clinic go unanswered**, and about **85 percent of those callers never call back**. Since over 90 percent of appointments are still booked by phone, each missed call is effectively a missed booking. Catching even a fraction of them is the single biggest line in the ROI. (We break this leak down in detail in [how many calls your clinic is missing](/insights/how-many-calls-is-your-vet-clinic-missing/).)
 
 ### 2. No-shows you now prevent
 
@@ -27,7 +27,7 @@ Pets drift past their check-ups and vaccinations and quietly stop coming. Nobody
 
 ### 4. Staff hours you now reclaim
 
-Scheduling is the number one reason owners call. Moving routine booking online and automating confirmations can cut scheduling calls by **30 to 45 percent**, handing your front desk hours back every week. That time does not show up as a line of revenue, but it shows up as a calmer desk, fewer errors, and lower burnout, which is its own kind of saving.
+Scheduling is the number one reason owners call. Moving routine booking online and automating confirmations can cut scheduling calls by **30 to 45 percent**, handing your front desk hours back every week. That time does not show up as a line of revenue, but it shows up as a calmer desk, fewer errors, and lower burnout, which is its own kind of saving. (More on this in our guide to [online booking for vet clinics](/insights/online-booking-for-vet-clinics/).)
 
 ## What it costs
 

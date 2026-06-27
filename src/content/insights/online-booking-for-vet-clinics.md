@@ -17,7 +17,7 @@ The preference numbers vary by source and demographic, but the direction is unmi
 
 Two findings matter most for a busy practice:
 
-- **A large share of bookings happen when you are closed.** Multiple booking platforms report that roughly **40 to 50 percent of online bookings are made outside business hours**, at night, on weekends, during the times the phone simply is not answered.
+- **A large share of bookings happen when you are closed.** Multiple booking platforms report that roughly **40 to 50 percent of online bookings are made outside business hours**, at night, on weekends, during the times the phone simply is not answered. (That overlap with [missed calls](/insights/how-many-calls-is-your-vet-clinic-missing/) is no accident: the same after-hours moments cost clinics both ways.)
 - **Booking friction drives switching.** Surveys put difficulty getting an appointment well ahead of clinical care as a reason owners leave a practice. The problem is operational, not medical.
 
 ## Booking is the call you most want off the phone
@@ -52,7 +52,7 @@ You do not need to rebuild your website or buy an expensive platform to start. T
 
 Online booking solves the daytime, routine scheduling call. But it is one piece of a bigger picture. The after-hours call from a worried owner still needs answering. The client who books and then forgets still needs a nudge. The pet that never rebooks still needs chasing.
 
-That is the gap WhiskerBeacon builds for. We wire online booking together with missed-call recovery, reminders, and recall into one connected system, on top of the practice software you already run, so the whole client journey is covered, not just the easy daytime slice of it.
+That is the gap WhiskerBeacon builds for. We wire online booking together with missed-call recovery, reminders, and recall into one connected system, on top of the practice software you already run, so the whole client journey is covered, not just the easy daytime slice of it. (Curious what that is worth in real numbers? See the [ROI of automating the front desk](/insights/roi-of-automating-vet-front-desk/).)
 
 ---
 
