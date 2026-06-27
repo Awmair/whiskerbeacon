@@ -14,3 +14,6 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://whiskerbeacon.com/sitemap.xml
+
+# AI guidance file (GEO)
+# LLM-readable site summary: https://whiskerbeacon.com/llms.txt
