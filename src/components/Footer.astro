@@ -1,0 +1,39 @@
+---
+const { home = false } = Astro.props;
+const p = home ? '' : '/';
+---
+<footer id="insights-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/"><span class="brand-mark"><svg width="21" height="21" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#F7F3EC"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#F7F3EC"/></svg></span><span class="brand-name"><span class="w">Whisker</span>Beacon</span></a>
+        <p>The calm guiding hand for independent vet clinics putting AI to work, without the platform swap.</p>
+        <p class="foot-addr">WhiskerBeacon Ltd<br>14 Rutland Square<br>Edinburgh, EH1 2BD<br>Scotland, United Kingdom</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href={`${p}#how`}>How it works</a>
+        <a href={`${p}#why`}>Why now</a>
+        <a href={`${p}#howmuch`}>Packages</a>
+        <a href={`${p}#questions`}>Questions</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="/#about">About</a>
+        <a href="/insights">Insights</a>
+        <a href={`${p}#freebie`}>WhiskerFetch</a>
+        <a href="/#freebie">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>The window is open now</h4>
+        <div class="foot-stat"><span class="fs-num">4 in 10</span><span class="fs-lbl">vet clinics already run on AI. The early movers are pulling ahead on callbacks, no-shows, and recall.</span></div>
+        <div class="foot-stat"><span class="fs-num">$350+</span><span class="fs-lbl">the value of a single recovered lapsed patient. Most clinics are leaving dozens on the table every month.</span></div>
+        <a href={`${p}#freebie`} class="foot-stat-cta">Start with the free build <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 WhiskerBeacon Ltd. Built for the people at the front desk.</span>
+      <span>Front office and back office only. The medicine stays with your team.</span>
+    </div>
+  </div>
+</footer>

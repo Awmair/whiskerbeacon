@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "WhiskerBeacon",
+  "description": "AI workflow automation for independent veterinary clinics. WhiskerBeacon builds done-for-you front-office automation that catches missed calls, kills no-shows, recovers lapsed patients, and handles follow-up, wired into the practice software a clinic already uses.",
+  "url": "https://whiskerbeacon.com",
+  "areaServed": "United States",
+  "audience": {"@type": "Audience", "audienceType": "Independent veterinary clinics"},
+  "address": {"@type": "PostalAddress","streetAddress": "14 Rutland Square","addressLocality": "Edinburgh","postalCode": "EH1 2BD","addressCountry": "GB"}
+};
+---
+<BaseLayout home={true} jsonld={schema}>
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="hero-badge"><span class="pip"><i></i> Live</span> 4 in 10 clinics already automate. The rest are catching up.</div>
+      <h1>Your front desk, <span class="rot-wrap"><span class="rotator"><span>on autopilot.</span><span>minus the chaos.</span><span>finally quiet.</span></span></span></h1>
+      <p class="hero-sub">We build the AI that catches every missed call, kills no-shows, and drags lapsed patients back. Wired into the tools you already run. Live in days.</p>
+      <div class="hero-actions">
+        <a href="#freebie" class="btn btn-primary btn-lg">Get Freebie <span class="arr">→</span></a>
+        <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
+      </div>
+      <div class="hero-trust">
+        <span class="av"><img src="/img/photo1.jpg" alt=""><img src="/img/photo2.jpg" alt=""><img src="/img/photo3.jpg" alt=""></span>
+        <span class="tt"><b>Built by people who answer the phone.</b><br>No offshore queue, no chatbot runaround.</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="/img/photo4.jpg" alt="A veterinary clinic receptionist on the phone at a busy front desk" class="hero-photo">
+      <div class="float-card fc1">
+        <span class="fi" style="background:var(--teal-wash)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="ft"><b>Missed call recovered</b><span>9:42pm · booked Tuesday</span></span>
+      </div>
+      <div class="float-card fc2">
+        <span class="fi" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97E3C" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <span class="ft"><b>14 lapsed patients</b><span>nudged back this week</span></span>
+      </div>
+      <div class="float-card fc3">
+        <span class="fi" style="background:var(--teal-wash)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+        <span class="ft"><b>No-show rate</b><span>down to almost nothing</span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROBLEM TO PAYOFF ============ -->
+<section class="payoff">
+  <div class="wrap payoff-inner">
+    <div class="payoff-leak reveal">
+      <div class="eyebrow">The leak</div>
+      <h2>A ringing phone nobody catches is <em>revenue walking out.</em></h2>
+      <div class="leak-line"><span class="lnum">1 in 4</span><span class="ltxt">calls to the average vet clinic <b>go unanswered</b>, and more during the lunch rush or after hours.</span></div>
+      <div class="leak-line"><span class="lnum">85%</span><span class="ltxt">of those callers <b>never call back.</b> They ring the clinic across town instead.</span></div>
+      <div class="leak-line"><span class="lnum">90%+</span><span class="ltxt">of appointments are still <b>booked by phone</b>, so every missed call is a missed booking.</span></div>
+      <div class="payoff-total">
+        <div class="pt-num">$100,000+</div>
+        <div class="pt-lbl">in recoverable revenue the average clinic leaves on the table every year, on conservative industry estimates.</div>
+      </div>
+    </div>
+    <div class="payoff-fix reveal d1">
+      <div class="eyebrow">The fix</div>
+      <h2>We plug the leak in <em>about five days.</em></h2>
+      <div class="fix-steps">
+        <div class="fix-step"><span class="fs-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="fs-txt"><b>Day 1 to 2: we map the leak</b><span>Where calls drop, where patients lapse, what it's costing</span></span></div>
+        <div class="fix-step"><span class="fs-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span><span class="fs-txt"><b>Day 3 to 4: we build it</b><span>Wired into the tools you already run, no platform swap</span></span></div>
+        <div class="fix-step"><span class="fs-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></span><span class="fs-txt"><b>Day 5: it's live and catching calls</b><span>Every missed call answered, every no-show chased</span></span></div>
+      </div>
+      <a href="#freebie" class="payoff-cta">See it on your clinic, free <span class="arr">→</span></a>
+      <p class="payoff-src">Figures are rounded industry estimates, not guarantees. Sources: VHMA benchmarking and AVMA-cited analyses via <a href="https://todaysveterinarybusiness.com/the-six-figure-problem-with-your-phone-system/" target="_blank" rel="noopener">Today's Veterinary Business</a> and aggregated 2025 to 2026 veterinary phone-data reports. Your numbers will vary by clinic size and call volume.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLINIC TICKER ============ -->
+<div class="ticker-strip">
+  <div class="ticker">
+    <a class="ticker-item" href="https://www.cvsukltd.co.uk/" target="_blank" rel="noopener"><span class="tlogo">CVS</span><span class="tname">CVS Group</span></a>
+    <a class="ticker-item" href="https://ivcevidensia.co.uk/" target="_blank" rel="noopener"><span class="tlogo">IV</span><span class="tname">IVC Evidensia</span></a>
+    <a class="ticker-item" href="https://www.medivet.co.uk/" target="_blank" rel="noopener"><span class="tlogo">MV</span><span class="tname">Medivet</span></a>
+    <a class="ticker-item" href="https://www.vets4pets.com/" target="_blank" rel="noopener"><span class="tlogo">V4</span><span class="tname">Vets4Pets</span></a>
+    <a class="ticker-item" href="https://linnaeusgroup.co.uk/" target="_blank" rel="noopener"><span class="tlogo">LV</span><span class="tname">Linnaeus</span></a>
+    <a class="ticker-item" href="https://www.vetpartners.co.uk/" target="_blank" rel="noopener"><span class="tlogo">VP</span><span class="tname">VetPartners</span></a>
+    <a class="ticker-item" href="https://www.goddardvetgroup.co.uk/" target="_blank" rel="noopener"><span class="tlogo">GV</span><span class="tname">Goddard Veterinary Group</span></a>
+    <a class="ticker-item" href="https://www.vets-now.com/" target="_blank" rel="noopener"><span class="tlogo">VN</span><span class="tname">Vets Now</span></a>
+    <a class="ticker-item" href="https://www.companioncare.co.uk/" target="_blank" rel="noopener"><span class="tlogo">CC</span><span class="tname">Companion Care</span></a>
+    <a class="ticker-item" href="https://www.cvsukltd.co.uk/" target="_blank" rel="noopener"><span class="tlogo">CVS</span><span class="tname">CVS Group</span></a>
+    <a class="ticker-item" href="https://ivcevidensia.co.uk/" target="_blank" rel="noopener"><span class="tlogo">IV</span><span class="tname">IVC Evidensia</span></a>
+    <a class="ticker-item" href="https://www.medivet.co.uk/" target="_blank" rel="noopener"><span class="tlogo">MV</span><span class="tname">Medivet</span></a>
+    <a class="ticker-item" href="https://www.vets4pets.com/" target="_blank" rel="noopener"><span class="tlogo">V4</span><span class="tname">Vets4Pets</span></a>
+    <a class="ticker-item" href="https://linnaeusgroup.co.uk/" target="_blank" rel="noopener"><span class="tlogo">LV</span><span class="tname">Linnaeus</span></a>
+    <a class="ticker-item" href="https://www.vetpartners.co.uk/" target="_blank" rel="noopener"><span class="tlogo">VP</span><span class="tname">VetPartners</span></a>
+    <a class="ticker-item" href="https://www.goddardvetgroup.co.uk/" target="_blank" rel="noopener"><span class="tlogo">GV</span><span class="tname">Goddard Veterinary Group</span></a>
+    <a class="ticker-item" href="https://www.vets-now.com/" target="_blank" rel="noopener"><span class="tlogo">VN</span><span class="tname">Vets Now</span></a>
+    <a class="ticker-item" href="https://www.companioncare.co.uk/" target="_blank" rel="noopener"><span class="tlogo">CC</span><span class="tname">Companion Care</span></a>
+  </div>
+</div>
+
+<!-- ============ TOOLS COMPATIBILITY ============ -->
+<div class="tools-band">
+  <div class="wrap">
+    <p class="tools-head reveal">Plugs into the practice software you already run</p>
+    <div class="tools-grid reveal">
+      <span class="tool-chip"><span class="tdot">AV</span><span class="tnm">AVImark</span></span>
+      <span class="tool-chip"><span class="tdot">CS</span><span class="tnm">Cornerstone</span></span>
+      <span class="tool-chip"><span class="tdot">EZ</span><span class="tnm">ezyVet</span></span>
+      <span class="tool-chip"><span class="tdot">VS</span><span class="tnm">Vetspire</span></span>
+      <span class="tool-chip"><span class="tdot">IM</span><span class="tnm">ImproMed</span></span>
+      <span class="tool-chip"><span class="tdot">PD</span><span class="tnm">PetDesk</span></span>
+      <span class="tool-chip"><span class="tdot">WA</span><span class="tnm">WhatsApp</span></span>
+      <span class="tool-chip"><span class="tdot">GC</span><span class="tnm">Google Calendar</span></span>
+      <span class="tool-chip"><span class="tdot">TW</span><span class="tnm">Twilio SMS</span></span>
+      <span class="tool-chip"><span class="tdot">+</span><span class="tnm">and more</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOW (what we build, with chat demos) ============ -->
+<section class="how-band band" id="how">
+  <div class="wrap">
+    <div class="band-head center reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>Watch the busywork <em>handle itself.</em></h2>
+      <p>Every one of these runs quietly on top of the software you already use. Here's what your clients actually see.</p>
+    </div>
+
+    <!-- demo 1: missed call -> booking -->
+    <div class="demo-row reveal">
+      <div class="demo-copy">
+        <div class="demo-num"><span class="n">01</span> Missed call recovery</div>
+        <h3>The call you missed becomes a booking.</h3>
+        <p>Phone rings after hours or while you're elbow-deep in a consult. Instead of voicemail and a lost client, the AI texts back in seconds, answers the question, and books the slot.</p>
+        <div class="demo-tags"><span>After-hours</span><span>Two-way SMS</span><span>Auto-booking</span></div>
+      </div>
+      <div class="demo-visual">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top"><span class="pav"><svg width="18" height="18" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#F7F3EC"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#F7F3EC"/></svg></span><div><div class="pname">Oakfield Vets</div><div class="pstat"><i></i> replies instantly</div></div></div>
+            <div class="chat">
+              <div class="chat-pill">Missed call · 9:41pm</div>
+              <div class="bubble us b1">Hi, this is Oakfield Vets. Sorry we missed you! How can I help with your pet tonight? 🐾</div>
+              <div class="bubble them b2">My dog's limping, can I get him seen tomorrow?</div>
+              <div class="bubble us b3">Of course. We've a slot at 10:20am or 2:40pm tomorrow. Which suits?</div>
+              <div class="bubble them b4">10:20 please</div>
+              <div class="bubble us b5">Booked for Max at 10:20am. We'll text a reminder in the morning. 🐶</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- demo 2: reminder / no-show -->
+    <div class="demo-row flip reveal">
+      <div class="demo-copy">
+        <div class="demo-num"><span class="n">02</span> Reminders that kill no-shows</div>
+        <h3>The appointment they'd have forgotten.</h3>
+        <p>A friendly nudge goes out before every visit, with one-tap confirm or reschedule. Empty exam rooms become the exception, not the Tuesday afternoon norm.</p>
+        <div class="demo-tags"><span>Auto reminders</span><span>One-tap confirm</span><span>Easy reschedule</span></div>
+      </div>
+      <div class="demo-visual">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top"><span class="pav"><svg width="18" height="18" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#F7F3EC"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#F7F3EC"/></svg></span><div><div class="pname">Oakfield Vets</div><div class="pstat"><i></i> automated</div></div></div>
+            <div class="chat">
+              <div class="chat-pill">Reminder · 8:00am</div>
+              <div class="bubble us b1">Morning! Just a reminder Bella has her vaccination today at 3:15pm. See you then? 🐱</div>
+              <div class="bubble them b2">Oh! Totally forgot. Yes we'll be there</div>
+              <div class="bubble us b3">Brilliant, you're confirmed. Reply RESCHEDULE any time if plans change.</div>
+              <div class="chat-pill">No-show avoided ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- demo 3: lapsed recall + follow up -->
+    <div class="demo-row reveal">
+      <div class="demo-copy">
+        <div class="demo-num"><span class="n">03</span> Recall &amp; follow-up</div>
+        <h3>The patient who quietly drifted away.</h3>
+        <p>Overdue for a check-up or a vaccine? The AI reaches out at the right moment and brings them back, then follows up after the visit so they actually return. This is where the lost revenue lives.</p>
+        <div class="demo-tags"><span>Lapsed recall</span><span>Post-visit follow-up</span><span>Preventive care</span></div>
+      </div>
+      <div class="demo-visual">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top"><span class="pav"><svg width="18" height="18" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#F7F3EC"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#F7F3EC"/></svg></span><div><div class="pname">Oakfield Vets</div><div class="pstat"><i></i> reaching out</div></div></div>
+            <div class="chat">
+              <div class="chat-pill">Recall · overdue 3 months</div>
+              <div class="bubble us b1">Hi Sarah! Luna's annual check-up is a little overdue. Want me to find a time that works? 🐾</div>
+              <div class="bubble them b2">Yes please, been meaning to sort that</div>
+              <div class="bubble us b3">Sorted, Thursday 11am. And here's a quick note on what to watch for at her age.</div>
+              <div class="chat-pill">$350 visit recovered ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY (numbers, falling behind, cost, ROI) ============ -->
+<section class="why-band band" id="why">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <div class="eyebrow">Why now</div>
+      <h2>The clinic down the road <em>already started.</em></h2>
+      <p>This isn't a someday-maybe. AI is already in most practices, and the early movers are quietly winning the boring stuff that keeps clients: faster callbacks, fewer no-shows, smoother follow-up.</p>
+    </div>
+
+    <div class="stat-row reveal">
+      <div class="stat-card"><div class="sv"><span class="roi-counter" data-count="39">0</span>%</div><div class="sl">of North American vet professionals <b>already use AI</b> in their workflow, climbing every quarter.</div></div>
+      <div class="stat-card"><div class="sv"><span class="roi-counter" data-count="43">0</span>%</div><div class="sl">say <b>lack of training</b> is the only thing holding them back. The demand is there. The help isn't.</div></div>
+      <div class="stat-card"><div class="sv"><span class="roi-counter" data-count="70">0</span>%</div><div class="sl">drop in <b>response times</b> reported when admin runs on AI agents instead of a busy desk.</div></div>
+      <div class="stat-card"><div class="sv">4.5<span style="font-size:.6em">x</span></div><div class="sl">growth in the <b>vet AI market</b> by the early 2030s, from $1.6B to roughly $7B.</div></div>
+    </div>
+    <p class="stat-src reveal">Sources: AVMA veterinary AI survey; Grand View Research animal-health AI market report; aggregate vet-sector automation benchmarks, 2026.</p>
+
+    <div class="band-head reveal" style="margin-bottom:36px">
+      <div class="eyebrow">Run the numbers</div>
+      <h2>Three ways to do this. <em>One makes sense.</em></h2>
+    </div>
+    <div class="compare-grid reveal">
+      <div class="comp-col">
+        <div class="comp-h"><span class="ch" style="background:rgba(201,139,114,.15)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C98B72" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span class="comp-name">DIY tool stack</span></div>
+        <div class="comp-sub">Six subscriptions, six logins</div>
+        <div class="comp-fig">$900–$1,800<span class="per"> /mo</span></div>
+        <div class="comp-bar"><div class="f" style="background:#C98B72;--cw:46%"></div></div>
+        <ul class="comp-list"><li class="n">You assemble and maintain it all</li><li class="n">Tools that don't talk to each other</li><li class="n">Nobody owns it when it breaks</li></ul>
+      </div>
+      <div class="comp-col">
+        <div class="comp-h"><span class="ch" style="background:rgba(201,139,114,.15)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C98B72" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><span class="comp-name">Hire it in-house</span></div>
+        <div class="comp-sub">A full-time automation hire</div>
+        <div class="comp-fig">~$95,000<span class="per"> /yr</span></div>
+        <div class="comp-bar"><div class="f" style="background:#C98B72;--cw:100%"></div></div>
+        <ul class="comp-list"><li class="n">Months to hire, ramp and retain</li><li class="n">Overkill for one clinic's workload</li><li class="n">A salary you carry every month</li></ul>
+      </div>
+      <div class="comp-col win">
+        <div class="comp-h"><span class="ch" style="background:rgba(159,216,196,.2)"><svg width="18" height="18" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#9FD8C4"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#9FD8C4"/></svg></span><span class="comp-name">WhiskerBeacon</span></div>
+        <div class="comp-sub">Built once, kept running</div>
+        <div class="comp-fig">$400–$700<span class="per"> /mo</span></div>
+        <div class="comp-bar"><div class="f" style="background:#9FD8C4;--cw:30%"></div></div>
+        <ul class="comp-list"><li class="y">Built for ~$2,000, then we maintain it</li><li class="y">One connected system, not six</li><li class="y">We own it when it breaks</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COST LEAK ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <div class="eyebrow">Where the money leaks</div>
+      <h2>Your front desk is doing its best. It's also <em>where revenue walks out.</em></h2>
+      <p>None of this is anyone's fault. It's just more phone, more paper, and more follow-up than two people at a desk can catch on a Tuesday.</p>
+    </div>
+    <div class="leak-grid">
+      <div class="leak-card reveal" style="--w:80%"><span class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C97E3C" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="2" y1="2" x2="22" y2="22"/></svg></span><h3>Missed calls</h3><p>The after-hours call becomes a booking at the practice across town.</p><div class="bw"><div class="bar"></div></div></div>
+      <div class="leak-card reveal d1" style="--w:66%"><span class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C97E3C" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3>No-shows</h3><p>A forgotten appointment is an empty room you can't bill and can't get back.</p><div class="bw"><div class="bar"></div></div></div>
+      <div class="leak-card reveal d2" style="--w:88%"><span class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C97E3C" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><h3>Lapsed patients</h3><p>Pets overdue for a visit drift away quietly. Nobody has time to chase the list.</p><div class="bw"><div class="bar"></div></div></div>
+      <div class="leak-card reveal d3" style="--w:60%"><span class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C97E3C" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Missed charges</h3><p>Treatments done but never invoiced. The most common leak, the easiest to plug.</p><div class="bw"><div class="bar"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTO BAND ============ -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="photoband reveal">
+      <div class="pb"><img src="/img/photo5.jpg" alt="Two happy corgis"><span class="cap">The patients you got into this for</span></div>
+      <div class="pb"><img src="/img/photo6.jpg" alt="A happy dog running"><span class="cap">Fewer no-shows</span></div>
+      <div class="pb"><img src="/img/photo7.jpg" alt="An alert tabby cat"><span class="cap">More repeat visits</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW MUCH (packages) ============ -->
+<section class="band" id="howmuch">
+  <div class="wrap">
+    <div class="band-head center reveal">
+      <div class="eyebrow">How much</div>
+      <h2>Start free. Upgrade <em>when it pays for itself.</em></h2>
+      <p>No retainers you can't read, no scope that wanders. You see exactly what you get.</p>
+    </div>
+    <div class="pkgs">
+      <div class="pkg reveal">
+        <div class="pkg-name">WhiskerFetch</div>
+        <div class="pkg-for">For the curious clinic</div>
+        <div class="pkg-price"><span class="free serif" style="color:var(--teal)">Free</span> · no catch</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> One working AI workflow, your pick</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Lapsed recall or missed-call capture</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Built in days, yours to keep</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Fully working, not a crippled demo</li>
+        </ul>
+        <a href="#freebie" class="btn btn-ghost">Claim it free</a>
+      </div>
+      <div class="pkg feature reveal d1">
+        <span class="pkg-flag">Most clinics start here</span>
+        <div class="pkg-name">WhiskerPack</div>
+        <div class="pkg-for">The done-for-you front office</div>
+        <div class="pkg-price">From <b>$2,000</b> build · <b>$400–$700</b>/mo</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> The full client-journey pack of agents</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Booking, reminders, recall, intake, follow-up</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Charge-capture check + owner digest</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9FD8C4" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Wired into your existing PIMS, kept running</li>
+        </ul>
+        <a href="#freebie" class="btn btn-cream">Talk to us <span class="arr">→</span></a>
+      </div>
+      <div class="pkg reveal d2">
+        <div class="pkg-name">WhiskerShadow</div>
+        <div class="pkg-for">For the complex operation</div>
+        <div class="pkg-price">From <b>$6,000</b> build · <b>$800–$1,500</b>/mo</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Our specialist shadows your operation</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Bespoke builds for multi-site or ER</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Unusual software stacks welcome</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C4A46" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Scoped to what your practice needs</li>
+        </ul>
+        <a href="#freebie" class="btn btn-ghost">Book a chat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY + TEAM ============ -->
+<section class="band" style="padding-top:0" id="about">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-photo reveal">
+        <img src="/img/photo8.jpg" alt="The founder of WhiskerBeacon">
+        <div class="badge"><b>Real people, real builds</b><span>Not a faceless agency or a chatbot</span></div>
+      </div>
+      <div class="story-copy reveal d1">
+        <div class="eyebrow">Why we exist</div>
+        <h2>Vet clinics kept getting sold software. <em>Never solutions.</em></h2>
+        <p>Every vendor wants to hand you another dashboard and call it innovation. <span class="hl">Nobody wants to roll up their sleeves and wire the thing into how you actually work.</span></p>
+        <p>So that's what we do. We sit with one clinic at a time, find the busywork that's quietly costing you, and build the AI that handles it. Then we keep it running while you get back to the animals.</p>
+        <p class="story-sign">No fluff, no lock-in, no jargon.<span>The WhiskerBeacon team</span></p>
+      </div>
+    </div>
+    <div class="band-head center reveal" style="margin-top:90px;margin-bottom:0">
+      <div class="eyebrow">The humans behind it</div>
+      <h2>Small team. Real people. <em>They answer the phone.</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="member reveal"><div class="member-photo"><span class="tag">Builds your stuff</span><img src="/img/photo1.jpg" alt="Callum Fraser"></div><h3>Callum Fraser</h3><div class="role">Founder &amp; Lead Builder</div><p class="bio">Spends his days wiring AI into clinic systems and his evenings explaining to his own vet why the waiting room needs better software.</p></div>
+      <div class="member reveal d1"><div class="member-photo"><span class="tag">Talks to you</span><img src="/img/photo2.jpg" alt="Eilidh Mackenzie"></div><h3>Eilidh Mackenzie</h3><div class="role">Client Lead</div><p class="bio">Your first call and your last. Turns "the front desk is drowning" into a build plan without making you sit through a single slide.</p></div>
+      <div class="member reveal d2"><div class="member-photo"><span class="tag">Keeps it running</span><img src="/img/photo3.jpg" alt="Graham Sinclair"></div><h3>Graham Sinclair</h3><div class="role">Automation &amp; Upkeep</div><p class="bio">The reason your workflows still run after the next model update. Quietly fixes things before you notice they moved.</p></div>
+      <div class="member reveal d3"><div class="member-photo"><span class="tag">Makes it make sense</span><img src="/img/photo9.jpg" alt="Hannah Pryce"></div><h3>Hannah Pryce</h3><div class="role">Content &amp; Training</div><p class="bio">Writes the plain-English guides so your team actually uses what we build, instead of letting it gather digital dust.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="band-head center reveal">
+      <div class="eyebrow">What owners say</div>
+      <h2>Built for the people running the desk. <em>Not the demo.</em></h2>
+    </div>
+    <div class="proof-grid">
+      <div class="quote reveal"><span class="qm">"</span><p>The missed-call thing paid for itself in the first fortnight. We had no idea how many we were losing after five.</p><div class="who"><img src="/img/photo10.jpg" alt=""><div><b>Practice owner</b><span>2-vet companion clinic</span></div></div></div>
+      <div class="quote reveal d1"><span class="qm">"</span><p>No new software to learn was the whole reason we said yes. It sits on top of what we had and quietly works.</p><div class="who"><img src="/img/photo11.jpg" alt=""><div><b>Practice manager</b><span>Suburban GP practice</span></div></div></div>
+      <div class="quote reveal d2"><span class="qm">"</span><p>The recall list used to be a sticky note nobody touched. Now it runs. We've had pets back we'd written off.</p><div class="who"><img src="/img/photo12.jpg" alt=""><div><b>Lead veterinarian</b><span>Independent clinic</span></div></div></div>
+    </div>
+    <p class="proof-note">Illustrative examples shown while we collect our first signed results.</p>
+  </div>
+</section>
+
+<!-- ============ QUESTIONS / FAQ ============ -->
+<section class="band" id="questions" style="padding-top:0">
+  <div class="wrap">
+    <div class="band-head center reveal">
+      <div class="eyebrow">Questions?</div>
+      <h2>The things every owner <em>asks first.</em></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal"><summary>Do I have to switch my practice management software? <span class="pm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#211F1B" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary><div class="ans">No, and that's the whole point. WhiskerBeacon sits on top of the tools you already run, whether that's Avimark, Cornerstone, ezyVet, Vetspire or something else. We wire what you have into one system. Nothing gets ripped out.</div></details>
+      <details class="faq reveal"><summary>Is WhiskerFetch actually free, or is it a trial? <span class="pm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#211F1B" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary><div class="ans">Genuinely free, and yours to keep. You pick one workflow, we build it fully functional, and it stays working whether or not you ever buy anything else. No expiry, no crippled features, no card required.</div></details>
+      <details class="faq reveal"><summary>Will AI be making medical decisions about my patients? <span class="pm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#211F1B" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary><div class="ans">No. We stay strictly in the front office and back office: booking, reminders, follow-ups, recall, charge checks. Diagnosis, dosing and every clinical call stays with your team. We won't go near the exam room.</div></details>
+      <details class="faq reveal"><summary>How long does a build take? <span class="pm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#211F1B" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary><div class="ans">A single WhiskerFetch workflow lands in days. The full WhiskerPack is a short, fixed-scope build, not a months-long project. You'll see something working quickly, because the work itself is the proof.</div></details>
+      <details class="faq reveal"><summary>What does it actually cost? <span class="pm"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#211F1B" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary><div class="ans">WhiskerFetch is free. WhiskerPack starts around $2,000 to build plus $400 to $700 a month to keep running. WhiskerShadow, for multi-site or complex setups, starts from $6,000 plus monthly. Against a clinic's monthly revenue, the build pays back fast when it recovers even a handful of lapsed patients.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREEBIE ============ -->
+<section class="band freebie-band" id="freebie" style="padding-top:0">
+  <div class="wrap">
+    <div class="freebie reveal">
+      <div class="glow"></div>
+      <div class="freebie-copy">
+        <div class="eyebrow">The freebie</div>
+        <h2>Get a taste of automation before you order the whole bottle.</h2>
+        <p>Tell us the headache that costs you most. We build the fix and hand it over, working, for free. No strings attached. That's WhiskerFetch.</p>
+        <form class="freebie-form" action="https://formspree.io/f/mrewkezq" method="POST">
+          <input type="email" name="email" placeholder="you@yourclinic.com" required aria-label="Your email">
+          <button type="submit" class="btn btn-cream btn-lg">Get Freebie <span class="arr">→</span></button>
+        </form>
+        <p class="freebie-fine">One workflow, built for your clinic, free. We'll reply within a day.</p>
+      </div>
+      <div class="freebie-visual">
+        <div class="mini-phone">
+          <div class="mp-h"><i></i> WhiskerFetch · live demo</div>
+          <div class="mini-bubble us">Your dog's overdue for his booster. Shall I book you in? 🐾</div>
+          <div class="mini-bubble">Yes please!</div>
+          <div class="mini-bubble us">Done. Thursday 4pm. See you then 🐶</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</BaseLayout>

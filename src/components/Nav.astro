@@ -1,0 +1,35 @@
+---
+// On the homepage, section links are in-page anchors (#how).
+// On other pages (blog), they point back to the homepage (/#how).
+const { home = false } = Astro.props;
+const p = home ? '' : '/';
+---
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href={home ? '#top' : '/'}>
+      <span class="brand-mark"><svg width="21" height="21" viewBox="0 0 60 60"><circle cx="30" cy="22" r="4" fill="#F7F3EC"/><path d="M30 22 L16 46 L24 46 L30 35 L36 46 L44 46 Z" fill="#F7F3EC"/></svg></span>
+      <span class="brand-name"><span class="w">Whisker</span>Beacon</span>
+    </a>
+    <div class="nav-links">
+      <a href={`${p}#how`}>How</a>
+      <a href={`${p}#why`}>Why</a>
+      <a href={`${p}#howmuch`}>How much</a>
+      <a href={`${p}#questions`}>Questions?</a>
+      <a href={`${p}#freebie`} class="freebie">Freebie</a>
+      <a href="/insights">Insights</a>
+    </div>
+    <div class="nav-cta">
+      <a href={`${p}#freebie`} class="btn btn-primary">Get Freebie <span class="arr">→</span></a>
+      <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href={`${p}#how`}>How <span>→</span></a>
+  <a href={`${p}#why`}>Why <span>→</span></a>
+  <a href={`${p}#howmuch`}>How much <span>→</span></a>
+  <a href={`${p}#questions`}>Questions? <span>→</span></a>
+  <a href={`${p}#freebie`}>Freebie <span>→</span></a>
+  <a href="/insights">Insights <span>→</span></a>
+  <a href={`${p}#freebie`} class="btn btn-primary da">Get Freebie <span class="arr">→</span></a>
+</div>

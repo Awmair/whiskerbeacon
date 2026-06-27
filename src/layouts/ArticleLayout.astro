@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter, slug } = Astro.props;
+const url = new URL(`/insights/${slug}/`, Astro.site).href;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": frontmatter.title,
+  "description": frontmatter.description,
+  "datePublished": frontmatter.pubDate instanceof Date ? frontmatter.pubDate.toISOString() : frontmatter.pubDate,
+  "dateModified": (frontmatter.updatedDate || frontmatter.pubDate) instanceof Date ? (frontmatter.updatedDate || frontmatter.pubDate).toISOString() : (frontmatter.updatedDate || frontmatter.pubDate),
+  "author": { "@type": "Organization", "name": "WhiskerBeacon", "url": "https://whiskerbeacon.com" },
+  "publisher": { "@type": "Organization", "name": "WhiskerBeacon", "url": "https://whiskerbeacon.com" },
+  "mainEntityOfPage": url,
+  "url": url
+};
+const dateFmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout title={`${frontmatter.title} | WhiskerBeacon`} description={frontmatter.description} ogImage={frontmatter.heroImage || '/og-image.jpg'} jsonld={schema}>
+  <article class="article">
+    <div class="wrap article-wrap">
+      <a href="/insights" class="article-back">← All insights</a>
+      <div class="article-meta">
+        {frontmatter.tags && frontmatter.tags.length > 0 && <span class="article-tag">{frontmatter.tags[0]}</span>}
+        <span class="article-date">{dateFmt(frontmatter.pubDate)}</span>
+      </div>
+      <h1 class="article-title">{frontmatter.title}</h1>
+      <p class="article-lede">{frontmatter.description}</p>
+      {frontmatter.heroImage && <img src={frontmatter.heroImage} alt={frontmatter.title} class="article-hero" />}
+      <div class="article-body">
+        <slot />
+      </div>
+      <div class="article-cta">
+        <h3>See this working in your clinic, free.</h3>
+        <p>Tell us the headache that costs you most. We build the fix and hand it over, working, no strings attached.</p>
+        <a href="/#freebie" class="btn btn-primary btn-lg">Get WhiskerFetch free <span class="arr">→</span></a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
