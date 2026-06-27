@@ -5,6 +5,7 @@ pubDate: 2026-06-28
 author: "WhiskerBeacon"
 tags: ["Missed calls", "Front desk", "Revenue"]
 heroImage: "/img/missed-calls.png"
+---
 
 If you asked most practice owners how many phone calls their clinic misses in a day, they would guess a handful. The data says otherwise, and the gap between the guess and the reality is where a lot of quiet revenue goes.
 
