@@ -175,9 +175,8 @@ img{max-width:100%;display:block}
 .ticker-item .tname{font-family:"Fraunces";font-size:18px;color:var(--ink-soft);font-weight:500}
 
 /* ---------- SECTION ---------- */
-.band{padding:78px 0;position:relative}
-.band+.band{padding-top:0}
-.band-head{max-width:64ch;margin-bottom:44px}
+.band{padding:88px 0;position:relative}
+.band-head{max-width:64ch;margin-bottom:48px}
 .band-head.center{margin-left:auto;margin-right:auto;text-align:center}
 .band-head h2{font-size:clamp(30px,4vw,46px);margin-bottom:18px}
 .band-head h2 em{font-style:italic;color:var(--teal)}
