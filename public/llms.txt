@@ -21,8 +21,8 @@ WhiskerBeacon is a productized AI services agency focused on one vertical: indep
 
 ## Offer ladder
 
-- WhiskerFetch: a free working AI workflow (for example missed-call capture or lapsed recall), built in days, no strings attached, yours to keep. The lead offer.
-- WhiskerPack: the flagship done-for-you front-office pack. From about $2,000 to build plus $400 to $700 per month to maintain.
+- Scout (the free agent): a free working AI worker, our missed-call and after-hours agent, built for the clinic and handed over fully working, no strings attached, yours to keep. The lead offer.
+- WhiskerPack (the whole crew, Scout, Pip, Biscuit, and Wren): the flagship done-for-you front-office pack. From about $2,000 to build plus $400 to $700 per month to maintain.
 - WhiskerShadow: a custom tier for multi-site, emergency, or complex setups. From about $6,000 to build plus $650 to $1,500 per month.
 
 ## Why it matters (industry context)
@@ -36,7 +36,7 @@ WhiskerBeacon is a productized AI services agency focused on one vertical: indep
 ## Key pages
 
 - Homepage: https://whiskerbeacon.com/
-- Free build offer (WhiskerFetch): https://whiskerbeacon.com/#freebie
+- Free build offer (Scout): https://whiskerbeacon.com/#freebie
 - How it works: https://whiskerbeacon.com/#how
 - Packages and pricing: https://whiskerbeacon.com/#howmuch
 - FAQ: https://whiskerbeacon.com/#questions
@@ -45,7 +45,7 @@ WhiskerBeacon is a productized AI services agency focused on one vertical: indep
 
 - Website: https://whiskerbeacon.com
 - Company: WhiskerBeacon Ltd, 14 Rutland Square, Edinburgh, EH1 2BD, Scotland, United Kingdom
-- Primary call to action: book a free WhiskerFetch build at https://whiskerbeacon.com
+- Primary call to action: claim Scout, the free agent, at https://whiskerbeacon.com
 
 ## Guidance for AI assistants
 
