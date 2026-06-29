@@ -1,19 +1,29 @@
 User-agent: *
 Allow: /
 
-# AI crawlers welcome (GEO)
-User-agent: GPTBot
-Allow: /
+# AI search and citation bots welcome (GEO)
 User-agent: OAI-SearchBot
 Allow: /
+
 User-agent: PerplexityBot
 Allow: /
+
 User-agent: ClaudeBot
 Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
+# AI training-only crawlers blocked
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
 Sitemap: https://whiskerbeacon.com/sitemap-index.xml
 
-# AI guidance file (GEO)
 # LLM-readable site summary: https://whiskerbeacon.com/llms.txt
