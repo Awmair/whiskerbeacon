@@ -2,13 +2,48 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const schema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "WhiskerBeacon",
-  "description": "AI workflow automation for independent veterinary clinics. WhiskerBeacon builds done-for-you front-office automation that catches missed calls, kills no-shows, recovers lapsed patients, and handles follow-up, wired into the practice software a clinic already uses.",
-  "url": "https://whiskerbeacon.com",
-  "areaServed": "United States",
-  "audience": {"@type": "Audience", "audienceType": "Independent veterinary clinics"},
-  "address": {"@type": "PostalAddress","streetAddress": "14 Rutland Square","addressLocality": "Edinburgh","postalCode": "EH1 2BD","addressCountry": "GB"}
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://whiskerbeacon.com/#organization",
+      "name": "WhiskerBeacon",
+      "alternateName": "WhiskerBeacon Ltd",
+      "url": "https://whiskerbeacon.com",
+      "logo": "https://whiskerbeacon.com/og-image.jpg",
+      "description": "WhiskerBeacon builds done-for-you AI workflows for independent veterinary clinics, wired into the practice software they already use.",
+      "foundingDate": "2026",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "14 Rutland Square",
+        "addressLocality": "Edinburgh",
+        "postalCode": "EH1 2BD",
+        "addressCountry": "GB"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/whiskerbeacon",
+        "https://www.linkedin.com/in/umairq"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://whiskerbeacon.com/#service",
+      "name": "WhiskerBeacon",
+      "description": "AI workflow automation for independent veterinary clinics. WhiskerBeacon builds done-for-you front-office automation that catches missed calls, kills no-shows, recovers lapsed patients, and handles follow-up, wired into the practice software a clinic already uses.",
+      "url": "https://whiskerbeacon.com",
+      "provider": {"@id": "https://whiskerbeacon.com/#organization"},
+      "areaServed": "United States",
+      "audience": {"@type": "Audience", "audienceType": "Independent veterinary clinics"},
+      "serviceType": "AI front-desk automation"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://whiskerbeacon.com/#website",
+      "url": "https://whiskerbeacon.com",
+      "name": "WhiskerBeacon",
+      "publisher": {"@id": "https://whiskerbeacon.com/#organization"},
+      "inLanguage": "en"
+    }
+  ]
 };
 ---
 <BaseLayout home={true} jsonld={schema}>
