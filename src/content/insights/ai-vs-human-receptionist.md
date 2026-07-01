@@ -6,7 +6,10 @@ author: "WhiskerBeacon"
 tags: ["AI receptionist", "Front desk", "Staffing"]
 heroImage: "/img/ai-vs-human-receptionist-vet-clinic.jpg"
 ---
-
+<figure>
+  <img src="/img/ai-vs-human-receptionist-vet-clinic.svg" alt="Infographic comparing an AI receptionist and a human receptionist for veterinary clinics. The AI wins on volume and coverage: never clocks off, handles many calls at once, never skips recall work, flat predictable cost. The human wins on judgment and presence: empathy in hard moments, reading what is not said, the physical front desk, judgment on edge cases." width="1200" height="1200" loading="eager" />
+  <figcaption>AI covers the volume and the after-hours gap. Your team covers the moments that need a person.</figcaption>
+</figure>
 An AI receptionist answers every call at 2am for a flat monthly fee and never takes a sick day. A human receptionist reads the room, calms a frightened owner, and knows which regular just lost their old dog. Both belong in a veterinary clinic. The honest question is not which one wins, it is which one should do which job. Here is the sourced breakdown, including where a human genuinely beats the machine.
 
 ## The short answer
