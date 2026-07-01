@@ -42,6 +42,27 @@ const schema = {
       "name": "WhiskerBeacon",
       "publisher": {"@id": "https://whiskerbeacon.com/#organization"},
       "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Do I have to switch my practice management software?", "acceptedAnswer": {"@type": "Answer", "text": "No, and that's the whole point. WhiskerBeacon sits on top of the tools you already run, whether that's Avimark, Cornerstone, ezyVet, Vetspire or something else. We wire what you have into one system. Nothing gets ripped out."}},
+        {"@type": "Question", "name": "Is the free agent actually free, or is it a trial?", "acceptedAnswer": {"@type": "Answer", "text": "Genuinely free, and yours to keep. We build Scout, our missed-call and after-hours agent, fully functional and wired into your setup, and she stays working whether or not you ever buy anything else. No expiry, no crippled features, no card required."}},
+        {"@type": "Question", "name": "Will AI be making medical decisions about my patients?", "acceptedAnswer": {"@type": "Answer", "text": "No. We stay strictly in the front office and back office: booking, reminders, follow-ups, recall, charge checks. Diagnosis, dosing and every clinical call stays with your team. We won't go near the exam room."}},
+        {"@type": "Question", "name": "How long does a build take?", "acceptedAnswer": {"@type": "Answer", "text": "Scout, your free agent, lands in days. The full crew in WhiskerPack is a short, fixed-scope build, not a months-long project. You'll see something working quickly, because the work itself is the proof."}},
+        {"@type": "Question", "name": "What does it actually cost?", "acceptedAnswer": {"@type": "Answer", "text": "Scout is free. WhiskerPack, the whole crew, starts at $499 a month to keep running. WhiskerShadow, for multi-site or complex setups, starts from $6,000 plus monthly. Against a clinic's monthly revenue, the build pays back fast when it recovers even a handful of lapsed patients."}}
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "WhiskerBeacon WhiskerPack",
+      "description": "The whole crew of AI front-desk workers for independent veterinary clinics: Scout catches missed calls, Pip kills no-shows, Biscuit recovers lapsed patients, and Wren catches missed charges. Wired into the practice software you already run and kept running for you.",
+      "brand": {"@type": "Brand", "name": "WhiskerBeacon"},
+      "offers": [
+        {"@type": "Offer", "name": "WhiskerFetch", "description": "Scout, the missed-call and after-hours agent, built for your clinic and handed over fully working. Free to keep, no card required.", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://whiskerbeacon.com/#freebie"},
+        {"@type": "Offer", "name": "WhiskerPack", "description": "The whole crew (Scout, Pip, Biscuit, and Wren) with booking, reminders, recall, intake, and charge capture. $0 setup, 6-month commitment.", "price": "499", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://whiskerbeacon.com/#howmuch"},
+        {"@type": "Offer", "name": "WhiskerShadow", "description": "Bespoke builds for multi-site or ER clinics and unusual software stacks. From $6,000 build plus $800 to $1,500 per month.", "price": "6000", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://whiskerbeacon.com/#howmuch"}
+      ]
     }
   ]
 };
