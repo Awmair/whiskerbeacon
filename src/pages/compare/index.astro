@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'WhiskerBeacon comparisons: how we stack up against vet software | WhiskerBeacon';
+const description = 'Honest, sourced comparisons of WhiskerBeacon against PetDesk, Weave, and other vet front-desk tools. See which fits your clinic, no fluff.';
+
+const lastReviewed = '1 July 2026';
+
+const comparisons = [
+  {
+    name: 'WhiskerBeacon vs PetDesk',
+    href: '/compare/petdesk-vs-whiskerbeacon/',
+    blurb: 'PetDesk is a mature client engagement platform your team runs: app, booking widget, reminders, phones, Scribe. We break down where its modules stack up in price, and where a done-for-you crew fits better.',
+    tag: 'Client engagement platform',
+  },
+  {
+    name: 'WhiskerBeacon vs Weave',
+    href: '/compare/weave-vs-whiskerbeacon/',
+    blurb: 'Weave is a broad multi-industry comms platform with VoIP, payments, and reviews. We look at its documented cost-creep from unbundled add-ons, and when a vet-only flat-price service wins instead.',
+    tag: 'All-in-one comms platform',
+  },
+];
+
+const graphSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "WhiskerBeacon", "item": "https://whiskerbeacon.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://whiskerbeacon.com/compare/" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "itemListElement": comparisons.map((c, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": c.name,
+        "url": `https://whiskerbeacon.com${c.href}`
+      }))
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is WhiskerBeacon different from vet software like PetDesk or Weave?",
+          "acceptedAnswer": { "@type": "Answer", "text": "PetDesk and Weave are software platforms your team logs into and operates. WhiskerBeacon is done-for-you: four AI workers handle missed calls, no-shows, lapsed-patient recall, and missed charges, and we run them. You get the outcome, not another dashboard." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to switch off my current vet software to use WhiskerBeacon?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. WhiskerBeacon wires on top of the tools you already run, including PetDesk, Weave, and your PIMS. Many clinics keep their existing phone system or platform and add WhiskerBeacon for the done-for-you front-desk labour on top." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WhiskerBeacon cost compared to other vet tools?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WhiskerBeacon is $0 setup and $499 a month flat, whole crew included, on a 6-month commitment. Platforms like PetDesk and Weave typically start lower per module but stack add-ons for booking, phones, and SMS, so the real monthly total climbs. Every comparison page shows the sourced math." }
+        }
+      ]
+    }
+  ]
+};
+
+const heroImg = 'https://images.unsplash.com/photo-1721777436309-a5af4d4a4382?w=1200&q=80&auto=format&fit=crop';
+const heroAlt = 'A small dog in a green bandana looking up expectantly, as if weighing up a decision. Photo by Karsten Winegeart on Unsplash.';
+---
+
+<BaseLayout title={title} description={description} ogImage={heroImg} jsonld={graphSchema}>
+  <article class="cmp">
+    <div class="wrap cmp-wrap">
+      <nav class="cmp-crumbs" aria-label="Breadcrumb">
+        <a href="/">WhiskerBeacon</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Compare</span>
+      </nav>
+
+      <div class="cmp-hero reveal">
+        <span class="cmp-kicker">Honest comparisons</span>
+        <h1>How WhiskerBeacon stacks up against <em>the vet software you already know.</em></h1>
+        <p class="cmp-lede">No spin, no straw men. We put WhiskerBeacon next to the tools clinics actually shortlist, with sourced pricing and a straight answer on when the other one is the better pick.</p>
+        <p class="cmp-meta">Last reviewed: {lastReviewed} · Written for independent US vet clinics, 1 to 5 locations.</p>
+      </div>
+
+      <figure class="cmp-figure reveal">
+        <img src={heroImg} alt={heroAlt} width="1200" height="800" loading="eager" fetchpriority="high" />
+        <figcaption>Choosing front-desk software should not require a look this skeptical. That is what these pages are for.</figcaption>
+      </figure>
+
+      <div class="cmp-bluf reveal">
+        <h2>The short version</h2>
+        <ul>
+          <li><strong>Most vet tools are software your team runs.</strong> PetDesk, Weave, and the rest hand you a platform and a login. The work still lands on your front desk.</li>
+          <li><strong>WhiskerBeacon is done for you.</strong> Scout, Pip, Biscuit, and Wren handle missed calls, no-shows, lapsed-patient recall, and missed charges. We build and run them.</li>
+          <li><strong>One flat price.</strong> $0 setup, $499/mo, whole crew, no add-on menu. See <a href="/#howmuch">pricing</a>.</li>
+          <li><strong>These pages are honest.</strong> Each one names where the competitor genuinely wins. Pick the tool that fits, not the one with the loudest homepage.</li>
+        </ul>
+      </div>
+
+      <div class="cmp-list reveal">
+        <span class="cmp-kicker">The comparisons</span>
+        <h2>Pick a matchup.</h2>
+        <div class="cmp-cards">
+          {comparisons.map((c) => (
+            <a href={c.href} class="cmp-card">
+              <span class="cmp-card-tag">{c.tag}</span>
+              <h3>{c.name}</h3>
+              <p>{c.blurb}</p>
+              <span class="cmp-card-go">Read the comparison <span class="arr">→</span></span>
+            </a>
+          ))}
+        </div>
+        <p class="cmp-note">More comparisons are on the way. If there is a specific tool you are weighing WhiskerBeacon against, <a href="/#freebie">tell us</a> and we will write the honest breakdown.</p>
+      </div>
+
+      <div class="cmp-why reveal">
+        <span class="cmp-kicker">The through-line</span>
+        <h2>Every one of these comes down to <em>the same question.</em></h2>
+        <p>Do you want more software your team operates, or the front-desk work done for you? PetDesk, Weave, and the others are capable platforms. If your clinic has the bandwidth to run them, they are legitimate choices, and we say so on every page.</p>
+        <p>WhiskerBeacon is built for the other clinic: independent, 1 to 5 locations, where the front desk is already stretched and the last thing anyone needs is another dashboard to learn. Industry data puts missed vet calls near 1 in 4 (see our <a href="/insights/how-many-calls-is-your-vet-clinic-missing/">missed calls breakdown</a>). We wire the fix into what you already run, and we run it.</p>
+      </div>
+
+      <div class="cmp-faq reveal">
+        <span class="cmp-kicker">Questions?</span>
+        <h2>Before you dig in.</h2>
+
+        <details>
+          <summary>How is WhiskerBeacon different from vet software like PetDesk or Weave?</summary>
+          <p>PetDesk and Weave are software platforms your team logs into and operates. WhiskerBeacon is done for you: four AI workers handle missed calls, no-shows, lapsed-patient recall, and missed charges, and we run them. You get the outcome, not another dashboard.</p>
+        </details>
+
+        <details>
+          <summary>Do I have to switch off my current vet software to use WhiskerBeacon?</summary>
+          <p>No. WhiskerBeacon wires on top of the tools you already run, including PetDesk, Weave, and your PIMS. Many clinics keep their existing phone system or platform and add WhiskerBeacon for the done-for-you front-desk labour on top.</p>
+        </details>
+
+        <details>
+          <summary>How much does WhiskerBeacon cost compared to other vet tools?</summary>
+          <p>WhiskerBeacon is $0 setup and $499 a month flat, whole crew included, on a 6-month commitment. Platforms like PetDesk and Weave typically start lower per module but stack add-ons for booking, phones, and SMS, so the real monthly total climbs. Every comparison page shows the sourced math.</p>
+        </details>
+      </div>
+
+      <div class="cmp-related reveal">
+        <span class="cmp-kicker">Related reading</span>
+        <h2>Keep going.</h2>
+        <ul>
+          <li><a href="/best-ai-receptionist-for-veterinary-clinics/">Best AI receptionist for veterinary clinics (2026)</a></li>
+          <li><a href="/insights/roi-of-automating-vet-front-desk/">The ROI of automating your vet clinic's front desk</a></li>
+          <li><a href="/insights/how-many-calls-is-your-vet-clinic-missing/">How many calls is your vet clinic actually missing?</a></li>
+        </ul>
+      </div>
+
+      <div class="article-cta">
+        <h3>See how the Crew handles your busywork, free.</h3>
+        <p>Tell us the front-desk leak that costs you most. We build Scout for your clinic, wired into your setup, and hand her over working. No card. No expiry. No catch.</p>
+        <a href="/#freebie" class="btn btn-primary btn-lg">Claim Scout free <span class="arr">→</span></a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cmp-wrap { max-width: 860px; padding: 40px 20px 40px; margin: 0 auto; }
+
+  .cmp-crumbs { font-size: 13px; color: #1C4A46; opacity: .65; margin-bottom: 40px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .cmp-crumbs a { color: #1C4A46; text-decoration: none; }
+  .cmp-crumbs a:hover { text-decoration: underline; }
+
+  .cmp-kicker { display: inline-block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #1C4A46; opacity: .6; margin-bottom: 20px; font-weight: 600; }
+
+  .cmp-hero { margin-bottom: 40px; }
+  .cmp-hero h1 { font-family: 'Fraunces', serif; font-size: 48px; line-height: 1.1; margin: 0 0 24px; color: #1C4A46; font-weight: 500; letter-spacing: -.5px; }
+  .cmp-hero h1 em { font-style: italic; font-weight: 400; }
+  .cmp-hero .cmp-lede { font-size: 20px; line-height: 1.5; color: #1C4A46; opacity: .85; margin: 0 0 16px; }
+  .cmp-hero .cmp-meta { font-size: 13px; color: #1C4A46; opacity: .55; margin: 0; font-style: italic; }
+
+  .cmp-figure { margin: 0 0 56px; }
+  .cmp-figure img { width: 100%; height: auto; border-radius: 20px; display: block; box-shadow: 0 4px 30px rgba(28, 74, 70, .1); }
+  .cmp-figure figcaption { font-size: 13px; color: #1C4A46; opacity: .65; margin-top: 12px; font-style: italic; text-align: center; line-height: 1.5; }
+
+  .cmp-bluf { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-bluf h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-bluf ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-bluf li { padding: 12px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); line-height: 1.6; color: #1C4A46; }
+  .cmp-bluf li:last-child { border-bottom: none; }
+  .cmp-bluf strong { font-weight: 600; }
+  .cmp-bluf a { color: #1C4A46; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .cmp-list { margin-bottom: 64px; }
+  .cmp-list h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-cards { display: grid; gap: 20px; }
+  .cmp-card { display: block; background: white; border-radius: 20px; padding: 32px 36px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+  .cmp-card:hover { transform: translateY(-3px); box-shadow: 0 8px 34px rgba(28, 74, 70, .12); }
+  .cmp-card-tag { display: inline-block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #1C4A46; opacity: .55; margin-bottom: 12px; font-weight: 600; }
+  .cmp-card h3 { font-family: 'Fraunces', serif; font-size: 26px; margin: 0 0 12px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-card p { color: #1C4A46; opacity: .85; line-height: 1.6; margin: 0 0 16px; font-size: 16px; }
+  .cmp-card-go { font-weight: 600; color: #1C4A46; font-size: 15px; }
+  .cmp-card .arr { display: inline-block; transition: transform .2s ease; }
+  .cmp-card:hover .arr { transform: translateX(4px); }
+  .cmp-note { font-size: 14px; color: #1C4A46; opacity: .7; margin-top: 20px; font-style: italic; line-height: 1.5; }
+  .cmp-note a { color: #1C4A46; }
+
+  .cmp-why { background: #1C4A46; color: #F5EFE4; border-radius: 20px; padding: 40px; margin-bottom: 64px; box-shadow: 0 4px 30px rgba(28, 74, 70, .2); }
+  .cmp-why .cmp-kicker { color: #F5EFE4; opacity: .8; }
+  .cmp-why h2 { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.2; margin: 0 0 20px; font-weight: 500; }
+  .cmp-why h2 em { font-style: italic; font-weight: 400; }
+  .cmp-why p { line-height: 1.6; margin: 0 0 16px; }
+  .cmp-why p:last-child { margin-bottom: 0; }
+  .cmp-why a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .cmp-faq { margin-bottom: 64px; }
+  .cmp-faq h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-faq details { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 2px 20px rgba(28, 74, 70, .04); }
+  .cmp-faq summary { font-weight: 600; color: #1C4A46; cursor: pointer; font-size: 17px; line-height: 1.4; list-style: none; }
+  .cmp-faq summary::-webkit-details-marker { display: none; }
+  .cmp-faq summary::after { content: '+'; float: right; font-size: 22px; font-weight: 400; opacity: .6; }
+  .cmp-faq details[open] summary::after { content: '−'; }
+  .cmp-faq details[open] summary { margin-bottom: 12px; }
+  .cmp-faq details p { margin: 0; line-height: 1.6; color: #1C4A46; opacity: .85; }
+
+  .cmp-related { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-related h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-related ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-related li { padding: 10px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); }
+  .cmp-related li:last-child { border-bottom: none; }
+  .cmp-related a { color: #1C4A46; text-decoration: none; font-weight: 500; }
+  .cmp-related a:hover { text-decoration: underline; }
+  .cmp-related a::after { content: ' →'; opacity: .5; }
+
+  @media (max-width: 720px) {
+    .cmp-wrap { padding: 30px 16px 30px; }
+    .cmp-hero h1 { font-size: 32px; }
+    .cmp-hero .cmp-lede { font-size: 17px; }
+    .cmp-bluf, .cmp-related { padding: 24px; }
+    .cmp-list h2, .cmp-faq h2 { font-size: 26px; }
+    .cmp-card { padding: 24px; }
+    .cmp-card h3 { font-size: 22px; }
+    .cmp-why { padding: 28px; }
+    .cmp-why h2 { font-size: 24px; }
+  }
+</style>
