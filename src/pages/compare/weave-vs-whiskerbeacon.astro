@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'WhiskerBeacon vs Weave: an honest comparison for independent vet clinics | WhiskerBeacon';
+const description = 'Weave is a broad comms platform your team runs, priced from $249/mo with add-ons that stack. WhiskerBeacon is a done-for-you vet front desk at $499 flat. Honest breakdown.';
+
+const lastReviewed = '1 July 2026';
+
+const graphSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "WhiskerBeacon", "item": "https://whiskerbeacon.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://whiskerbeacon.com/compare/" },
+        { "@type": "ListItem", "position": 3, "name": "WhiskerBeacon vs Weave", "item": "https://whiskerbeacon.com/compare/weave-vs-whiskerbeacon/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between WhiskerBeacon and Weave?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Weave is a broad communications platform serving veterinary, dental, optometry, and other verticals. Your team runs it. WhiskerBeacon is purpose-built for veterinary clinics and is done for you: we run the front-desk work rather than handing you software to operate." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Weave cost for a vet clinic?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Public listings put Weave from around $249 a month, with online booking, SMS, implementation, and other features often priced separately. Users commonly report the total climbing as features are unbundled and re-charged. WhiskerBeacon is $499 a month flat for the whole crew, no add-on stack." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Weave text back missed calls like WhiskerBeacon?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, Weave has a missed-call auto-text feature, and it is good. The difference is scope and effort. Weave gives your team the tool to send it. WhiskerBeacon runs missed-call recovery for you, plus no-show prevention, lapsed-patient recall, and missed-charge capture, as one system." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Weave built specifically for veterinary clinics?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not specifically. Weave started in dental and expanded across dental, optometry, veterinary, and other small-business verticals. It has vet-specific touches like Call Pop showing pet details. WhiskerBeacon does only veterinary front-desk work, so its whole design is shaped around one type of clinic." }
+        },
+        {
+          "@type": "Question",
+          "name": "When is Weave the better choice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Weave is the better fit if you want a single platform your team operates for phones, texting, payments, reviews, and scheduling, and you have the staff bandwidth to run it. If you would rather have the front-desk work done for you at one flat price, WhiskerBeacon is the better fit." }
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "WhiskerBeacon WhiskerPack",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud",
+      "offers": { "@type": "Offer", "price": "499", "priceCurrency": "USD", "priceValidUntil": "2026-12-31" },
+      "description": "Done-for-you AI front desk for independent US vet clinics. Four AI workers handle missed calls, no-shows, lapsed patients, and missed charges."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Weave",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud",
+      "offers": { "@type": "Offer", "price": "249", "priceCurrency": "USD" },
+      "description": "All-in-one communications platform for veterinary, dental, and optometry practices: VoIP, two-way texting, reminders, payments, reviews, and scheduling."
+    }
+  ]
+};
+
+const heroImg = 'https://images.unsplash.com/photo-1535930749574-1399327ce78f?w=1200&q=80&auto=format&fit=crop';
+const heroAlt = 'A dog sitting attentively in front of an open book, as if reading the fine print. Photo by Jamie Street on Unsplash.';
+const midImg = 'https://images.unsplash.com/photo-1554224311-beee415c201f?w=1200&q=80&auto=format&fit=crop';
+const midAlt = 'A cool, unbothered dog wearing sunglasses. Photo by Mel Elias on Unsplash.';
+---
+
+<BaseLayout title={title} description={description} ogImage={heroImg} jsonld={graphSchema}>
+  <article class="cmp">
+    <div class="wrap cmp-wrap">
+      <nav class="cmp-crumbs" aria-label="Breadcrumb">
+        <a href="/">WhiskerBeacon</a>
+        <span aria-hidden="true">›</span>
+        <span>Compare</span>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Weave</span>
+      </nav>
+
+      <div class="cmp-hero reveal">
+        <span class="cmp-kicker">Honest comparison</span>
+        <h1>WhiskerBeacon vs Weave. One platform your team runs, or <em>one crew that runs the desk for you?</em></h1>
+        <p class="cmp-lede">Weave is a big, capable, multi-industry communications platform. WhiskerBeacon is a vet-only front desk, done for you. Both can plug the same leaks. The difference is who does the work, and what the bill looks like by month six.</p>
+        <p class="cmp-meta">Last reviewed: {lastReviewed} · Written for independent US vet clinics, 1 to 5 locations.</p>
+      </div>
+
+      <figure class="cmp-figure reveal">
+        <img src={heroImg} alt={heroAlt} width="1200" height="800" loading="eager" fetchpriority="high" />
+        <figcaption>The whole game with Weave is reading which features are included and which are the next add-on.</figcaption>
+      </figure>
+
+      <div class="cmp-bluf reveal">
+        <h2>The short version</h2>
+        <ul>
+          <li><strong>Weave</strong> is an all-in-one comms platform (VoIP, texting, reminders, payments, reviews, booking) serving vet, dental, and optometry practices. Your team runs it.</li>
+          <li><strong>WhiskerBeacon</strong> is a vet-only, done-for-you front desk. Scout, Pip, Biscuit, and Wren do the work. We run them.</li>
+          <li><strong>Weave</strong> pricing: from around $249/mo, with booking, SMS, and implementation often billed separately. Its own reviewers repeatedly flag cost creep as features get unbundled. Sources: <a href="https://www.g2.com/products/weave-weave/pricing" rel="nofollow noopener" target="_blank">G2</a>, <a href="https://www.co.vet/post/veterinary-software-comparison/" rel="nofollow noopener" target="_blank">co.vet</a>.</li>
+          <li><strong>WhiskerBeacon</strong> pricing: $0 setup, $499/mo flat, 6-month commitment. Whole crew, one price. See <a href="/#howmuch">pricing</a>.</li>
+          <li><strong>Fit</strong>: Weave if you want one platform your team operates across every channel. WhiskerBeacon if you want the vet front desk handled for you at a price that does not drift.</li>
+        </ul>
+      </div>
+
+      <div class="cmp-tbl reveal">
+        <span class="cmp-kicker">Side by side</span>
+        <h2>The full comparison, <em>row by row.</em></h2>
+        <div class="cmp-tbl-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">Weave</th>
+                <th scope="col">WhiskerBeacon</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">What it is</th><td>All-in-one comms platform</td><td>Done-for-you vet front desk</td></tr>
+              <tr><th scope="row">Built for</th><td>Vet, dental, optometry, more</td><td>Veterinary clinics only</td></tr>
+              <tr><th scope="row">Who operates it</th><td>Your team</td><td>We do</td></tr>
+              <tr><th scope="row">Starting price</th><td>from ~$249/mo</td><td>$499/mo (whole crew)</td></tr>
+              <tr><th scope="row">Add-on pricing</th><td>Booking, SMS, implementation often separate</td><td>None. One flat price.</td></tr>
+              <tr><th scope="row">Missed-call recovery</th><td>Yes, missed-call auto-text</td><td>Yes, Scout runs it for you</td></tr>
+              <tr><th scope="row">Reminders and no-shows</th><td>Yes, you configure them</td><td>Yes, Pip runs it for you</td></tr>
+              <tr><th scope="row">Lapsed-patient recall</th><td>Manual, staff-driven</td><td>Yes, Biscuit runs it for you</td></tr>
+              <tr><th scope="row">Missed-charge capture</th><td>Not offered</td><td>Yes, Wren runs it for you</td></tr>
+              <tr><th scope="row">VoIP phone system</th><td>Yes, with Call Pop pet details</td><td>No, SMS-native, sits on your phones</td></tr>
+              <tr><th scope="row">Payments / Text to Pay</th><td>Yes</td><td>Not offered</td></tr>
+              <tr><th scope="row">Reviews management</th><td>Yes</td><td>Not offered</td></tr>
+              <tr><th scope="row">PIMS integration</th><td>18+ vet PIMS</td><td>Wires into whatever you run</td></tr>
+              <tr><th scope="row">Contract</th><td>Annual, early-termination fees reported</td><td>6-month commitment</td></tr>
+              <tr><th scope="row">Free option</th><td>No</td><td>WhiskerFetch: Scout built free for qualifying clinics</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-note">Weave details compiled from <a href="https://www.g2.com/products/weave-weave/pricing" rel="nofollow noopener" target="_blank">G2</a>, <a href="https://www.co.vet/post/veterinary-software-comparison/" rel="nofollow noopener" target="_blank">co.vet</a>, and <a href="https://www.capterra.com/p/141842/Weave/" rel="nofollow noopener" target="_blank">Capterra</a> reviews, accurate as of mid-2026. Weave does not publish full pricing. Verify directly for a current quote.</p>
+      </div>
+
+      <div class="cmp-pick reveal">
+        <span class="cmp-kicker">Where Weave wins</span>
+        <h2>Weave is a strong pick if you want <em>one platform for everything.</em></h2>
+        <p>Weave is not a lightweight. It is publicly traded, serves <a href="https://www.co.vet/post/veterinary-software-comparison/" rel="nofollow noopener" target="_blank">27,000+ businesses</a>, and does a lot in one place. Real reasons to choose it:</p>
+        <ul>
+          <li>You want your phone system, texting, payments, reviews, and booking all under one login.</li>
+          <li>You like Call Pop showing a pet's name, species, and vaccine status the moment the phone rings.</li>
+          <li>You want Text to Pay and review generation built into the same tool as your comms.</li>
+          <li>You have the front-desk bandwidth to configure and run a broad platform, and you want to keep that control in-house.</li>
+        </ul>
+        <p>If that is you, Weave is a capable, mature choice.</p>
+      </div>
+
+      <figure class="cmp-figure cmp-figure-inline reveal">
+        <img src={midImg} alt={midAlt} width="1200" height="800" loading="lazy" />
+        <figcaption>WhiskerBeacon's whole pitch: the front desk handled, and you get to stay this relaxed about it.</figcaption>
+      </figure>
+
+      <div class="cmp-pick cmp-pick-alt reveal">
+        <span class="cmp-kicker">Where WhiskerBeacon wins</span>
+        <h2>WhiskerBeacon wins on <em>done-for-you, and a bill that holds still.</em></h2>
+        <p>The most common thread in Weave's own reviews is not "it does not work," it is "it kept getting more expensive as features got separated out." WhiskerBeacon is built the opposite way:</p>
+        <ul>
+          <li><strong>One flat price.</strong> $499/mo, whole crew, no add-on menu. Missed calls, no-shows, recall, and charge capture are all in, not upsells.</li>
+          <li><strong>Done for you.</strong> You do not configure Scout, Pip, Biscuit, and Wren. We build and run them. No dashboard to learn.</li>
+          <li><strong>Vet-only.</strong> Every workflow is shaped around a veterinary front desk, not a generic template shared with dentists and optometrists.</li>
+          <li><strong>The recall and charge leaks too.</strong> Weave leaves lapsed-patient recall to your staff and does not touch missed charges. Biscuit and Wren cover both.</li>
+        </ul>
+        <p class="cmp-honest">Straight about what we are not: WhiskerBeacon is not a phone system, and it does not do payments or reviews. If a VoIP-plus-payments-plus-reviews platform is what you actually want, Weave is genuinely the better tool. We do the front-desk labour, not the phone hardware.</p>
+      </div>
+
+      <div class="cmp-migration reveal">
+        <span class="cmp-kicker">Switching</span>
+        <h2>Do I have to leave Weave to use WhiskerBeacon?</h2>
+        <p>No. If Weave runs your phones and payments and you like it there, keep it. WhiskerBeacon wires on top of what you run and takes over the labour: the missed-call follow-up, the reminder chase, the recall list, the charge check.</p>
+        <p>Some clinics keep Weave for VoIP and payments and add WhiskerBeacon for the done-for-you front-desk work. Others move fully across. You set the pace, and we will tell you honestly which parts overlap so you are not paying twice for the same job.</p>
+      </div>
+
+      <div class="cmp-faq reveal">
+        <span class="cmp-kicker">Questions?</span>
+        <h2>The things clinics <em>ask us most.</em></h2>
+
+        <details>
+          <summary>What is the difference between WhiskerBeacon and Weave?</summary>
+          <p>Weave is a broad communications platform serving veterinary, dental, optometry, and other verticals, and your team runs it. WhiskerBeacon is purpose-built for veterinary clinics and is done for you: we run the front-desk work rather than handing you software to operate.</p>
+        </details>
+
+        <details>
+          <summary>How much does Weave cost for a vet clinic?</summary>
+          <p>Public listings put Weave from around $249 a month, with online booking, SMS, implementation, and other features often priced separately. Users commonly report the total climbing as features are unbundled and re-charged. WhiskerBeacon is $499 a month flat for the whole crew, no add-on stack.</p>
+        </details>
+
+        <details>
+          <summary>Does Weave text back missed calls like WhiskerBeacon?</summary>
+          <p>Yes, Weave has a missed-call auto-text feature, and it is good. The difference is scope and effort. Weave gives your team the tool to send it. WhiskerBeacon runs missed-call recovery for you, plus no-show prevention, lapsed-patient recall, and missed-charge capture, as one system.</p>
+        </details>
+
+        <details>
+          <summary>Is Weave built specifically for veterinary clinics?</summary>
+          <p>Not specifically. Weave started in dental and expanded across dental, optometry, veterinary, and other small-business verticals. It has vet-specific touches like Call Pop showing pet details. WhiskerBeacon does only veterinary front-desk work, so its whole design is shaped around one type of clinic.</p>
+        </details>
+
+        <details>
+          <summary>When is Weave the better choice?</summary>
+          <p>Weave is the better fit if you want a single platform your team operates for phones, texting, payments, reviews, and scheduling, and you have the staff bandwidth to run it. If you would rather have the front-desk work done for you at one flat price, WhiskerBeacon is the better fit.</p>
+        </details>
+      </div>
+
+      <div class="cmp-related reveal">
+        <span class="cmp-kicker">Related reading</span>
+        <h2>Keep going.</h2>
+        <ul>
+          <li><a href="/best-ai-receptionist-for-veterinary-clinics/">Best AI receptionist for veterinary clinics (2026)</a></li>
+          <li><a href="/compare/petdesk-vs-whiskerbeacon/">WhiskerBeacon vs PetDesk: the honest comparison</a></li>
+          <li><a href="/insights/roi-of-automating-vet-front-desk/">The ROI of automating your vet clinic's front desk</a></li>
+        </ul>
+      </div>
+
+      <div class="article-cta">
+        <h3>See how the Crew handles your busywork, free.</h3>
+        <p>Tell us the front-desk leak that costs you most. We build Scout for your clinic, wired into your setup, and hand her over working. No card. No expiry. No catch.</p>
+        <a href="/#freebie" class="btn btn-primary btn-lg">Claim Scout free <span class="arr">→</span></a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cmp-wrap { max-width: 860px; padding: 40px 20px 40px; margin: 0 auto; }
+
+  .cmp-crumbs { font-size: 13px; color: #1C4A46; opacity: .65; margin-bottom: 40px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .cmp-crumbs a { color: #1C4A46; text-decoration: none; }
+  .cmp-crumbs a:hover { text-decoration: underline; }
+
+  .cmp-kicker { display: inline-block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #1C4A46; opacity: .6; margin-bottom: 20px; font-weight: 600; }
+
+  .cmp-hero { margin-bottom: 40px; }
+  .cmp-hero h1 { font-family: 'Fraunces', serif; font-size: 48px; line-height: 1.1; margin: 0 0 24px; color: #1C4A46; font-weight: 500; letter-spacing: -.5px; }
+  .cmp-hero h1 em { font-style: italic; font-weight: 400; }
+  .cmp-hero .cmp-lede { font-size: 20px; line-height: 1.5; color: #1C4A46; opacity: .85; margin: 0 0 16px; }
+  .cmp-hero .cmp-meta { font-size: 13px; color: #1C4A46; opacity: .55; margin: 0; font-style: italic; }
+
+  .cmp-figure { margin: 0 0 56px; }
+  .cmp-figure img { width: 100%; height: auto; border-radius: 20px; display: block; box-shadow: 0 4px 30px rgba(28, 74, 70, .1); }
+  .cmp-figure figcaption { font-size: 13px; color: #1C4A46; opacity: .65; margin-top: 12px; font-style: italic; text-align: center; line-height: 1.5; }
+  .cmp-figure-inline { margin: 40px 0 56px; }
+
+  .cmp-bluf { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-bluf h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-bluf ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-bluf li { padding: 12px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); line-height: 1.6; color: #1C4A46; }
+  .cmp-bluf li:last-child { border-bottom: none; }
+  .cmp-bluf strong { font-weight: 600; }
+  .cmp-bluf em { font-style: italic; }
+  .cmp-bluf a { color: #1C4A46; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .cmp-tbl { margin-bottom: 64px; }
+  .cmp-tbl h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-tbl h2 em { font-style: italic; font-weight: 400; }
+  .cmp-tbl-scroll { overflow-x: auto; border-radius: 16px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); }
+  .cmp-tbl table { width: 100%; min-width: 600px; border-collapse: collapse; background: white; }
+  .cmp-tbl th, .cmp-tbl td { padding: 14px 18px; text-align: left; border-bottom: 1px solid rgba(28, 74, 70, .08); font-size: 15px; line-height: 1.5; color: #1C4A46; vertical-align: top; }
+  .cmp-tbl thead th { background: #1C4A46; color: #F5EFE4; font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .cmp-tbl tbody th { font-weight: 600; width: 30%; background: transparent; color: #1C4A46; }
+  .cmp-tbl tr:last-child th, .cmp-tbl tr:last-child td { border-bottom: none; }
+  .cmp-note { font-size: 13px; color: #1C4A46; opacity: .7; margin-top: 16px; font-style: italic; line-height: 1.5; }
+  .cmp-note a { color: #1C4A46; }
+
+  .cmp-pick { background: white; border-radius: 20px; padding: 40px; margin-bottom: 32px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); }
+  .cmp-pick-alt { background: #1C4A46; color: #F5EFE4; margin-bottom: 64px; box-shadow: 0 4px 30px rgba(28, 74, 70, .2); }
+  .cmp-pick h2 { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.2; margin: 0 0 20px; font-weight: 500; }
+  .cmp-pick h2 em { font-style: italic; font-weight: 400; }
+  .cmp-pick p { line-height: 1.6; margin: 0 0 16px; }
+  .cmp-pick ul { padding-left: 20px; margin: 0 0 16px; }
+  .cmp-pick li { padding: 8px 0; line-height: 1.6; }
+  .cmp-pick a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .cmp-pick-alt .cmp-kicker { color: #F5EFE4; opacity: .8; }
+  .cmp-honest { font-size: 14px; opacity: .8; font-style: italic; border-top: 1px solid rgba(245, 239, 228, .2); padding-top: 16px; margin-top: 8px; }
+
+  .cmp-migration { background: #F5EFE4; border-radius: 20px; padding: 36px; margin-bottom: 64px; }
+  .cmp-migration h2 { font-family: 'Fraunces', serif; font-size: 26px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-migration p { color: #1C4A46; line-height: 1.6; margin: 0 0 12px; }
+  .cmp-migration p:last-child { margin-bottom: 0; }
+
+  .cmp-faq { margin-bottom: 64px; }
+  .cmp-faq h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-faq h2 em { font-style: italic; font-weight: 400; }
+  .cmp-faq details { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 2px 20px rgba(28, 74, 70, .04); }
+  .cmp-faq summary { font-weight: 600; color: #1C4A46; cursor: pointer; font-size: 17px; line-height: 1.4; list-style: none; }
+  .cmp-faq summary::-webkit-details-marker { display: none; }
+  .cmp-faq summary::after { content: '+'; float: right; font-size: 22px; font-weight: 400; opacity: .6; }
+  .cmp-faq details[open] summary::after { content: '−'; }
+  .cmp-faq details[open] summary { margin-bottom: 12px; }
+  .cmp-faq details p { margin: 0; line-height: 1.6; color: #1C4A46; opacity: .85; }
+
+  .cmp-related { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-related h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-related ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-related li { padding: 10px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); }
+  .cmp-related li:last-child { border-bottom: none; }
+  .cmp-related a { color: #1C4A46; text-decoration: none; font-weight: 500; }
+  .cmp-related a:hover { text-decoration: underline; }
+  .cmp-related a::after { content: ' →'; opacity: .5; }
+
+  @media (max-width: 720px) {
+    .cmp-wrap { padding: 30px 16px 30px; }
+    .cmp-hero h1 { font-size: 32px; }
+    .cmp-hero .cmp-lede { font-size: 17px; }
+    .cmp-bluf, .cmp-related { padding: 24px; }
+    .cmp-tbl h2, .cmp-faq h2 { font-size: 26px; }
+    .cmp-pick { padding: 28px; }
+    .cmp-pick h2 { font-size: 24px; }
+    .cmp-migration { padding: 28px; }
+  }
+</style>
