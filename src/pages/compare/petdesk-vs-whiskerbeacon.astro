@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'WhiskerBeacon vs PetDesk: an honest comparison for independent vet clinics | WhiskerBeacon';
+const description = 'PetDesk vs WhiskerBeacon compared row by row. Pricing, features, and which one fits your clinic. Sourced figures, no fluff, updated July 2026.';
+
+const lastReviewed = '1 July 2026';
+const canonicalPath = '/compare/petdesk-vs-whiskerbeacon/';
+
+const graphSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "WhiskerBeacon", "item": "https://whiskerbeacon.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://whiskerbeacon.com/compare/" },
+        { "@type": "ListItem", "position": 3, "name": "WhiskerBeacon vs PetDesk", "item": "https://whiskerbeacon.com/compare/petdesk-vs-whiskerbeacon/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the main difference between WhiskerBeacon and PetDesk?",
+          "acceptedAnswer": { "@type": "Answer", "text": "PetDesk is client engagement software your team runs. WhiskerBeacon is a done-for-you AI front desk that runs itself. PetDesk gives you more tools to log into. WhiskerBeacon gives you back the hours the tools cost you." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does PetDesk cost compared to WhiskerBeacon?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Public third-party listings put PetDesk Communications at around $389 per month starting, with Direct Booking at $200 per month as an add-on or $350 per month standalone. Phones and Scribe are add-ons priced on request. WhiskerBeacon WhiskerPack is $0 setup and $499 per month flat with a 6-month commitment. The whole crew is included, no add-on stack." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to switch from PetDesk to use WhiskerBeacon?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. WhiskerBeacon sits on top of the tools you already run, including PetDesk if you want to keep it. Most clinics move off PetDesk over time because the Crew handles what PetDesk was doing plus what it was not. But you set the pace." }
+        },
+        {
+          "@type": "Question",
+          "name": "When is PetDesk the better choice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "PetDesk fits clinics that already have front-desk bandwidth and want a branded pet parent app for self-service. If your team likes running software, has time to manage another dashboard, and wants a loyalty program, PetDesk is a mature choice." }
+        },
+        {
+          "@type": "Question",
+          "name": "When is WhiskerBeacon the better choice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WhiskerBeacon fits independent clinics with 1 to 5 locations where the front desk is drowning, hiring is hard, and the last thing anyone needs is another platform to learn. If you want AI that does the work instead of software your team does the work with, WhiskerBeacon is built for you." }
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "WhiskerBeacon WhiskerPack",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud",
+      "offers": { "@type": "Offer", "price": "499", "priceCurrency": "USD", "priceValidUntil": "2026-12-31" },
+      "description": "Done-for-you AI front desk for independent US vet clinics. Four AI workers handle missed calls, no-shows, lapsed patients, and missed charges."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "PetDesk",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Cloud",
+      "description": "Veterinary client engagement software with communications, direct booking, phones, and AI scribe modules for vet clinics."
+    }
+  ]
+};
+
+const heroImg = 'https://images.unsplash.com/photo-1770836037275-38b44e4b101f?w=1200&q=80&auto=format&fit=crop';
+const heroAlt = 'A veterinarian caring for a small dog at an independent clinic. Photo by Alexander Mass on Unsplash.';
+const midImg = 'https://images.unsplash.com/photo-1644675272883-0c4d582528d8?w=1200&q=80&auto=format&fit=crop';
+const midAlt = 'A pet parent waiting with their dog at a veterinary practice. Photo by Karlo Tottoc on Unsplash.';
+---
+
+<BaseLayout title={title} description={description} ogImage={heroImg} jsonld={graphSchema}>
+  <article class="cmp">
+    <div class="wrap cmp-wrap">
+      <nav class="cmp-crumbs" aria-label="Breadcrumb">
+        <a href="/">WhiskerBeacon</a>
+        <span aria-hidden="true">›</span>
+        <span>Compare</span>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">PetDesk</span>
+      </nav>
+
+      <div class="cmp-hero reveal">
+        <span class="cmp-kicker">Honest comparison</span>
+        <h1>WhiskerBeacon vs PetDesk. More software your team runs, or <em>a front desk that runs itself?</em></h1>
+        <p class="cmp-lede">PetDesk is a mature client engagement platform. WhiskerBeacon is a done-for-you AI front desk. Both work. They just solve different versions of the same problem. Here is the honest breakdown.</p>
+        <p class="cmp-meta">Last reviewed: {lastReviewed} · Written for independent US vet clinics, 1 to 5 locations.</p>
+      </div>
+
+      <figure class="cmp-figure reveal">
+        <img src={heroImg} alt={heroAlt} width="1200" height="800" loading="eager" fetchpriority="high" />
+        <figcaption>The point of the front desk running itself is so the vets can stay in the exam room.</figcaption>
+      </figure>
+
+      <div class="cmp-bluf reveal">
+        <h2>The short version</h2>
+        <ul>
+          <li><strong>PetDesk</strong> gives your team more software. A pet parent app, a booking widget, reminders, a phone system, AI scribe, marketing services. Your team runs it.</li>
+          <li><strong>WhiskerBeacon</strong> gives you Scout, Pip, Biscuit, and Wren. Four AI workers that handle the front-desk work themselves. We run them.</li>
+          <li><strong>PetDesk</strong> pricing: Communications from around $389/mo, Direct Booking $200/mo add-on or $350/mo standalone, Phones and Scribe priced on request. Modules stack. Sources: <a href="https://www.nectarvet.com/post/petdesk-software-comprehensive-features-integration-partners-list-pricing-and-customer-reviews-2026" rel="nofollow noopener" target="_blank">NectarVet</a>, <a href="https://getpulsesignal.com/pricing/petdesk" rel="nofollow noopener" target="_blank">PulseSignal</a>, <a href="https://toolradar.com/tools/petdesk" rel="nofollow noopener" target="_blank">Toolradar</a>.</li>
+          <li><strong>WhiskerBeacon</strong> pricing: $0 setup, $499/mo flat, 6-month commitment. The whole crew, one price. See <a href="/#howmuch">full pricing</a>.</li>
+          <li><strong>Fit</strong>: PetDesk for clinics that want software their team operates. WhiskerBeacon for independent clinics where <em>another dashboard</em> is the last thing anyone needs.</li>
+        </ul>
+      </div>
+
+      <div class="cmp-tbl reveal">
+        <span class="cmp-kicker">Side by side</span>
+        <h2>The full comparison, <em>row by row.</em></h2>
+        <div class="cmp-tbl-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">PetDesk</th>
+                <th scope="col">WhiskerBeacon</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">What it is</th><td>Client engagement software</td><td>Done-for-you AI front desk</td></tr>
+              <tr><th scope="row">Who operates it</th><td>Your team</td><td>We do</td></tr>
+              <tr><th scope="row">Starting price</th><td>~$389/mo (Communications)</td><td>$499/mo (whole crew)</td></tr>
+              <tr><th scope="row">Setup fee</th><td>Priced on request</td><td>$0</td></tr>
+              <tr><th scope="row">Missed-call recovery</th><td>Phones add-on, price on request</td><td>Included, Scout handles it</td></tr>
+              <tr><th scope="row">Online booking</th><td>$200/mo add-on (Direct Booking)</td><td>Included</td></tr>
+              <tr><th scope="row">Reminders and no-shows</th><td>Included in Communications</td><td>Included, Pip handles it</td></tr>
+              <tr><th scope="row">Lapsed-patient recall</th><td>Manual, staff-driven</td><td>Included, Biscuit handles it</td></tr>
+              <tr><th scope="row">Missed-charge capture</th><td>Not offered</td><td>Included, Wren handles it</td></tr>
+              <tr><th scope="row">AI note transcription</th><td>Scribe (add-on)</td><td>Not offered. Front office only. Medicine stays with your team.</td></tr>
+              <tr><th scope="row">Pet parent mobile app</th><td>Yes, over 7 million users</td><td>No app, SMS-native</td></tr>
+              <tr><th scope="row">PIMS integration</th><td>Syncs with over 25 PIMS</td><td>Wires into whatever you run, including PetDesk itself</td></tr>
+              <tr><th scope="row">Contract</th><td>Annual is common</td><td>6-month commitment</td></tr>
+              <tr><th scope="row">Free option</th><td>Limited exclusive (Vetspire clinics only)</td><td>WhiskerFetch: Scout built free for any qualifying clinic</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-note">PetDesk pricing compiled from <a href="https://www.nectarvet.com/post/petdesk-software-comprehensive-features-integration-partners-list-pricing-and-customer-reviews-2026" rel="nofollow noopener" target="_blank">NectarVet</a>, <a href="https://getpulsesignal.com/pricing/petdesk" rel="nofollow noopener" target="_blank">PulseSignal</a>, and <a href="https://toolradar.com/tools/petdesk" rel="nofollow noopener" target="_blank">Toolradar</a>, accurate as of mid-2026. PetDesk does not publish full pricing on its site. Verify with PetDesk directly for a current quote.</p>
+      </div>
+
+      <div class="cmp-pick reveal">
+        <span class="cmp-kicker">When PetDesk wins</span>
+        <h2>PetDesk fits clinics that <em>like running software.</em></h2>
+        <p>This is not a jab. PetDesk is a mature product. <a href="https://www.g2.com/products/petdesk/reviews" rel="nofollow noopener" target="_blank">Over 12,000 clinics use it</a>. There are real reasons to pick it:</p>
+        <ul>
+          <li>Your team has bandwidth and wants a branded pet parent mobile app for self-service.</li>
+          <li>You want a loyalty program with points and rewards, integrated with communications.</li>
+          <li>You want AI note transcription (Scribe) from the same vendor as your client comms.</li>
+          <li>You already do your own marketing in-house and just need the client-engagement layer.</li>
+          <li>You want to keep your team roles unchanged and simply add software they operate.</li>
+        </ul>
+        <p>If that sounds like you, PetDesk is a legitimate choice.</p>
+      </div>
+
+      <figure class="cmp-figure cmp-figure-inline reveal">
+        <img src={midImg} alt={midAlt} width="1200" height="800" loading="lazy" />
+        <figcaption>The clinics WhiskerBeacon was built for: independent, one to five sites, drowning in busywork.</figcaption>
+      </figure>
+
+      <div class="cmp-pick cmp-pick-alt reveal">
+        <span class="cmp-kicker">When WhiskerBeacon wins</span>
+        <h2>WhiskerBeacon fits clinics where <em>the front desk is drowning.</em></h2>
+        <p>WhiskerBeacon is built for independent clinics, 1 to 5 locations, where the answer to "how do we handle this?" is not "buy another platform." The fit:</p>
+        <ul>
+          <li>You are losing calls, missing recall lists, and letting charges slip because two people cannot cover everything. Industry data puts missed vet calls near 1 in 4 (see our <a href="/insights/how-many-calls-is-your-vet-clinic-missing/">missed calls breakdown</a>).</li>
+          <li>Hiring is slow, expensive, or unrealistic. A full-time front-desk-tech hire runs around $95,000 a year all-in in the US.</li>
+          <li>You want the work done, not another dashboard your team has to learn.</li>
+          <li>You want one price, one team, and no add-on modules quietly stacking over 12 months.</li>
+          <li>You value SMS-native communication over pushing pet parents to install yet another app.</li>
+        </ul>
+        <p>If that sounds like you, this is what the Crew was built for.</p>
+      </div>
+
+      <div class="cmp-math reveal">
+        <span class="cmp-kicker">The pricing math</span>
+        <h2>What it actually costs, <em>both ways.</em></h2>
+        <p>A rough monthly picture for a clinic that wants missed-call recovery, online booking, reminders, and phones (the standard front-desk bundle):</p>
+
+        <div class="cmp-cost-cards">
+          <div class="cmp-cost-card">
+            <h3>PetDesk (bundled)</h3>
+            <ul>
+              <li>Communications: around $389/mo</li>
+              <li>Direct Booking: $200/mo add-on</li>
+              <li>Phones: price on request (add-on)</li>
+              <li>Scribe (optional): price on request</li>
+            </ul>
+            <p class="cmp-cost-total">Realistic monthly: $600+ before Phones and Scribe.</p>
+            <p class="cmp-cost-note">Setup priced on request. Modules billed separately. Recall and charge capture still fall on your staff.</p>
+          </div>
+
+          <div class="cmp-cost-card cmp-cost-card-alt">
+            <h3>WhiskerBeacon (WhiskerPack)</h3>
+            <ul>
+              <li>Scout: missed calls recovered</li>
+              <li>Pip: no-shows killed</li>
+              <li>Biscuit: lapsed patients brought back</li>
+              <li>Wren: missed charges caught</li>
+            </ul>
+            <p class="cmp-cost-total">Flat: $499/mo. $0 setup. 6-month commitment.</p>
+            <p class="cmp-cost-note">One price. Whole crew. Wired into what you already run, including PetDesk itself if you keep it.</p>
+          </div>
+        </div>
+
+        <p class="cmp-disclaimer">Figures compiled from public listings as of mid-2026 (<a href="https://www.nectarvet.com/post/petdesk-software-comprehensive-features-integration-partners-list-pricing-and-customer-reviews-2026" rel="nofollow noopener" target="_blank">NectarVet</a>, <a href="https://getpulsesignal.com/pricing/petdesk" rel="nofollow noopener" target="_blank">PulseSignal</a>, <a href="https://toolradar.com/tools/petdesk" rel="nofollow noopener" target="_blank">Toolradar</a>). Actual quotes vary by clinic size, add-ons, and contract length. Verify with PetDesk directly. Also see our <a href="/insights/roi-of-automating-vet-front-desk/">honest ROI breakdown</a>.</p>
+      </div>
+
+      <div class="cmp-migration reveal">
+        <span class="cmp-kicker">Switching</span>
+        <h2>Do I have to leave PetDesk to use WhiskerBeacon?</h2>
+        <p>No. The Crew sits on top of the tools you already run. If PetDesk is embedded in your workflow, keep it. WhiskerBeacon wires into it like it wires into your PIMS.</p>
+        <p>Most clinics do move off PetDesk within 6 to 12 months, once the Crew is handling what PetDesk was doing plus what it was not. But you set the pace. Nothing gets ripped out on day one.</p>
+      </div>
+
+      <div class="cmp-faq reveal">
+        <span class="cmp-kicker">Questions?</span>
+        <h2>The things clinics <em>ask us most.</em></h2>
+
+        <details>
+          <summary>What is the main difference between WhiskerBeacon and PetDesk?</summary>
+          <p>PetDesk is client engagement software your team runs. WhiskerBeacon is a done-for-you AI front desk that runs itself. PetDesk gives you more tools to log into. WhiskerBeacon gives you back the hours the tools cost you.</p>
+        </details>
+
+        <details>
+          <summary>How much does PetDesk cost compared to WhiskerBeacon?</summary>
+          <p>Public third-party listings put PetDesk Communications at around $389 a month starting, with Direct Booking at $200 a month as an add-on or $350 a month standalone. Phones and other modules are add-ons priced on request. WhiskerBeacon WhiskerPack is $0 setup and $499 a month flat with a 6-month commitment. The whole crew is included, no add-on stack.</p>
+        </details>
+
+        <details>
+          <summary>Do I have to switch from PetDesk to use WhiskerBeacon?</summary>
+          <p>No. WhiskerBeacon sits on top of the tools you already run, including PetDesk if you want to keep it. Most clinics move off PetDesk over time because the Crew handles what PetDesk was doing plus what it was not. But you decide the pace.</p>
+        </details>
+
+        <details>
+          <summary>When is PetDesk the better choice?</summary>
+          <p>PetDesk fits clinics that already have front-desk bandwidth and want a branded pet parent app for self-service. If your team likes running software, has time to manage another dashboard, and wants a loyalty program, PetDesk is a mature choice.</p>
+        </details>
+
+        <details>
+          <summary>When is WhiskerBeacon the better choice?</summary>
+          <p>WhiskerBeacon fits independent clinics with 1 to 5 locations where the front desk is drowning, hiring is hard, and the last thing anyone needs is another platform to learn. If you want AI that does the work instead of software your team does the work with, WhiskerBeacon is built for you.</p>
+        </details>
+      </div>
+
+      <div class="cmp-related reveal">
+        <span class="cmp-kicker">Related reading</span>
+        <h2>Keep going.</h2>
+        <ul>
+          <li><a href="/insights/roi-of-automating-vet-front-desk/">The ROI of automating your vet clinic's front desk</a></li>
+          <li><a href="/insights/how-many-calls-is-your-vet-clinic-missing/">How many calls is your vet clinic actually missing?</a></li>
+          <li><a href="/insights/online-booking-for-vet-clinics/">Online booking for vet clinics: what the data says</a></li>
+        </ul>
+      </div>
+
+      <div class="article-cta">
+        <h3>See how the Crew handles your busywork, free.</h3>
+        <p>Tell us the front-desk leak that costs you most. We build Scout for your clinic, wired into your setup, and hand her over working. No card. No expiry. No catch.</p>
+        <a href="/#freebie" class="btn btn-primary btn-lg">Claim Scout free <span class="arr">→</span></a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cmp-wrap { max-width: 860px; padding: 40px 20px 40px; margin: 0 auto; }
+
+  .cmp-crumbs { font-size: 13px; color: #1C4A46; opacity: .65; margin-bottom: 40px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .cmp-crumbs a { color: #1C4A46; text-decoration: none; }
+  .cmp-crumbs a:hover { text-decoration: underline; }
+
+  .cmp-kicker { display: inline-block; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #1C4A46; opacity: .6; margin-bottom: 20px; font-weight: 600; }
+
+  .cmp-hero { margin-bottom: 40px; }
+  .cmp-hero h1 { font-family: 'Fraunces', serif; font-size: 48px; line-height: 1.1; margin: 0 0 24px; color: #1C4A46; font-weight: 500; letter-spacing: -.5px; }
+  .cmp-hero h1 em { font-style: italic; font-weight: 400; }
+  .cmp-hero .cmp-lede { font-size: 20px; line-height: 1.5; color: #1C4A46; opacity: .85; margin: 0 0 16px; }
+  .cmp-hero .cmp-meta { font-size: 13px; color: #1C4A46; opacity: .55; margin: 0; font-style: italic; }
+
+  .cmp-figure { margin: 0 0 56px; }
+  .cmp-figure img { width: 100%; height: auto; border-radius: 20px; display: block; box-shadow: 0 4px 30px rgba(28, 74, 70, .1); }
+  .cmp-figure figcaption { font-size: 13px; color: #1C4A46; opacity: .65; margin-top: 12px; font-style: italic; text-align: center; line-height: 1.5; }
+  .cmp-figure-inline { margin: 40px 0 56px; }
+
+  .cmp-bluf { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-bluf h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-bluf ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-bluf li { padding: 12px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); line-height: 1.6; color: #1C4A46; }
+  .cmp-bluf li:last-child { border-bottom: none; }
+  .cmp-bluf strong { font-weight: 600; }
+  .cmp-bluf em { font-style: italic; }
+  .cmp-bluf a { color: #1C4A46; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .cmp-tbl { margin-bottom: 64px; }
+  .cmp-tbl h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-tbl h2 em { font-style: italic; font-weight: 400; }
+  .cmp-tbl-scroll { overflow-x: auto; border-radius: 16px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); }
+  .cmp-tbl table { width: 100%; min-width: 600px; border-collapse: collapse; background: white; }
+  .cmp-tbl th, .cmp-tbl td { padding: 14px 18px; text-align: left; border-bottom: 1px solid rgba(28, 74, 70, .08); font-size: 15px; line-height: 1.5; color: #1C4A46; vertical-align: top; }
+  .cmp-tbl thead th { background: #1C4A46; color: #F5EFE4; font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .cmp-tbl tbody th { font-weight: 600; width: 30%; background: transparent; color: #1C4A46; }
+  .cmp-tbl tr:last-child th, .cmp-tbl tr:last-child td { border-bottom: none; }
+  .cmp-note { font-size: 13px; color: #1C4A46; opacity: .7; margin-top: 16px; font-style: italic; line-height: 1.5; }
+  .cmp-note a { color: #1C4A46; }
+
+  .cmp-pick { background: white; border-radius: 20px; padding: 40px; margin-bottom: 32px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); }
+  .cmp-pick-alt { background: #1C4A46; color: #F5EFE4; margin-bottom: 64px; box-shadow: 0 4px 30px rgba(28, 74, 70, .2); }
+  .cmp-pick h2 { font-family: 'Fraunces', serif; font-size: 30px; line-height: 1.2; margin: 0 0 20px; font-weight: 500; }
+  .cmp-pick h2 em { font-style: italic; font-weight: 400; }
+  .cmp-pick p { line-height: 1.6; margin: 0 0 16px; }
+  .cmp-pick ul { padding-left: 20px; margin: 0 0 16px; }
+  .cmp-pick li { padding: 8px 0; line-height: 1.6; }
+  .cmp-pick a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .cmp-pick-alt .cmp-kicker { color: #F5EFE4; opacity: .8; }
+
+  .cmp-math { margin-bottom: 64px; }
+  .cmp-math h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 20px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-math h2 em { font-style: italic; font-weight: 400; }
+  .cmp-math > p { color: #1C4A46; line-height: 1.6; margin: 0 0 24px; }
+
+  .cmp-cost-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .cmp-cost-card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 2px 20px rgba(28, 74, 70, .06); }
+  .cmp-cost-card h3 { font-family: 'Fraunces', serif; font-size: 22px; margin: 0 0 16px; color: #1C4A46; font-weight: 600; }
+  .cmp-cost-card ul { list-style: none; padding: 0; margin: 0 0 16px; }
+  .cmp-cost-card li { padding: 6px 0; color: #1C4A46; line-height: 1.5; font-size: 15px; }
+  .cmp-cost-total { font-weight: 600; color: #1C4A46; padding: 12px 0; border-top: 1px solid rgba(28, 74, 70, .12); border-bottom: 1px solid rgba(28, 74, 70, .12); margin: 12px 0; }
+  .cmp-cost-note { font-size: 13px; opacity: .7; line-height: 1.5; margin: 0; color: #1C4A46; }
+  .cmp-cost-card-alt { background: #1C4A46; color: #F5EFE4; }
+  .cmp-cost-card-alt h3 { color: #F5EFE4; }
+  .cmp-cost-card-alt li { color: #F5EFE4; }
+  .cmp-cost-card-alt .cmp-cost-total { color: #F5EFE4; border-color: rgba(245, 239, 228, .2); }
+  .cmp-cost-card-alt .cmp-cost-note { color: #F5EFE4; opacity: .8; }
+
+  .cmp-disclaimer { font-size: 13px; color: #1C4A46; opacity: .7; font-style: italic; margin: 0; line-height: 1.5; }
+  .cmp-disclaimer a { color: #1C4A46; }
+
+  .cmp-migration { background: #F5EFE4; border-radius: 20px; padding: 36px; margin-bottom: 64px; }
+  .cmp-migration h2 { font-family: 'Fraunces', serif; font-size: 26px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-migration p { color: #1C4A46; line-height: 1.6; margin: 0 0 12px; }
+  .cmp-migration p:last-child { margin-bottom: 0; }
+
+  .cmp-faq { margin-bottom: 64px; }
+  .cmp-faq h2 { font-family: 'Fraunces', serif; font-size: 32px; margin: 0 0 24px; color: #1C4A46; font-weight: 500; line-height: 1.2; }
+  .cmp-faq h2 em { font-style: italic; font-weight: 400; }
+  .cmp-faq details { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 2px 20px rgba(28, 74, 70, .04); }
+  .cmp-faq summary { font-weight: 600; color: #1C4A46; cursor: pointer; font-size: 17px; line-height: 1.4; list-style: none; }
+  .cmp-faq summary::-webkit-details-marker { display: none; }
+  .cmp-faq summary::after { content: '+'; float: right; font-size: 22px; font-weight: 400; opacity: .6; }
+  .cmp-faq details[open] summary::after { content: '−'; }
+  .cmp-faq details[open] summary { margin-bottom: 12px; }
+  .cmp-faq details p { margin: 0; line-height: 1.6; color: #1C4A46; opacity: .85; }
+
+  .cmp-related { background: #F5EFE4; border-radius: 20px; padding: 32px 36px; margin-bottom: 64px; }
+  .cmp-related h2 { font-family: 'Fraunces', serif; font-size: 24px; margin: 0 0 16px; color: #1C4A46; font-weight: 500; }
+  .cmp-related ul { list-style: none; padding: 0; margin: 0; }
+  .cmp-related li { padding: 10px 0; border-bottom: 1px solid rgba(28, 74, 70, .1); }
+  .cmp-related li:last-child { border-bottom: none; }
+  .cmp-related a { color: #1C4A46; text-decoration: none; font-weight: 500; }
+  .cmp-related a:hover { text-decoration: underline; }
+  .cmp-related a::after { content: ' →'; opacity: .5; }
+
+  @media (max-width: 720px) {
+    .cmp-wrap { padding: 30px 16px 30px; }
+    .cmp-hero h1 { font-size: 32px; }
+    .cmp-hero .cmp-lede { font-size: 17px; }
+    .cmp-bluf, .cmp-related { padding: 24px; }
+    .cmp-tbl h2, .cmp-math h2, .cmp-faq h2 { font-size: 26px; }
+    .cmp-pick { padding: 28px; }
+    .cmp-pick h2 { font-size: 24px; }
+    .cmp-cost-cards { grid-template-columns: 1fr; }
+    .cmp-migration { padding: 28px; }
+  }
+</style>
